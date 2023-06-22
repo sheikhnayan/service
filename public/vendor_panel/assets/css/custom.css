@@ -1,0 +1,101 @@
+.footer .row .col-md-4 i {
+    margin: 4rem;
+    font-size: 34px;
+    color:#000;
+  }
+
+.footer .row .col-md-4 i:hover{
+    color: #EC981B !important;
+}
+
+.footer{
+    background-color: #F8F9FF;
+}
+
+nav{
+    background-color: #F8F9FF !important;
+}
+
+.sidebar-scrollbar{
+    background-color: #EC981B;
+    color: #fff;
+}
+.sidenav-item-link{
+    color: #fff !important;
+}
+
+#sidebar-menu .active a{
+    color: #fff !important;
+}
+#sidebar-menu .active a i{
+    color: #fff !important;
+}
+
+.sub-menu{
+    background: #EC981B !important;
+}
+
+.sidebar-inner li {
+    border: 1px solid #fff;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#sidebar-menu{
+margin-top: 0px;
+}
+
+.app-brand{
+    background-color: #EC981B;
+}
+
+.sidebar-dark .left-sidebar{
+    background-color: #EC981B;
+}
+
+body{
+    background-color: #fff !important;
+}
+
+.logout-profile{
+    background-color: #EC981B;
+    border-color: transparent;
+    padding: 20px 80px;
+    font-size: 20px;
+
+}
+
+.btn-success{
+    background: #F98513;
+    border: unset;
+}
+
+.success{
+    color: #F98513;    
+}
+
+.input-group > .intl-tel-input.allow-dropdown {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+  }
+  
+  .input-group > .intl-tel-input.allow-dropdown > .flag-container {
+      z-index: 4;
+  }
+  
+  .iti-flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/img/flags.png");
+  }
+
+  .product a:hover{
+    color: #000 !important;
+  }
+  
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+      .iti-flag {
+        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/img/flags@2x.png");
+      }
+  }
+  
