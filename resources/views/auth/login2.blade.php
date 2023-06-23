@@ -91,7 +91,7 @@
                                 {{-- <img src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
                                 <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
                                 <h4 class="ml-2 text-dark"
-                                    style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Login as a User
+                                    style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Login
                                 </h4>
 
 

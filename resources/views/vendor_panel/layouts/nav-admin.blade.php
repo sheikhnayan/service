@@ -3,10 +3,10 @@
           ——— LEFT SIDEBAR WITH FOOTER
           =====================================
         -->
-        <aside class="left-sidebar bg-sidebar">
+        <aside class="left-sidebar bg-sidebar" style="background: #000 !important">
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
-                <div class="app-brand">
+                <div class="app-brand" style="background: #000 !important">
                     <img src="{{ asset('vendor_panel/user.png') }}" width="60px" height="60px"
                         class="img-circle ml-4 mr-2 mt-2 mb-2" alt="User Image" />
                     <div class="d-inline-block text-light" style="font-weight:bold">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <!-- begin sidebar scrollbar -->
-                <div class="sidebar-scrollbar">
+                <div class="sidebar-scrollbar" style="background: #000 !important">
 
                     <!-- sidebar menu -->
                     <ul class="nav sidebar-inner" id="sidebar-menu">

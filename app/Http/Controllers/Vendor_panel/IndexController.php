@@ -84,7 +84,7 @@ class IndexController extends Controller
         return view('vendor_panel.otp');
     }
 
-    public function otp_submit(Request $request)
+    public function otp_submit()
     {
         $message = 'Text'; 
         $recipients = '01715426458';

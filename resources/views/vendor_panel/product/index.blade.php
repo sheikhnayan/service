@@ -15,7 +15,8 @@
     <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <h4>All Products</h4>
+          <h4 class="float-left">All Products</h4>
+          <a href="{{ route('vendor.product.create') }}" class="btn btn-success float-right">Add New</a>
         </div>
         @if ($data->count() == 0)
         <div class="col-md-12 text-center mt-4 text-dark">
