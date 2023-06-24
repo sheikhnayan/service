@@ -13,7 +13,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <label for="image" style="width: 100%;">
-                            <img src="{{ asset('storage/' . $data->image) }}" width="100%" height="122px">
+                            <img class="img-fluid" src="{{ asset('storage/' . $data->image) }}" width="100%" height="122px">
                         </label>
                         <br>
                         <input type="file" name="image" id="image" style="display: none;">

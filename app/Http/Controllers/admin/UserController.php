@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::where('type','!=','admin')->latest()->get();
+        $data = User::where('type','user')->latest()->get();
 
         return view('admin.user.index',compact('data'));
     }
@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function standard()
     {
-        $data = User::where('type','!=','admin')->latest()->get();
+        $data = User::where('type','vendor')->latest()->get();
 
         return view('admin.user.standard',compact('data'));
     }
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function preferred()
     {
-        $data = User::where('type','!=','admin')->latest()->get();
+        $data = User::where('type','vendor')->latest()->get();
 
         return view('admin.user.preferred',compact('data'));
     }
@@ -54,7 +54,7 @@ class UserController extends Controller
      */
     public function premium()
     {
-        $data = User::where('type','!=','admin')->latest()->get();
+        $data = User::where('type','vendor')->latest()->get();
 
         return view('admin.user.premium',compact('data'));
     }
@@ -124,6 +124,6 @@ class UserController extends Controller
     {
         $user = User::where('id',$id)->delete();
 
-        return redirect(route('admin.user.index'));
+        return back();
     }
 }

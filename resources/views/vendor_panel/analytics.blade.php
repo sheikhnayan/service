@@ -10,61 +10,176 @@
     @endphp
     <div class="container-fluid py-4">
         <div class="row justify-content-center">
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Total Products</p>
-                            <h4 class="mb-0">{{ $product }}</h4>
+            @if (Auth::user()->type == 'vendor')
+                
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Products</p>
+                                <h4 class="mb-0">{{ $product }}</h4>
+                            </div>
                         </div>
+                        <hr class="dark horizontal my-0">
                     </div>
-                    <hr class="dark horizontal my-0">
                 </div>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Total Services</p>
-                            <h4 class="mb-0">{{ $service }}</h4>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Services</p>
+                                <h4 class="mb-0">{{ $service }}</h4>
+                            </div>
                         </div>
+                        <hr class="dark horizontal my-0">
                     </div>
-                    <hr class="dark horizontal my-0">
                 </div>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Total Food Menus</p>
-                            <h4 class="mb-0">{{ $food }}</h4>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Food Menus</p>
+                                <h4 class="mb-0">{{ $food }}</h4>
+                            </div>
                         </div>
+                        <hr class="dark horizontal my-0">
                     </div>
-                    <hr class="dark horizontal my-0">
                 </div>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Total Events</p>
-                            <h4 class="mb-0">{{ $event }}</h4>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
+                                @php
+                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $profile_view }}</h4>
+                            </div>
                         </div>
+                        <hr class="dark horizontal my-0">
                     </div>
-                    <hr class="dark horizontal my-0">
                 </div>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-header p-3 pt-2">
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Total Campaigns</p>
-                            <h4 class="mb-0">{{ $campaign }}</h4>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Product View</p>
+                                @php
+                                    $product_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','product')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $product_view }}</h4>
+                            </div>
                         </div>
+                        <hr class="dark horizontal my-0">
                     </div>
-                    <hr class="dark horizontal my-0">
                 </div>
-            </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Service View</p>
+                                @php
+                                    $service_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','service')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $service_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Food View</p>
+                                @php
+                                    $food_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','food')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $food_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+            @else
+                
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Campaigns</p>
+                                <h4 class="mb-0">{{ $campaign }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Events</p>
+                                <h4 class="mb-0">{{ $event }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
+                                @php
+                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $profile_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Campaign View</p>
+                                @php
+                                    $campaign_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','campaign')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $campaign_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Event View</p>
+                                @php
+                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','event')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $event_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+            @endif
         </div>
         {{-- <div class="row mt-4">
             <div class="col-lg-4 col-md-6 mt-4 mb-4">

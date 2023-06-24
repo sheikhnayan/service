@@ -8,7 +8,10 @@
                     <div class="card-header p-3 pt-2">
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Total Products</p>
-                            <h4 class="mb-0">$53k</h4>
+                            @php
+                                $product = DB::table('products')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $product }}</h4>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -19,7 +22,10 @@
                     <div class="card-header p-3 pt-2">
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Total Services</p>
-                            <h4 class="mb-0">$53k</h4>
+                            @php
+                                $service = DB::table('services')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $service }}</h4>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -30,7 +36,10 @@
                     <div class="card-header p-3 pt-2">
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Total Food Menus</p>
-                            <h4 class="mb-0">$53k</h4>
+                            @php
+                                $food = DB::table('food')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $food }}</h4>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -41,7 +50,10 @@
                     <div class="card-header p-3 pt-2">
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Total Events</p>
-                            <h4 class="mb-0">$53k</h4>
+                            @php
+                                $event = DB::table('events')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $event }}</h4>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">
@@ -52,7 +64,82 @@
                     <div class="card-header p-3 pt-2">
                         <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">Total Campaigns</p>
-                            <h4 class="mb-0">$53k</h4>
+                            @php
+                                $campaign = DB::table('campaigns')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $campaign }}</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Total Users</p>
+                            @php
+                                $user = DB::table('users')->where('type','user')->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $user }}</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Total Standard Users</p>
+                            @php
+                                $standard = DB::table('vendor_details')->where('subscription_id',1)->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $standard }}</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Total Preferred Users</p>
+                            @php
+                                $preferred = DB::table('vendor_details')->where('subscription_id',2)->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $preferred }}</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Total Premium Users</p>
+                            @php
+                                $premium = DB::table('vendor_details')->where('subscription_id',3)->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $premium }}</h4>
+                        </div>
+                    </div>
+                    <hr class="dark horizontal my-0">
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="card">
+                    <div class="card-header p-3 pt-2">
+                        <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">Total NPO</p>
+                            @php
+                                $npo = DB::table('vendor_details')->where('subscription_id',4)->count();
+                            @endphp
+                            <h4 class="mb-0">{{ $npo }}</h4>
                         </div>
                     </div>
                     <hr class="dark horizontal my-0">

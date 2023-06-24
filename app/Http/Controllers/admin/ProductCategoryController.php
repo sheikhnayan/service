@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use App\Models\ProductSubCategory;
 
 class ProductCategoryController extends Controller
 {
@@ -92,8 +93,17 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $delete = ProductCategory::where('id',$id)->delete();
+        $check = ProductSubCategory::where('product_category_id',$id)->count();
+        
+        if ($check > 0) {
+            # code...
+            return redirect(route('admin.meta-data.index'))->with('failure','This Category is Used in SubCategory List !');
 
-        return redirect(route('admin.meta-data.index'));
+        }else{
+            $delete = ProductCategory::where('id',$id)->delete();
+        }
+
+
+        return redirect(route('admin.meta-data.index'))->with('success','This Category Deleted Successfully !');
     }
 }

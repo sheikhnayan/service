@@ -11,20 +11,23 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
+    Route::get('vendor-register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
-    Route::get('register-user', [RegisteredUserController::class, 'create_user'])
+    Route::get('user-register', [RegisteredUserController::class, 'create_user'])
         ->name('register-user');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
 
     Route::post('register-user', [RegisteredUserController::class, 'store_user'])->name('register-user');
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+    Route::get('user-login', [AuthenticatedSessionController::class, 'create'])
+                ->name('user-login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::get('vendor-login', [AuthenticatedSessionController::class, 'create_vendor'])
+                ->name('vendor-login');
+
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');

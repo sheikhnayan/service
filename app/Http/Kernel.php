@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'check_subscription' => \App\Http\Middleware\CheckSubscription::class,
         'standard' => \App\Http\Middleware\Standard::class,
         'preferred' => \App\Http\Middleware\Preferred::class,
+        'admin' => \App\Http\Middleware\Admin::class,
     ];
 }

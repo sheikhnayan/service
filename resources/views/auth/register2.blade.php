@@ -69,12 +69,12 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
 
                     <div class="navbar-right ml-auto">
-                        <a href="/login" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login/Register </a>
+                        <a href="/vendor-login" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login </a>
                     </div>
                 </nav>
 
@@ -87,7 +87,7 @@
                     <div class="col-md-6">
                         <form action="{{ route('register-user') }}" method="post">
                         @csrf
-                            {{-- <img src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
+                            {{-- <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Register as a User</h4>
             
@@ -116,7 +116,7 @@
                             <button type="Submit" class="btn btn-success mt-4 logout-profile"> Register </button>
 
                             <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
-                                Already have an account? <a style="color:#F98513;" href="/login">Login Now</a>
+                                Already have an account? <a style="color:#F98513;" href="/user-login">Login Now</a>
                             </span>
                         </form>
                       </div>

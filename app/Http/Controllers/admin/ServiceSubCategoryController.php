@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
+use App\Models\Service;
 use App\Models\ServiceSubCategory;
 
 class ServiceSubCategoryController extends Controller
@@ -99,8 +100,17 @@ class ServiceSubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $delete = ServiceSubCategory::where('id',$id)->delete();
+        $check = Service::where('sub_category_id',$id)->count();
+        
+        if ($check > 0) {
+            # code...
+            return redirect(route('admin.meta-data.index'))->with('failure','This Category is Used in Service List !');
 
-        return redirect(route('admin.meta-data.index'));
+        }else{
+            $delete = ServiceSubCategory::where('id',$id)->delete();
+        }
+
+
+        return redirect(route('admin.meta-data.index'))->with('success','This Category Deleted Successfully !');
     }
 }

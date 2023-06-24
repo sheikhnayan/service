@@ -25,9 +25,9 @@
         </div>
         @endif
         @foreach ($data as $item)
-          <div class="col-md-2" style="margin-top: 2rem;">
+          <div class="col-md-3" style="margin-top: 2rem;">
             <div class="card product" style="background-color: #F8F9FF; border-raduis:12px;">
-              <img src="{{ asset('storage/'.$item->image) }}" width="151px" height="70px" style="margin: auto; padding: 5px;">
+              <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" style="margin: auto; padding: 5px;">
               <p style="padding: 5px; margin:auto;">{{ $item->name }}</p>
               <div class="button">
                 <a href="{{ route('vendor.campaign.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a>

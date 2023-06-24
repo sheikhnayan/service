@@ -55,7 +55,7 @@ Route::get('/', function () {
         
     } else {
         # code...
-        return redirect(route('login'));
+        return redirect()->intended(RouteServiceProvider::USERLOGIN);
     }
 });
 
@@ -123,7 +123,7 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription')->name
 });
 
 
-Route::prefix('/admin')->name('admin.')->group(function(){
+Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(function(){
     Route::get('/',[AdminController::class,'index'])->name('index');
     Route::get('/support',[AdminController::class,'support'])->name('support');
 

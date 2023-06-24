@@ -84,28 +84,47 @@
                     <h4 class="ml-auto"> @yield('title') </h4>
 
                     <div class="navbar-right ml-auto">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
                 </nav>
 
 
             </header>
+            @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Success !</strong> {{ session('success') }}
+                </div>
+            @endif 
+
+            @if(Session::has('failure'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ session('failure') }}
+                </div>
+            @endif 
 
             @yield('content')
 
 
-            
-            <footer class="footer mt-auto">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                         <a href="/"><i class="mdi mdi-home"></i></a>
-                         <a href="/notification"><i class="mdi mdi-bell-outline"></i></a>
-                         <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
+            @if (Auth::user()->type != 'admin')
+                <footer class="footer mt-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <a href="/"><i class="mdi mdi-home"></i></a>
+                            @if (Auth::user()->type == 'vendor')
+                            <a href="/notification"><i class="mdi mdi-bell-outline"></i></a>
+                            @endif
+                            <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
+                        </div>
                     </div>
-                </div>
-            </footer>
-
+                </footer>
+            @endif
         </div>
     </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FoodMenuCategory;
+use App\Models\Food;
 
 class FoodMenuCategoryController extends Controller
 {
@@ -92,8 +93,17 @@ class FoodMenuCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $delete = FoodMenuCategory::where('id',$id)->delete();
+        $check = Food::where('category_id',$id)->count();
+        
+        if ($check > 0) {
+            # code...
+            return redirect(route('admin.meta-data.index'))->with('failure','This Category is Used in Food List !');
 
-        return redirect(route('admin.meta-data.index'));
+        }else{
+            $delete = FoodMenuCategory::where('id',$id)->delete();
+        }
+
+
+        return redirect(route('admin.meta-data.index'))->with('success','This Category Deleted Successfully !');
     }
 }

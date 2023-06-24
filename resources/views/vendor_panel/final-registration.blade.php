@@ -69,7 +69,7 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
                 </nav>
@@ -104,10 +104,12 @@
                                 <input type="file" required width="100%" height="122px" style="display: none" id="image" name="logo">
                                 <br>
                                 <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
-                                <label style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
-                                    for="image" class="text-center bg-light">
-                                    <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
-                                    Upload Documents (jpeg/png/PDF)
+                                <label style="width:100%; height:122px; border-radius: 22px; font-weight: 500; cursor: pointer"
+                                    for="image" class="text-center bg-light" id="label">
+                                    <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; right: 26px; cursor: pointer; display:none">
+                                    <img class="img-fluid" style="height:122px !important; display: none" src="" id="imgPreview" alt="" width="100%">
+                                    <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 2rem;">+</a> 
+                                    {{-- <p> Upload Documents (jpeg/png/PDF) </p> --}}
                                 </label> <br>
                                 
                                 <button type="submit" class="ml-auto mr-auto mb-4 mt-4 btn btn-success" style="width: 40%;">Submit</button>
@@ -115,23 +117,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
-
-            {{-- <footer class="footer mt-auto">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                         <a href="/"><i class="mdi mdi-home"></i></a>
-                         <a href="/"><i class="mdi mdi-bell-outline"></i></a>
-                         <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
-                    </div>
-                </div>
-            </footer> --}}
-
         </div>
     </div>
 
@@ -180,6 +166,31 @@
                 $('#state_id').html(htmls);
             }
         });
+        });
+    </script>
+
+    <script>
+        $(document).ready(() => {
+            $("#image").change(function () {
+                const file = this.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $("#imgPreview")
+                        .attr("src", event.target.result);
+
+                        $("#imgPreview")
+                        .css("display", 'block');
+
+                        $('#add_button').css('display','none')
+
+                        $('#edit_button').css('display','block')
+                    };
+                    reader.readAsDataURL(file);
+
+
+                }
+            });
         });
     </script>
 

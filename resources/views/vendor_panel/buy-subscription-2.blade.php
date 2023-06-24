@@ -68,8 +68,8 @@
                         <span class="sr-only">Toggle navigation</span>
                     </button> --}}
 
-                    <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                    <div class="navbar-left ml-6">
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
                 </nav>

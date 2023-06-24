@@ -10,9 +10,9 @@
             <h3 class="text-dark"> All Event </h3> 
         </div>
         @foreach ($data as $item)
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="card product" style="background-color: #F98513; border-radius:12px;">
-                    <img src="{{ asset('storage/'.$item->image) }}" width="151px" height="70px" style="margin: auto; padding: 5px;">
+                    <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" style="margin: auto; padding: 5px;">
                     <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
                     <div class="button">
                     {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}

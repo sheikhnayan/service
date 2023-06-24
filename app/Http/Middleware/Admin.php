@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class Vendor
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -17,13 +17,15 @@ class Vendor
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->type == 'vendor') {
+        if (Auth::user()->type == 'admin') {
             # code...
             return $next($request);
-        }else{
+        } else {
+            # code...
             Auth::logout();
 
-            return redirect(route('vendor-login'));
+            return redirect(route('user-login'));
         }
+        
     }
 }

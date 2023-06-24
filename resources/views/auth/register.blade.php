@@ -69,12 +69,12 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
 
                     <div class="navbar-right ml-auto">
-                        <a href="/login" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login </a>
+                        <a href="/user-login" class="btn btn-success" style="padding: 12px 25px;"> User Login </a>
                     </div>
                 </nav>
 
@@ -87,7 +87,7 @@
                     <div class="col-md-6">
                         <form action="{{ route('register') }}" method="post">
                         @csrf
-                            {{-- <img src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
+                            {{-- <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Register as a vendor</h4>
             
@@ -109,17 +109,17 @@
                             <div class="business-type mt-4" style="display: flex;">
                                 <p class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 80%;">I'm Registering as </p>
                                 <div class="input-group">
-                                    <input type="checkbox" name="business_type" id="business" value="business" checked>
+                                    <input type="radio" name="business_type" id="business" value="business" checked>
                                     <label for="business" style="margin-top: 0.5rem; margin-left: 0.5rem;">Business</label>
                                 </div>
                                 <div class="input-group" style="float: right">
-                                    <input type="checkbox" id="non-profit" name="business_type" value="non-profit">
+                                    <input type="radio" id="non-profit" name="business_type" value="non-profit">
                                     <label for="non-profit" style="margin-top: 0.5rem; margin-left: 0.5rem;">Non Profit</label>
                                 </div>
 
                             </div>
                             
-                            <input type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            <input type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             <label for="checkbox">I agree with <a href="#">terms and condition</a> & <a href="#">privacy policy</a></label>
 
                             <br>
@@ -129,7 +129,7 @@
                             <button type="Submit" class="btn btn-success mt-4 logout-profile"> Register </button>
 
                             <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
-                                Already have an account? <a style="color:#F98513;" href="/login">Login Now</a>
+                                Already have an account? <a style="color:#F98513;" href="/user-login">Login Now</a>
                             </span>
                         </form>
                       </div>

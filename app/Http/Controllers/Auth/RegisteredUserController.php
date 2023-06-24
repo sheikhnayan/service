@@ -115,7 +115,7 @@ class RegisteredUserController extends Controller
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
         $add->founder_name = $request->founder_name;
-        $add->website = $request->founder_name;
+        $add->website = $request->website;
         $add->country_id = $request->country_id;
         $add->state_id = $request->state_id;
         $add->address = $request->address;

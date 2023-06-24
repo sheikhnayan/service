@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Country;
+use App\Models\State;
 
 class CountryController extends Controller
 {
@@ -92,8 +93,17 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        $delete = Country::where('id',$id)->delete();
+        $check = State::where('country_id',$id)->count();
+        
+        if ($check > 0) {
+            # code...
+            return redirect(route('admin.meta-data.index'))->with('failure','This Country is Used in State List !');
 
-        return redirect(route('admin.meta-data.index'));
+        }else{
+            $delete = Country::where('id',$id)->delete();
+        }
+
+
+        return redirect(route('admin.meta-data.index'))->with('success','This Country Deleted Successfully !');
     }
 }

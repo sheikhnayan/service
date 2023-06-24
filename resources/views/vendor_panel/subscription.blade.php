@@ -69,7 +69,7 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
                 </nav>
@@ -84,11 +84,11 @@
 
         <div class="col-md-8">
 
-            <div class="card">
+            <div class="card mt-4">
 
                 <div class="card-header">
 
-                    You will be charged ${{ number_format($plan->price, 2) }} for {{ $plan->name }} Plan
+                    You will be charged ${{ number_format($plan->price, 2) }} for {{ $plan->name }} Plan after 3 months of trial for an year.
 
                 </div>
 

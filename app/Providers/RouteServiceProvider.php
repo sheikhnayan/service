@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
     public const Vendor = '/vendor/product/index';
     public const ADMIN = '/admin';
     public const USER = '/user/index';
+    public const USERLOGIN = '/user-login';
     public const OTP = '/otp';
 
     /**

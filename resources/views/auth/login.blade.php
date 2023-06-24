@@ -69,12 +69,12 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
                             srcset="">
                     </div>
 
                     <div class="navbar-right ml-auto">
-                        <a href="/register" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login/Register
+                        <a href="/vendor-login" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login
                         </a>
                     </div>
                 </nav>
@@ -88,10 +88,10 @@
                         <div class="col-md-6">
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
-                                {{-- <img src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
+                                {{-- <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
                                 <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
                                 <h4 class="ml-2 text-dark"
-                                    style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Login as a vendor
+                                    style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Login as an User
                                 </h4>
 
 
@@ -119,7 +119,7 @@
                                 <button type="submit" class="btn btn-success mt-4 logout-profile">Login</button>
 
                                 <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
-                                    Dont have an account yet? <a style="color:#F98513;" href="/register">Register</a>
+                                    Dont have an account yet? <a style="color:#F98513;" href="/user-register">Register</a>
                                 </span>
                             </form>
                         </div>

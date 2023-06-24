@@ -13,6 +13,8 @@ use App\Models\Product;
 use App\Models\Service;
 use App\Models\Food;
 use App\Models\User;
+use App\Models\Visit;
+use Auth;
 
 class UserController extends Controller
 {
@@ -41,6 +43,12 @@ class UserController extends Controller
     {
         $data = Campaign::find($id);
 
+        $visit =  new Visit;
+        $visit->user_id = $data->user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'campaign';
+        $visit->save();
+
         return view('user.campaign.show',compact('data'));
     }
 
@@ -53,6 +61,12 @@ class UserController extends Controller
         $campaign = Campaign::where('user_id',$data->id)->limit(2)->get();
 
         $event = Event::where('user_id',$data->id)->limit(2)->get();
+
+        $visit =  new Visit;
+        $visit->user_id = $data->id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'profile';
+        $visit->save();
 
         return view('user.campaign.profile',compact('data','campaign','event'));
     }
@@ -75,6 +89,12 @@ class UserController extends Controller
     {
         $data = Event::find($id);
 
+        $visit =  new Visit;
+        $visit->user_id = $data->user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'event';
+        $visit->save();
+
         return view('user.event.show',compact('data'));
     }
 
@@ -87,6 +107,12 @@ class UserController extends Controller
         $campaign = Campaign::where('user_id',$data->id)->limit(2)->get();
 
         $event = Event::where('user_id',$data->id)->limit(2)->get();
+
+        $visit =  new Visit;
+        $visit->user_id = $data->id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'profile';
+        $visit->save();
 
         return view('user.event.profile',compact('data','campaign','event'));
     }
@@ -109,6 +135,12 @@ class UserController extends Controller
     {
         $data = Product::find($id);
 
+        $visit =  new Visit;
+        $visit->user_id = $data->user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'product';
+        $visit->save();
+
         return view('user.product.show',compact('data'));
     }
 
@@ -121,6 +153,12 @@ class UserController extends Controller
         $campaign = Campaign::where('user_id',$data->id)->limit(2)->get();
 
         $event = Event::where('user_id',$data->id)->limit(2)->get();
+
+        $visit =  new Visit;
+        $visit->user_id = $data->id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'profile';
+        $visit->save();
 
         return view('user.product.profile',compact('data','campaign','event'));
     }
@@ -143,6 +181,12 @@ class UserController extends Controller
     {
         $data = Service::find($id);
 
+        $visit =  new Visit;
+        $visit->user_id = $data->user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'service';
+        $visit->save();
+
         return view('user.service.show',compact('data'));
     }
 
@@ -155,6 +199,12 @@ class UserController extends Controller
         $campaign = Product::where('user_id',$data->id)->limit(2)->get();
 
         $event = Service::where('user_id',$data->id)->limit(2)->get();
+
+        $visit =  new Visit;
+        $visit->user_id = $data->id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'profile';
+        $visit->save();
 
         return view('user.service.profile',compact('data','campaign','event'));
     }
@@ -177,6 +227,12 @@ class UserController extends Controller
     {
         $data = Food::find($id);
 
+        $visit =  new Visit;
+        $visit->user_id = $data->user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'food';
+        $visit->save();
+
         return view('user.food.show',compact('data'));
     }
 
@@ -189,6 +245,12 @@ class UserController extends Controller
         $campaign = Event::where('user_id',$data->id)->limit(2)->get();
 
         $event = Food::where('user_id',$data->id)->limit(2)->get();
+
+        $visit =  new Visit;
+        $visit->user_id = $data->id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = 'profile';
+        $visit->save();
 
         return view('user.food.profile',compact('data','campaign','event'));
     }

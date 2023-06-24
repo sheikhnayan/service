@@ -1,16 +1,16 @@
 @extends('vendor_panel.layouts.main')
 
 @section('title')
-    Standard Users
+    Preferred Users
 @endsection
 
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card p-4">
-                <h4>All Users</h4>
+            <div class="card p-4 mt-4">
+                <h4>All Preferred Users</h4>
 
-                <table class="table">
+                <table class="table mt-4">
                     <thead>
                         <tr>
                             <th>#</th>

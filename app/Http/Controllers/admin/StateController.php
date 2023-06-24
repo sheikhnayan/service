@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\VendorDetail;
 
 class StateController extends Controller
 {
@@ -99,8 +100,17 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        $delete = State::where('id',$id)->delete();
+        $check = VendorDetail::where('state_id',$id)->count();
+        
+        if ($check > 0) {
+            # code...
+            return redirect(route('admin.meta-data.index'))->with('failure','This State is Used in Vendor Registration !');
 
-        return redirect(route('admin.meta-data.index'));
+        }else{
+            $delete = State::where('id',$id)->delete();
+        }
+
+
+        return redirect(route('admin.meta-data.index'))->with('success','This State Deleted Successfully !');
     }
 }

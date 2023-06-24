@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\State;
+use App\Models\Visit;
 use Twilio\Rest\Client;
 use Auth;
 use Hash;
@@ -59,7 +60,9 @@ class IndexController extends Controller
 
     public function notification()
     {
-        return view('vendor_panel.notification');
+        $data = Visit::where('user_id',Auth::user()->id)->latest()->get();
+
+        return view('vendor_panel.notification',compact('data'));
     }
 
     // public function preferred_vendor()

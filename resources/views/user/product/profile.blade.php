@@ -12,7 +12,7 @@
       <div class="row justify-content-center">
         <div class="col-md-4">
           <div class="card" style="border-radius: 8px; background: #f8f9ff">
-            <img src="{{ asset('storage/'.$data->vendor->logo) }}" alt="" width="403px" height="196px" style="margin: auto; margin-top: 2rem;
+            <img class="img-fluid" src="{{ asset('storage/'.$data->vendor->logo) }}" alt="" width="403px" height="196px" style="margin: auto; margin-top: 2rem;
             ">
 
             {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
@@ -49,7 +49,7 @@
             @foreach ($event as $item)
               <div class="col-md-6">
                 <div class="card product" style="background-color: #F98513; border-radius:12px;">
-                  <img src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
+                  <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
                   <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
                   <div class="button">
                   {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}
@@ -69,7 +69,7 @@
             @foreach ($campaign as $item)
               <div class="col-md-6">
                 <div class="card product" style="background-color: #F98513; border-radius:12px;">
-                  <img src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
+                  <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
                   <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
                   <div class="button">
                   {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}

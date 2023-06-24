@@ -16,23 +16,31 @@
                 <div class="col-md-6">
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
-                        for="image" class="text-center bg-light">
-                          @if (Auth::user()->vendor->logo == null)
-                          <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
-                          Upload Logo
-                          @else
-                          <img src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%" height="122px">
-                          @endif
-                        </label> 
-                        <br>
-                        <input type="file" name="image" id="image" style="display: none;">
-
-                        <input type="text" name="company_name" class="form-control mt-4" value="{{ Auth::user()->vendor->company_name }}"
+                        @if (Auth::user()->type == 'vendor')    
+                            <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
+                            for="image" class="text-center bg-light">
+                            @if (Auth::user()->vendor->logo == null)
+                            <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
+                            Upload Logo
+                            @else
+                            <img class="img-fluid" style="height: 122px !important" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
+                            @endif
+                            </label> 
+                            <br>
+                            <input type="file" name="image" id="image" style="display: none;">
+                        @endif
+                        @if (Auth::user()->type == 'vendor')    
+                        
+                            <input type="text" name="company_name" class="form-control mt-4" value="{{ Auth::user()->vendor->company_name }}"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-
+                            <input type="text" name="founder_name" class="form-control mt-4" value="{{ Auth::user()->vendor->founder_name }}"
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                        @else
                         <input type="text" name="name" class="form-control mt-4" value="{{ Auth::user()->name }}"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                        @endif
+                        @if (Auth::user()->type == 'vendor')    
 
                             <div class="drops mt-4">
                               @php
@@ -54,12 +62,12 @@
                             </div>
                             <br>
                             <br>
+                        @endif
+                        @if (Auth::user()->type == 'vendor')    
 
                         <input name="address" type="text" class="form-control" value="{{ Auth::user()->vendor->address }}" placeholder="Rocket Road, California, 1288"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                        <input type="text" class="form-control" value="North Carolina museum od art"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-
+                        @endif
                         <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
                           <div class="input-group input-group-sm">
                               <input value="{{ Auth::user()->phone }}" name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
@@ -71,10 +79,17 @@
 
                         <input type="text" class="form-control mt-4" value="{{ Auth::user()->email }}" placeholder="Your Email"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                        @if (Auth::user()->type == 'vendor')    
 
                             <input type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
+                            @if (Auth::user()->vendor->business_type == 'non-profit')
+                            <input type="text" name="donation_link" class="form-control mt-4" placeholder="Donation Link"
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            @endif
+
+                        @endif
                             <input type="text" name="password" class="form-control mt-4" placeholder="Change Password"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
