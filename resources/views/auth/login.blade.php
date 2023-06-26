@@ -73,8 +73,12 @@
                             srcset="">
                     </div>
 
-                    <div class="navbar-right ml-auto">
+                    {{-- <div class="navbar-right ml-auto">
                         <a href="/vendor-login" class="btn btn-success" style="padding: 12px 25px;"> Vendor Login
+                        </a>
+                    </div> --}}
+                    <div class="navbar-right ml-auto">
+                        <a href="/vendor-register" class="btn btn-success" style="padding: 12px 25px;"> Register
                         </a>
                     </div>
                 </nav>
