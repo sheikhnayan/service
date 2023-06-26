@@ -14,6 +14,7 @@ use App\Models\ServiceSubCategory;
 use App\Models\FoodMenuCategory;
 use App\Models\NPOCategory;
 use App\Models\StartUpCategory;
+use App\Models\StartUp;
 
 class AdminController extends Controller
 {
@@ -58,6 +59,13 @@ class AdminController extends Controller
         $data = Support::latest()->get();
         
         return view('admin.support',compact('data'));
+    }
+
+    public function start_up()
+    {
+        $data = StartUp::latest()->get();
+        
+        return view('admin.start-up',compact('data'));
     }
 
     /**

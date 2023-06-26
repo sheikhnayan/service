@@ -86,7 +86,7 @@
                         <li>
                             <a class="sidenav-item-link" href="{{ route('support') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
-                                <span class="nav-text">Contact Us</span> <b class="caret"></b>
+                                <span class="nav-text">Support</span> <b class="caret"></b>
                             </a>
                         </li>
 

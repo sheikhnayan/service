@@ -17,6 +17,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Document</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -30,6 +31,7 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>
+                            <td> <a href="{{ asset('storage/'.$item->vendor->document) }}" target="_blank" >Click here</a></td>
                             <td>
                                 @if ($item->vendor->status == 1)
                                     <span class="text-success">Active</span>

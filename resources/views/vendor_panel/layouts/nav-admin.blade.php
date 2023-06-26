@@ -67,7 +67,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="sidenav-item-link" href="#">
+                            <a class="sidenav-item-link" href="{{ route('admin.start-up') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Startup Pitch</span> <b class="caret"></b>
                             </a>

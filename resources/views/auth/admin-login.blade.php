@@ -29,7 +29,7 @@
 
 
     <!-- FAVICON -->
-    <link href="{{ asset('vendor_panel/assets/img/favicon.png') }}" rel="shortcut icon" />
+    <link href="{{ asset('vendor_panel/fav.png') }}" rel="shortcut icon" />
     <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
   -->
@@ -119,7 +119,7 @@
 
                                 <div class="form-group mt-4">
                                     <div class="input-group input-group-sm">
-                                        <input id="phone" name="phone" type="tel" placeholder="Phone NUmber"
+                                        <input name="phone" type="tel" placeholder="Phone Number"
                                             class="form-control form-control-sm rounded-0 w-100"
                                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                         {{-- <div class="input-group-append">
