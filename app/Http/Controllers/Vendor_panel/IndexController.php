@@ -20,6 +20,7 @@ class IndexController extends Controller
 
     public function profile_update(Request $request)
     {
+        dd($request->all());
         $user = Auth::user();
         $user->name = $request->name;
         $user->phone = $request->phone;
