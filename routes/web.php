@@ -280,6 +280,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
     Route::get('service-category/{id}',[User::class,'service_category'])->name('service-category');
     Route::get('product-category/{id}',[User::class,'product_category'])->name('product-category');
     Route::get('campaign-category/{id}',[User::class,'campaign_category'])->name('campaign-category');
+    
 
     Route::prefix('/campaign')->name('campaign.')->group(function () {
         
@@ -288,6 +289,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/campaign/profile/{id}',[User::class,'campaign_profile'])->name('profile');
         Route::get('/campaign/all/{id}',[User::class,'campaign_all'])->name('all');
         Route::get('/campaign/review/{id}',[User::class,'campaign_review'])->name('review');
+        Route::get('/campaign/wish/{id}',[User::class,'campaign_wish'])->name('wish');
         
     });
 
@@ -298,6 +300,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/event/profile/{id}',[User::class,'event_profile'])->name('profile');
         Route::get('/event/all/{id}',[User::class,'event_all'])->name('all');
         Route::get('/event/review/{id}',[User::class,'event_review'])->name('review');
+        Route::get('/event/wish/{id}',[User::class,'event_wish'])->name('wish');
         
     });
 
@@ -308,6 +311,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/product/profile/{id}',[User::class,'product_profile'])->name('profile');
         Route::get('/product/all/{id}',[User::class,'product_all'])->name('all');
         Route::get('/product/review/{id}',[User::class,'product_review'])->name('review');
+        Route::get('/product/wish/{id}',[User::class,'product_wish'])->name('wish');
         
     });
 
@@ -318,6 +322,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/service/profile/{id}',[User::class,'service_profile'])->name('profile');
         Route::get('/service/all/{id}',[User::class,'service_all'])->name('all');
         Route::get('/service/review/{id}',[User::class,'service_review'])->name('review');
+        Route::get('/service/wish/{id}',[User::class,'service_wish'])->name('wish');
         
     });
 
@@ -328,6 +333,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/food/profile/{id}',[User::class,'food_profile'])->name('profile');
         Route::get('/food/all/{id}',[User::class,'food_all'])->name('all');
         Route::get('/food/review/{id}',[User::class,'food_review'])->name('review');
+        Route::get('/food/wish/{id}',[User::class,'food_wish'])->name('wish');
         
     });
     

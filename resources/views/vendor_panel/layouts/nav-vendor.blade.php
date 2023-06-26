@@ -6,11 +6,11 @@
         <aside class="left-sidebar bg-sidebar">
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
-                <div class="app-brand">
-                    <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="60px" height="60px"
+                <div class="app-brand p-4">
+                    <img class="img-fluid" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="60px" height="60px"
                         class="img-circle ml-4 mr-2 mt-2 mb-2" alt="User Image" />
-                    <div class="d-inline-block text-light" style="font-weight:bold">
-                        {{ Auth::user()->name }}
+                    <div class="d-inline-block text-light " style="font-weight:bold">
+                        {{ Auth::user()->vendor->company_name }}
                     </div>
                 </div>
                 <!-- begin sidebar scrollbar -->

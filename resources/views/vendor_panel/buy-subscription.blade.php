@@ -79,286 +79,288 @@
 
             <div class="content-wrapper">
                 <div class="content">
-                    <div class="row justify-content-center">
-                        @if (Auth::user()->vendor->subscription_id == null)
-                            
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Standard Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">199$ <span style="color: #000">
-                                            / Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: red; font-size: 23px;">X</span> List Products/Services</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Not Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: red; font-size: 23px;">X</span> Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
-                                        <p class="ml-2 text-dark"
-                                            style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
-                                            Choose Platform: </p>
-                                        <div class="input-group">
-                                            <input type="radio" name="platform" data-id="1" class="platform" id="business" value="1" checked>
-                                            <label for="business"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            @if (Auth::user()->vendor->subscription_id == null)
+                                
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Standard Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">199$ <span style="color: #000">
+                                                / Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: red; font-size: 23px;">X</span> List Products/Services</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Not Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: red; font-size: 23px;">X</span> Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
+                                            <p class="ml-2 text-dark"
+                                                style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
+                                                Choose Platform: </p>
+                                            <div class="input-group">
+                                                <input type="radio" name="platform" data-id="1" class="platform" id="business" value="1" checked>
+                                                <label for="business"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
+                                            </div>
+                                            <div class="input-group" style="float: right">
+                                                <input type="radio" id="non-profit" data-id="1" class="platform" name="platform" value="2">
+                                                <label for="non-profit"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
+                                            </div>
+    
                                         </div>
-                                        <div class="input-group" style="float: right">
-                                            <input type="radio" id="non-profit" data-id="1" class="platform" name="platform" value="2">
-                                            <label for="non-profit"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
-                                        </div>
-
+    
+                                        <a class="btn btn-success" href="/plan/1/1"
+                                            style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                     </div>
-
-                                    <a class="btn btn-success" href="/plan/1/1"
-                                        style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Preferred Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">299$ <span style="color: #000">/ Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
-                                            List Products/Services (Not Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Not Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
-                                        <p class="ml-2 text-dark"
-                                            style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
-                                            Choose Platform: </p>
-                                        <div class="input-group">
-                                            <input type="radio" name="platform2" data-id="2" class="platform" id="business2" value="1"
-                                                checked>
-                                            <label for="business2"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Preferred Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">299$ <span style="color: #000">/ Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
+                                                List Products/Services (Not Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Not Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
+                                            <p class="ml-2 text-dark"
+                                                style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
+                                                Choose Platform: </p>
+                                            <div class="input-group">
+                                                <input type="radio" name="platform2" data-id="2" class="platform" id="business2" value="1"
+                                                    checked>
+                                                <label for="business2"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
+                                            </div>
+                                            <div class="input-group" style="float: right">
+                                                <input type="radio" id="non-profit2" data-id="2" class="platform" name="platform2" value="2">
+                                                <label for="non-profit2"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
+                                            </div>
+    
                                         </div>
-                                        <div class="input-group" style="float: right">
-                                            <input type="radio" id="non-profit2" data-id="2" class="platform" name="platform2" value="2">
-                                            <label for="non-profit2"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
-                                        </div>
-
+    
+                                        <a class="btn btn-success" href="/plan/2/1"
+                                            style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                     </div>
-
-                                    <a class="btn btn-success" href="/plan/2/1"
-                                        style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            Products/Services (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <a class="btn btn-success" href="/plan/3/3"
-                                        style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
-                                </div>
-                            </div>
-                        @elseif (Auth::user()->vendor->subscription_id == 1)
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Preferred Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">299$ <span style="color: #000">/ Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
-                                            List Products/Services (Not Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Not Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
-                                        <p class="ml-2 text-dark"
-                                            style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
-                                            Choose Platform: </p>
-                                        <div class="input-group">
-                                            <input type="radio" name="platform2" data-id="2" class="platform" id="business2" value="1"
-                                                checked>
-                                            <label for="business2"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
-                                        </div>
-                                        <div class="input-group" style="float: right">
-                                            <input type="radio" id="non-profit2" data-id="2" class="platform" name="platform2" value="2">
-                                            <label for="non-profit2"
-                                                style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
-                                        </div>
-
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                Products/Services (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <a class="btn btn-success" href="/plan/3/3"
+                                            style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                     </div>
-
-                                    <a class="btn btn-success" href="/plan/2/1"
-                                        style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            Products/Services (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <a class="btn btn-success" href="/plan/3/3"
-                                        style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
+                            @elseif (Auth::user()->vendor->subscription_id == 1)
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Preferred Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">299$ <span style="color: #000">/ Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
+                                                List Products/Services (Not Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: #f98513; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Not Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <div class="business-type mt-4" style="display: flex; padding: 2rem 3.5rem;">
+                                            <p class="ml-2 text-dark"
+                                                style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 160%;">
+                                                Choose Platform: </p>
+                                            <div class="input-group">
+                                                <input type="radio" name="platform2" data-id="2" class="platform" id="business2" value="1"
+                                                    checked>
+                                                <label for="business2"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">Android</label>
+                                            </div>
+                                            <div class="input-group" style="float: right">
+                                                <input type="radio" id="non-profit2" data-id="2" class="platform" name="platform2" value="2">
+                                                <label for="non-profit2"
+                                                    style="margin-top: 0.5rem; margin-left: 0.5rem;">IOS</label>
+                                            </div>
+    
+                                        </div>
+    
+                                        <a class="btn btn-success" href="/plan/2/1"
+                                            style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
+                                    </div>
                                 </div>
-                            </div>
-                        @elseif (Auth::user()->vendor->subscription_id == 2)
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
-                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                    <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
-
-                                    <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
-
-                                    <ul style="padding: 2rem 3rem; color:black">
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            your business Profile</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
-                                            Products/Services (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Visibility in Android or IOS (Both)</li>
-                                        <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
-                                                style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
-                                            Profile Analytics</li>
-                                    </ul>
-
-                                    <span
-                                        style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
-
-                                    <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
-                                        the business doesn’t cancel prior to the 90 Day then they will be charged the one
-                                        year subscription without refund.</p>
-
-                                    <a class="btn btn-success" href="/plan/3/3"
-                                        style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Subscribe </a>
-
-                                    {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                Products/Services (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <a class="btn btn-success" href="/plan/3/3"
+                                            style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @elseif (Auth::user()->vendor->subscription_id == 2)
+                                <div class="col-md-4">
+                                    <div class="card" style="border-radius: 8px; background: #f8f9ff; min-height: 750px;">
+                                        {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                        <h3 style="padding: 2rem 3rem; color:black">Premium Business Listing</h3>
+    
+                                        <p style="padding: 0rem 3rem; color:#f98513">399$ <span style="color: #000">/ Year</span></p>
+    
+                                        <ul style="padding: 2rem 3rem; color:black">
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                your business Profile</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span> List
+                                                Products/Services (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Visibility in Android or IOS (Both)</li>
+                                            <li style="margin-bottom: 0.7rem; font-size: 18px"> <span
+                                                    style="color: green; font-size: 23px;" class="mdi mdi-check"></span>
+                                                Profile Analytics</li>
+                                        </ul>
+    
+                                        <span
+                                            style="display: block; width: 90%; height: 2px; background: #181818; margin: auto; margin-bottom: 1rem; margin-top:0px;"></span>
+    
+                                        <p style="padding: 2rem 3.5rem; color:#000">90 day’s investment in to business and if
+                                            the business doesn’t cancel prior to the 90 Day then they will be charged the one
+                                            year subscription without refund.</p>
+    
+                                        <a class="btn btn-success" href="/plan/3/3"
+                                            style="margin: auto; width: 15rem; margin-top: 10rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                            Subscribe </a>
+    
+                                        {{-- <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Terms of services and privacy policy</a> --}}
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
 

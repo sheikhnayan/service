@@ -196,6 +196,61 @@ class UserController extends Controller
         return view('user.wish',compact('data'));
     }
 
+    public function campaign_wish($id)
+    {
+        $add = new WishList;
+        $add->user_id = Auth::user()->id;
+        $add->product_id = $id;
+        $add->type = 'campaign';
+        $add->save();
+
+        return back()->with('success','Successfully added to Wish-List !');
+    }
+
+    public function service_wish($id)
+    {
+        $add = new WishList;
+        $add->user_id = Auth::user()->id;
+        $add->product_id = $id;
+        $add->type = 'service';
+        $add->save();
+
+        return back()->with('success','Successfully added to Wish-List !');
+    }
+
+    public function product_wish($id)
+    {
+        $add = new WishList;
+        $add->user_id = Auth::user()->id;
+        $add->product_id = $id;
+        $add->type = 'product';
+        $add->save();
+
+        return back()->with('success','Successfully added to Wish-List !');
+    }
+
+    public function food_wish($id)
+    {
+        $add = new WishList;
+        $add->user_id = Auth::user()->id;
+        $add->product_id = $id;
+        $add->type = 'food';
+        $add->save();
+
+        return back()->with('success','Successfully added to Wish-List !');
+    }
+
+    public function event_wish($id)
+    {
+        $add = new WishList;
+        $add->user_id = Auth::user()->id;
+        $add->product_id = $id;
+        $add->type = 'event';
+        $add->save();
+
+        return back()->with('success','Successfully added to Wish-List !');
+    }
+
     public function about()
     {
         return view('user.about');
@@ -268,7 +323,9 @@ class UserController extends Controller
 
         $type = 'campaign';
 
-        return view('user.review',compact('data','type'));
+        $review = Review::where('product_id',$id)->where('type','campaign')->get();
+
+        return view('user.review',compact('data','type','review'));
     }
 
     public function event()
@@ -323,7 +380,9 @@ class UserController extends Controller
 
         $type = 'event';
 
-        return view('user.review',compact('data','type'));
+        $review = Review::where('product_id',$id)->where('type','event')->get();
+
+        return view('user.review',compact('data','type','review'));
     }
 
     public function product()
@@ -376,9 +435,11 @@ class UserController extends Controller
     {
         $data = Product::find($id);
 
+        $review = Review::where('product_id',$id)->where('type','product')->get();
+
         $type = 'product';
 
-        return view('user.review',compact('data','type'));
+        return view('user.review',compact('data','type','review'));
     }
 
     public function service()
@@ -433,7 +494,9 @@ class UserController extends Controller
 
         $type = 'service';
 
-        return view('user.review',compact('data','type'));
+        $review = Review::where('product_id',$id)->where('type','service')->get();
+
+        return view('user.review',compact('data','type','review'));
     }
 
     public function food()
@@ -488,6 +551,8 @@ class UserController extends Controller
 
         $type = 'food';
 
-        return view('user.review',compact('data','type'));
+        $review = Review::where('product_id',$id)->where('type','food')->get();
+
+        return view('user.review',compact('data','type','review'));
     }
 }

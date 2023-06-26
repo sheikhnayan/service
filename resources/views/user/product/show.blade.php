@@ -63,6 +63,9 @@
               <div class="col-md-6">
                 <a href="{{ $data->link }}" target="_blank" class="btn btn-success" style="width: 90%">Buy Now</a>
               </div>
+              <div class="col-md-6 mt-4">
+                <a href="{{ route('user.product.review',[$data->id]) }}" class="btn btn-transparent text-dark"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+              </div>
             </div>
             
           </div>

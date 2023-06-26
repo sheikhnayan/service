@@ -79,22 +79,24 @@
 
             <div class="content-wrapper">
                 <div class="content">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6">
-                            <div class="card" style="border-radius: 8px; background: #f8f9ff">
-                                {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
-
-                                <h3 style="text-align:center; padding: 2rem 3rem; color:black">SMS OTP Verification</h3>
-
-                                <p style="text-align:center; padding: 0rem 3rem; color:#000">An OTP (One Time Password) has been  sent to your phone number {{ Auth::user()->phone }}</p>
-
-                                <input type="text" name="otp" style="margin: auto; width: 75%; margin-top: 2rem; text-align: center;" class="form-control" placeholder="Type 6 digit OTP here">
-
-                                <a class="btn btn-success" href="{{ route('final-registration') }}"
-                                    style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                    Verify </a>
-
-                                <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Resend OTP</a>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card" style="border-radius: 8px; background: #f8f9ff">
+                                    {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
+    
+                                    <h3 style="text-align:center; padding: 2rem 3rem; color:black">SMS OTP Verification</h3>
+    
+                                    <p style="text-align:center; padding: 0rem 3rem; color:#000">An OTP (One Time Password) has been  sent to your phone number {{ Auth::user()->phone }}</p>
+    
+                                    <input type="text" name="otp" style="margin: auto; width: 75%; margin-top: 2rem; text-align: center;" class="form-control" placeholder="Type 6 digit OTP here">
+    
+                                    <a class="btn btn-success" href="{{ route('final-registration') }}"
+                                        style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
+                                        Verify </a>
+    
+                                    <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Resend OTP</a>
+                                </div>
                             </div>
                         </div>
                     </div>

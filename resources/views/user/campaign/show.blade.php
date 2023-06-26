@@ -36,6 +36,11 @@
             </div>
             
           </div>
+          <div class="row">
+            <div class="col-md-6 mt-4">
+              <a href="{{ route('user.campaign.review',[$data->id]) }}" class="btn btn-transparent text-dark"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
