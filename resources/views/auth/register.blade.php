@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Timothy</title>
+    <title>Transcending Black Excellence</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
@@ -106,16 +106,24 @@
 
                             <input name="email" type="email" class="form-control mt-4" placeholder="Email Address"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                         
-                            <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
+                            <div class="form-group mt-4">
                                 <div class="input-group input-group-sm">
-                                    <input name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                    <input name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius: 0.25rem !important;">
                                 </div>
                             </div>
 
                             
-                            <input name="password" type="password" class="form-control mt-4" placeholder="Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control mt-4" placeholder="Password"
+                                    style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password">
+                                    <img id="togglePassword" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 290px; right: 20px; cursor:pointer">
+                            </div>
                         
-                            <input name="password_confirmation" type="password" class="form-control mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            <div class="form-group">
+                                <input type="password" name="password_confirmation" class="form-control mt-4" placeholder="Confirm Password"
+                                    style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password2">
+                                    <img id="togglePassword2" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 355px; right: 20px; cursor:pointer">
+                            </div>
 
                             <div class="business-type mt-4" style="display: flex;">
                                 <p class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold;line-height:2.3; float:left; width: 80%;">I'm Registering as </p>
@@ -130,7 +138,7 @@
 
                             </div>
                             
-                            <input type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+                            <input required type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             <label for="checkbox">I agree with <a href="#">terms and condition</a> & <a href="#">privacy policy</a></label>
 
                             <br>
@@ -225,6 +233,32 @@ telInput2.intlTelInput({
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
 })
     </script>
+
+<script>
+    const togglePassword2 = document.querySelector('#togglePassword2');
+    const password2 = document.querySelector('#id_password2');
+
+    togglePassword2.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+        password2.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#id_password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
 
 
 

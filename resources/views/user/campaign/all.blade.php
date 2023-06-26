@@ -1,13 +1,13 @@
 @extends('vendor_panel.layouts.main')
 
 @section('title')
-    Campaign
+    Donate to non profit
 @endsection
 
 @section('content')
     <div class="row p-4">
         <div class="col-md-12 mb-4">
-            <h3 class="text-dark"> All Campaign </h3> 
+            <h3 class="text-dark"> All Campaign Category</h3> 
         </div>
         @foreach ($data as $item)
             <div class="col-md-3">

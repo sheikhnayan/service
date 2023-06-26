@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Timothy</title>
+    <title>Transcending Black Excellence</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
@@ -29,7 +29,7 @@
 
 
     <!-- FAVICON -->
-    <link href="{{ asset('vendor_panel/assets/img/favicon.png') }}" rel="shortcut icon" />
+    <link href="{{ asset('vendor_panel/fav.png') }}" rel="shortcut icon" />
     @yield('head')
     <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries

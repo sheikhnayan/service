@@ -17,9 +17,7 @@
                         @endforeach
                     </select>
 
-                    <textarea style="background: #f8f9ff;" name="description" class="form-control mb-4" placeholder="describe your business idea...">
-
-                    </textarea>
+                    <textarea style="background: #f8f9ff;" name="description" class="form-control mb-4" placeholder="describe your business idea..."></textarea>
 
                     <button style="width: 100%" class="btn btn-success mt-4 mb-4">Submit</button>
                 </form>

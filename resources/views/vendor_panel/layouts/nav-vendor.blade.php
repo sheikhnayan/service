@@ -10,7 +10,7 @@
                     <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="60px" height="60px"
                         class="img-circle ml-4 mr-2 mt-2 mb-2" alt="User Image" />
                     <div class="d-inline-block text-light" style="font-weight:bold">
-                        Timothy
+                        {{ Auth::user()->name }}
                     </div>
                 </div>
                 <!-- begin sidebar scrollbar -->

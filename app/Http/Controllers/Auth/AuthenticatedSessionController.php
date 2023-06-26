@@ -44,6 +44,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+
         if (Auth::user()->type == 'vendor') {
             # code...
             return redirect()->intended(RouteServiceProvider::HOME);

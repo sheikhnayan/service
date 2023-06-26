@@ -7,10 +7,10 @@
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
                 <div class="app-brand">
-                    <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="60px" height="60px"
+                    <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" width="60px" height="60px"
                         class="img-circle ml-4 mr-2 mt-2 mb-2" alt="User Image" />
-                    <div class="d-inline-block text-light" style="font-weight:bold">
-                        Timothy
+                    <div class="d-inline-block text-light p-4" style="font-weight:bold">
+                        {{ Auth::user()->name }}
                     </div>
                 </div>
                 <!-- begin sidebar scrollbar -->

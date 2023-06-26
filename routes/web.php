@@ -49,15 +49,17 @@ Route::get('/', function () {
         if (Auth::user()->type == 'admin') {
             # code...
             return redirect()->intended(RouteServiceProvider::Admin);
-        } else {
+        } elseif (Auth::user()->type == 'vendor') {
             # code...
             return redirect()->intended(RouteServiceProvider::Vendor);
+        } else{
+            return redirect()->intended(RouteServiceProvider::USER);
         }
         
         
     } else {
         # code...
-        return redirect()->intended(RouteServiceProvider::USERLOGIN);
+        return redirect()->intended(RouteServiceProvider::Vendor);
     }
 });
 

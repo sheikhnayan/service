@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Timothy</title>
+    <title>Transcending Black Excellence</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
@@ -122,7 +122,7 @@
                                 </h4>
 
 
-                                <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
+                                <div class="form-group mt-4">
                                     <div class="input-group input-group-sm">
                                         <input id="phone" name="phone" type="tel" placeholder="Phone NUmber"
                                             class="form-control form-control-sm rounded-0 w-100"
@@ -134,8 +134,11 @@
                                 </div>
 
 
-                                <input type="password" name="password" class="form-control mt-4" placeholder="Password"
-                                    style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control mt-4" placeholder="Password"
+                                        style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password">
+                                        <img id="togglePassword" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 158px; right: 20px; cursor:pointer">
+                                </div>
 
                                 <span class="mt-4" style="display: block;">
                                     <a style="color:#F98513;" href="/forget-password">Forget Password</a>
@@ -232,7 +235,18 @@
         })
     </script>
 
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
 
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 
 
 </body>

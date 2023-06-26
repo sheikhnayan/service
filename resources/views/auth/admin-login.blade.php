@@ -59,7 +59,7 @@
 
 
 
-        <div class="page-wrapper" style="padding-left: 10rem; padding-right: 10rem;">
+        <div class="page-wrapper" style="padding-left: 0px !important">
             <!-- Header -->
             <header class="main-header " id="header" style="padding: 0px">
                 <nav class="navbar navbar-static-top navbar-expand-lg">
@@ -77,65 +77,94 @@
 
             </header>
 
+            @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Success !</strong> {{ session('success') }}
+                </div>
+            @endif 
+
+            @if(Session::has('failure'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ session('failure') }}
+                </div>
+            @endif 
+            @if ($errors->any())
+            @foreach ($errors->all() as $item)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ $item }}
+                </div>
+            @endforeach
+            @endif
             <div class="content-wrapper">
                 <div class="content">
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <form action="{{ route('final-registration') }}" method="post" enctype="multipart/form-data">
+                        <div class="col-md-6">
+                            <form action="{{ route('login') }}" method="post">
                                 @csrf
-                                <h3 style="padding: 2rem 0rem; color:black">Final Step - we’re almost done!</h3>
-                                <input type="text" class="form-control" name="founder_name" placeholder="Founder/Owner/Manager Name" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                                <input type="url" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-4">
-                                        @php
-                                            $country = DB::table('countries')->get();
-                                        @endphp
-                                        <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
-                                            @foreach ($country as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
+                                {{-- <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
+                                <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
+                                <h4 class="ml-2 text-dark"
+                                    style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Login as admin
+                                </h4>
+
+
+                                <div class="form-group mt-4">
+                                    <div class="input-group input-group-sm">
+                                        <input id="phone" name="phone" type="tel" placeholder="Phone NUmber"
+                                            class="form-control form-control-sm rounded-0 w-100"
+                                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                        {{-- <div class="input-group-append">
+                                       <span class="input-group-text rounded-0 fa fa-phone"></span>
+                                  </div> --}}
                                     </div>
-                                    <div class="col-md-4">
-                                        <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
-                                            <option value="null">State/Region</option>
-                                        </select>
-                                    </div>
-                                    @if (Auth::user()->vendor->business_type == 'non-profit')
-                                    <div class="col-md-4">
-                                        @php
-                                            $npo = DB::table('n_p_o_categories')->get();
-                                        @endphp
-                                        <select style="background: #d9d9d9; border-radius: 15px;" name="npo_category_id" class="form-control mt-4">
-                                            @foreach ($npo as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @endif
                                 </div>
 
 
-                                <input type="text" class="form-control" name="address" placeholder="Area/Road No/House/Apartment etc" style=" margin-top: 6rem; border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                <input type="password" name="password" class="form-control mt-4" placeholder="Password"
+                                    style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius: 0px;">
 
-                                <input type="file" required width="100%" height="122px" style="display: none" id="image" name="logo">
+                                {{-- <span class="mt-4" style="display: block;">
+                                    <a style="color:#F98513;" href="/forget-password">Forget Password</a>
+                                </span> --}}
+
                                 <br>
-                                <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
-                                <label style="width:100%; height:122px; border-radius: 22px; font-weight: 500; cursor: pointer"
-                                    for="image" class="text-center bg-light" id="label">
-                                    <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; right: 26px; cursor: pointer; display:none">
-                                    <img class="img-fluid" style="height:122px !important; display: none" src="" id="imgPreview" alt="" width="100%">
-                                    <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 2rem;">+</a> 
-                                    {{-- <p> Upload Documents (jpeg/png/PDF) </p> --}}
-                                </label> <br>
-                                
-                                <button type="submit" class="ml-auto mr-auto mb-4 mt-4 btn btn-success" style="width: 40%;">Submit</button>
+
+                                <button type="submit" class="btn btn-success mt-4 logout-profile">Login</button>
+
+                                {{-- <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
+                                    Dont have an account yet? <a style="color:#F98513;" href="/user-register">Register</a>
+                                </span> --}}
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+
+
             </div>
+
+
+
+            {{-- <footer class="footer mt-auto">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                         <a href="/"><i class="mdi mdi-home"></i></a>
+                         <a href="/"><i class="mdi mdi-bell-outline"></i></a>
+                         <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
+                    </div>
+                </div>
+            </footer> --}}
+
         </div>
     </div>
 
@@ -163,53 +192,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"></script>
 
     <script>
-        $('#country_id').on('click', function(){
-            val = $('#country_id').val();
-    
-            $.ajax({
-            url: "/get-states/"+val,
-            type: 'GET',
-            dataType: 'json', // added data type
-            success: function(res) {
-                htmls = ``;
-    
-                res.forEach(element => {
-                    html = ` <option value="`+element.id+`">`+element.name+`</option>`;
-    
-                    htmls += html;
-                });
-    
-                $('#state_id').empty();
-    
-                $('#state_id').html(htmls);
+        let telInput = $("#phone")
+
+        // initialize
+        telInput.intlTelInput({
+            initialCountry: 'auto',
+            preferredCountries: ['us', 'gb', 'br', 'ru', 'cn', 'es', 'it'],
+            autoPlaceholder: 'aggressive',
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js",
+            geoIpLookup: function(callback) {
+                fetch('https://ipinfo.io/json', {
+                    cache: 'reload'
+                }).then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    throw new Error('Failed: ' + response.status)
+                }).then(ipjson => {
+                    callback(ipjson.country)
+                }).catch(e => {
+                    callback('us')
+                })
             }
-        });
-        });
-    </script>
+        })
 
-    <script>
-        $(document).ready(() => {
-            $("#image").change(function () {
-                const file = this.files[0];
-                if (file) {
-                    let reader = new FileReader();
-                    reader.onload = function (event) {
-                        $("#imgPreview")
-                        .attr("src", event.target.result);
+        let telInput2 = $("#phone2")
 
-                        $("#imgPreview")
-                        .css("display", 'block');
-
-                        $('#add_button').css('display','none')
-
-                        $('#edit_button').css('display','block')
-                    };
-                    reader.readAsDataURL(file);
-
-
-                }
-            });
-        });
+        // initialize
+        telInput2.intlTelInput({
+            initialCountry: 'br',
+            preferredCountries: ['us', 'gb', 'br', 'ru', 'cn', 'es', 'it'],
+            autoPlaceholder: 'aggressive',
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
+        })
     </script>
 
 

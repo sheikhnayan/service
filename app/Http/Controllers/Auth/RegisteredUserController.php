@@ -128,4 +128,9 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::Vendor);
 
     }
+
+    public function admin_login()
+    {
+        return view('auth.admin-login');
+    }
 }
