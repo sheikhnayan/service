@@ -150,7 +150,7 @@
 
                                 <br>
 
-                                <button type="submit" class="btn btn-success mt-4 logout-profile">Login</button>
+                                <button style="background: #000 !important" type="submit" class="btn btn-success mt-4 logout-profile">Login</button>
 
                                 <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
                                     Dont have an account yet? <a style="color:#F98513;" href="/vendor-register">Register</a>

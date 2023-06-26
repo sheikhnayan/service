@@ -6,7 +6,7 @@
             <div class="col-md-6">
                 <div class="card p-4">
                     <div class="buttons">
-                        <h4 class="mb-4">Edit Country</h4>
+                        <h4 class="mb-4">Edit State</h4>
                     </div>
                     <form action="{{ route('admin.meta-data.state.update',[$data->id]) }}" method="post">
                     @csrf

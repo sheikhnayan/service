@@ -149,7 +149,7 @@
 
                             <input type="hidden" name="type" value="vendor">
 
-                            <button type="Submit" class="btn btn-success mt-4 logout-profile"> Register </button>
+                            <button style="background: #000 !important"  type="Submit" class="btn btn-success mt-4 logout-profile"> Register </button>
 
                             <span class="mt-4" style="display: block; text-align:center;font-size:17px;">
                                 Already have an account? <a style="color:#F98513;" href="/user-login">Login Now</a>

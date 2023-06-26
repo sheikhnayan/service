@@ -74,6 +74,10 @@ body{
     border: unset;
 }
 
+.btn-success:hover{
+  background: #000;
+}
+
 .success{
     color: #F98513;    
 }
