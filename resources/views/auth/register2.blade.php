@@ -78,7 +78,7 @@
                     </div> --}}
 
                     <div class="navbar-right ml-auto">
-                        <a href="/vendor-login" class="btn btn-success" style="padding: 12px 25px;"> Register </a>
+                        <a href="/vendor-login" class="btn btn-success" style="padding: 12px 25px;"> Login </a>
                     </div>
                 </nav>
 
