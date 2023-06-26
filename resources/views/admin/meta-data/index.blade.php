@@ -106,8 +106,8 @@
                                     <td>{{ $item->product_category->name }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.meta-data.product-sub-category.edit',[$state->id]) }}" class="btn btn-primary">Edit</a>
-                                        <a href="{{ route('admin.meta-data.product-sub-category.destroy',[$state->id]) }}" class="btn btn-danger">delete</a>
+                                        <a href="{{ route('admin.meta-data.product-sub-category.edit',[$item->id]) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.meta-data.product-sub-category.destroy',[$item->id]) }}" class="btn btn-danger">delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -162,8 +162,8 @@
                                     <td>{{ $item->service_category->name }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.meta-data.service-sub-category.edit',[$state->id]) }}" class="btn btn-primary">Edit</a>
-                                        <a href="{{ route('admin.meta-data.service-sub-category.destroy',[$state->id]) }}" class="btn btn-danger">delete</a>
+                                        <a href="{{ route('admin.meta-data.service-sub-category.edit',[$item->id]) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.meta-data.service-sub-category.destroy',[$item->id]) }}" class="btn btn-danger">delete</a>
                                     </td>
                                 </tr>
                             @endforeach
