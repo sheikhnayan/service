@@ -69,6 +69,8 @@ class ProductSubCategoryController extends Controller
     {
         $data = ProductSubCategory::find($id);
 
+        dd($data);
+
         $product_category = ProductCategory::all();
 
         return view('admin.meta-data.product-sub-category.edit',compact('data','product_category'));
