@@ -57,34 +57,34 @@
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="#">
+                            <a class="sidenav-item-link" href="{{ route('user.start-up') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Get help for startup</span> <b class="caret"></b>
                             </a>
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="#">
+                            <a class="sidenav-item-link" href="{{ route('user.help') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Help & FAQs</span> <b class="caret"></b>
                             </a>
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="#">
+                            <a class="sidenav-item-link" href="{{ route('user.terms') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Terms & privacy Policy</span> <b class="caret"></b>
                             </a>
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="#">
+                            <a class="sidenav-item-link" href="{{ route('user.about') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">About us</span> <b class="caret"></b>
                             </a>
                         </li>
                         <li>
-                            <a class="sidenav-item-link" href="/support">
+                            <a class="sidenav-item-link" href="{{ route('support') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Contact Us</span> <b class="caret"></b>
                             </a>

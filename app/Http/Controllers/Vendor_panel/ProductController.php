@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductSubCategory;
+use App\Models\Review;
 use Auth;
 
 class ProductController extends Controller
@@ -154,7 +155,8 @@ class ProductController extends Controller
      */
     public function review($id)
     {
-        dd($id);
-        return view('vendor_panel.product.review');
+        $data = Review::where('type','product')->where('product_id',$id)->get();
+
+        return view('vendor_panel.product.review',compact('data'));
     }
 }

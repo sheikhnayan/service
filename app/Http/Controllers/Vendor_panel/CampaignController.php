@@ -5,6 +5,7 @@ namespace App\Http\Controllers\vendor_panel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Campaign;
+use App\Models\Review;
 use Auth;
 
 class CampaignController extends Controller
@@ -130,8 +131,10 @@ class CampaignController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function review()
+    public function review($id)
     {
-        return view('vendor_panel.campaign.review');
+        $data = Review::where('type','campaign')->where('product_id',$id)->get();
+
+        return view('vendor_panel.product.review',compact('data'));
     }
 }

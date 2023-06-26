@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\ServiceSubCategory;
+use App\Models\Review;
 use Auth;
 
 class ServiceController extends Controller
@@ -145,8 +146,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function review()
+    public function review($id)
     {
-        return view('vendor_panel.service.review');
+        $data = Review::where('type','service')->where('product_id',$id)->get();
+
+        return view('vendor_panel.product.review',compact('data'));
     }
 }

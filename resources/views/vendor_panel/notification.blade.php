@@ -13,7 +13,7 @@
 
         @if ($data->count() > 0)
           @foreach ($data as $item)
-            <div class="col-md-4">
+            <div class="col-md-4 mb-4">
               <div class="card" style="border-radius: 8px;box-shadow: 1px 2px #e0e0e0;">
                 <div class="row">
                   <div class="col-md-4">
@@ -30,8 +30,8 @@
               </div>
             </div>
           @endforeach
-            
-        @else
+          @else
+          <h3 class="text-dark mt-4 p-4">You Don't have Any Notification !</h3>
             
         @endif
       </div>

@@ -24,6 +24,9 @@ Route::middleware('guest')->group(function () {
     Route::get('user-login', [AuthenticatedSessionController::class, 'create'])
                 ->name('user-login');
 
+    Route::get('login', [AuthenticatedSessionController::class, 'create_refirect'])
+                ->name('login');
+
     Route::get('vendor-login', [AuthenticatedSessionController::class, 'create_vendor'])
                 ->name('vendor-login');
 

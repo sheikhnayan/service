@@ -40,24 +40,39 @@
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         @if ($data->type == 'vendor')
-                        
-                            <div class="drops mt-4">
-                              @php
-                                  $country = DB::table('countries')->get();
-                              @endphp
-                              <select name="country_id" style="width: 40%; border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control float-left" id="country_id">
-                                @foreach ($country as $item)
-                                    <option {{ $data->vendor->country_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                              </select>
-                              @php
-                                $state = DB::table('states')->where('country_id',$data->vendor->country_id)->get();
-                              @endphp
-                              <select name="state_id" style="width: 40%; border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control float-right" id="state_id">
-                                @foreach ($state as $item)
-                                    <option {{ $data->vendor->state_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                              </select>
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    @php
+                                        $country = DB::table('countries')->get();
+                                    @endphp
+                                    <select name="country_id" style="border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control mt-4" id="country_id">
+                                      @foreach ($country as $item)
+                                          <option {{ $data->vendor->country_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    @php
+                                      $state = DB::table('states')->where('country_id',$data->vendor->country_id)->get();
+                                    @endphp
+                                    <select name="state_id" style="border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control mt-4" id="state_id">
+                                      @foreach ($state as $item)
+                                          <option {{ $data->vendor->state_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
+                                @if ($data->vendor->business_type == 'non-profit')
+                                    <div class="col-md-4">
+                                        @php
+                                            $npo = DB::table('n_p_o_categories')->get();
+                                        @endphp
+                                        <select style="background: #d9d9d9; border-radius: 15px;  font-weight: bold;" name="npo_category_id" class="form-control mt-4">
+                                            @foreach ($npo as $item)
+                                                <option {{ $data->npo_category_id == $item->id ? 'selected': ''}} value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
                             </div>
                             <br>
                             <br>
@@ -88,6 +103,15 @@
 
                             <input type="text" name="password" class="form-control mt-4" placeholder="Change Password" 
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+
+                        @if ($data->type == 'vendor')
+                            
+                            <select name="status" class="form-control mt-4" style="background: #d9d9d9; border-radius: 15px;  font-weight: bold;">
+                                <option {{ $data->vendor->status == 0 ? 'selected': '' }} value="0">Inactive</option>
+                                <option {{ $data->vendor->status == 1 ? 'selected': '' }} value="1">Active</option>
+                            </select>
+                            
+                        @endif
 
                         <button type="submit" class="btn btn-success mt-4 logout-profile"> Update</button>
                     </form>

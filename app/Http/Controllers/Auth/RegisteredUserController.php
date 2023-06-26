@@ -118,8 +118,10 @@ class RegisteredUserController extends Controller
         $add->website = $request->website;
         $add->country_id = $request->country_id;
         $add->state_id = $request->state_id;
+        $add->npo_category_id = $request->npo_category_id;
         $add->address = $request->address;
         $add->document = $document;
+        $add->status = 0;
         $add->update();
 
 

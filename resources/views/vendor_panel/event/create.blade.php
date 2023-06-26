@@ -43,7 +43,7 @@
             </div>
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Link:</label>
-            <input name="link" type="text" class="form-control" placeholder="Event Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+            <input name="link" type="url" class="form-control" placeholder="Event Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Location:</label>
             <input name="location" type="text" class="form-control" placeholder="Event Location" style="border:unset; border-bottom: 2px solid black; font-size:17px;">

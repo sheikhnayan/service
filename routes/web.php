@@ -20,6 +20,8 @@ use App\Http\Controllers\admin\FoodMenuCategoryController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\NPOController;
 use App\Http\Controllers\admin\StripeController;
+use App\Http\Controllers\admin\NPOCategoryController;
+use App\Http\Controllers\admin\StartUpCategoryController;
 
 use App\Http\Controllers\user\UserController as User;
 
@@ -59,7 +61,7 @@ Route::get('/', function () {
     }
 });
 
-Route::prefix('/vendor')->middleware('auth','vendor','check_subscription')->name('vendor.')->group(function () {
+Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','status')->name('vendor.')->group(function () {
 
     Route::get('/analytics',[IndexController::class,'analytics'])->name('analytics')->middleware('standard');
 
@@ -186,6 +188,22 @@ Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(funct
             Route::post('update/{id}', [FoodMenuCategoryController::class,'update'])->name('update');
             Route::get('delete/{id}', [FoodMenuCategoryController::class,'destroy'])->name('destroy');
         });
+
+        Route::prefix('/npo-category')->name('npo-category.')->group(function () {
+            Route::get('create', [NPOCategoryController::class,'create'])->name('create');
+            Route::post('store', [NPOCategoryController::class,'store'])->name('store');
+            Route::get('edit/{id}', [NPOCategoryController::class,'edit'])->name('edit');
+            Route::post('update/{id}', [NPOCategoryController::class,'update'])->name('update');
+            Route::get('delete/{id}', [NPOCategoryController::class,'destroy'])->name('destroy');
+        });
+
+        Route::prefix('/start-up-category')->name('start-up-category.')->group(function () {
+            Route::get('create', [StartUpCategoryController::class,'create'])->name('create');
+            Route::post('store', [StartUpCategoryController::class,'store'])->name('store');
+            Route::get('edit/{id}', [StartUpCategoryController::class,'edit'])->name('edit');
+            Route::post('update/{id}', [StartUpCategoryController::class,'update'])->name('update');
+            Route::get('delete/{id}', [StartUpCategoryController::class,'destroy'])->name('destroy');
+        });
     });
 
     Route::prefix('users')->name('user.')->group(function () {
@@ -234,7 +252,24 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
 
     Route::get('/index',[User::class,'index'])->name('index');
 
-    Route::get('category/{id}',[User::class,'category'])->name('category');
+    Route::post('/review',[User::class,'review'])->name('review');
+
+    Route::get('/start-up',[User::class,'start_up'])->name('start-up');
+
+    Route::get('/wish-list',[User::class,'wish'])->name('wish');
+
+    Route::post('/start-up',[User::class,'start_up_submit'])->name('start-up');
+
+    Route::get('/help&faq',[User::class,'help'])->name('help');
+
+    Route::get('/about',[User::class,'about'])->name('about');
+
+    Route::get('/terms',[User::class,'terms'])->name('terms');
+
+    Route::get('food-category/{id}',[User::class,'food_category'])->name('food-category');
+    Route::get('service-category/{id}',[User::class,'service_category'])->name('service-category');
+    Route::get('product-category/{id}',[User::class,'product_category'])->name('product-category');
+    Route::get('campaign-category/{id}',[User::class,'campaign_category'])->name('campaign-category');
 
     Route::prefix('/campaign')->name('campaign.')->group(function () {
         
@@ -242,6 +277,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/campaign/{id}',[User::class,'campaign_show'])->name('show');
         Route::get('/campaign/profile/{id}',[User::class,'campaign_profile'])->name('profile');
         Route::get('/campaign/all/{id}',[User::class,'campaign_all'])->name('all');
+        Route::get('/campaign/review/{id}',[User::class,'campaign_review'])->name('review');
         
     });
 
@@ -251,6 +287,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/event/{id}',[User::class,'event_show'])->name('show');
         Route::get('/event/profile/{id}',[User::class,'event_profile'])->name('profile');
         Route::get('/event/all/{id}',[User::class,'event_all'])->name('all');
+        Route::get('/event/review/{id}',[User::class,'event_review'])->name('review');
         
     });
 
@@ -260,6 +297,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/product/{id}',[User::class,'product_show'])->name('show');
         Route::get('/product/profile/{id}',[User::class,'product_profile'])->name('profile');
         Route::get('/product/all/{id}',[User::class,'product_all'])->name('all');
+        Route::get('/product/review/{id}',[User::class,'product_review'])->name('review');
         
     });
 
@@ -269,6 +307,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/service/{id}',[User::class,'service_show'])->name('show');
         Route::get('/service/profile/{id}',[User::class,'service_profile'])->name('profile');
         Route::get('/service/all/{id}',[User::class,'service_all'])->name('all');
+        Route::get('/service/review/{id}',[User::class,'service_review'])->name('review');
         
     });
 
@@ -278,6 +317,7 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
         Route::get('/food/{id}',[User::class,'food_show'])->name('show');
         Route::get('/food/profile/{id}',[User::class,'food_profile'])->name('profile');
         Route::get('/food/all/{id}',[User::class,'food_all'])->name('all');
+        Route::get('/food/review/{id}',[User::class,'food_review'])->name('review');
         
     });
     

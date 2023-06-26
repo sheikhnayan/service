@@ -10,7 +10,7 @@
 <div class="content-wrapper">
     <div class="content">
       <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card" style="border-radius: 8px; background: #f8f9ff">
             <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" alt="" width="403px" height="196px" style="margin: auto; margin-top: 2rem;
             ">
@@ -56,8 +56,14 @@
               </div>
             </div>
             <div class="button" style="padding: 1rem 4rem">
-              <a href="{{ route('vendor.service.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Service</a>
-              <a href="{{ route('vendor.service.review',[$data->id]) }}" class="btn btn-transparent text-dark" style="float: right;"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="{{ route('vendor.service.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
+                </div>
+                <div class="col-md-6">
+                  <a href="{{ route('vendor.service.review',[$data->id]) }}" class="btn btn-transparent text-dark"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+                </div>
+              </div>
             </div> 
             
           </div>

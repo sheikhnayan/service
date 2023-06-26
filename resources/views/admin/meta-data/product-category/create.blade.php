@@ -8,8 +8,12 @@
                     <div class="buttons">
                         <h4 class="mb-4">Add Product Category</h4>
                     </div>
-                    <form action="{{ route('admin.meta-data.product-category.store') }}" method="post">
+                    <form action="{{ route('admin.meta-data.product-category.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
+
+                    <label>Image</label>
+                    <input type="file" name="image" class="form-control" required>
+                     <br>
                     <label>Name</label>
                     <input type="text" name="name" class="form-control">
 

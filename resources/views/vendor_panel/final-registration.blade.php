@@ -85,19 +85,37 @@
                                 @csrf
                                 <h3 style="padding: 2rem 0rem; color:black">Final Step - we’re almost done!</h3>
                                 <input type="text" class="form-control" name="founder_name" placeholder="Founder/Owner/Manager Name" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                                <input type="text" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                                @php
-                                    $country = DB::table('countries')->get();
-                                @endphp
-                                <select style="float: left; width: 40%; background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
-                                    @foreach ($country as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="url" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-4">
+                                        @php
+                                            $country = DB::table('countries')->get();
+                                        @endphp
+                                        <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
+                                            @foreach ($country as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
+                                            <option value="null">State/Region</option>
+                                        </select>
+                                    </div>
+                                    @if (Auth::user()->vendor->business_type == 'non-profit')
+                                    <div class="col-md-4">
+                                        @php
+                                            $npo = DB::table('n_p_o_categories')->get();
+                                        @endphp
+                                        <select style="background: #d9d9d9; border-radius: 15px;" name="npo_category_id" class="form-control mt-4">
+                                            @foreach ($npo as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
+                                </div>
 
-                                <select style="float: right; width: 40%; background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
-                                    <option value="null">State/Region</option>
-                                </select>
 
                                 <input type="text" class="form-control" name="address" placeholder="Area/Road No/House/Apartment etc" style=" margin-top: 6rem; border:unset; border-bottom: 2px solid black; font-size:17px;">
 

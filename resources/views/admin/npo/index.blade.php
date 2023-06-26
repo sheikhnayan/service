@@ -17,7 +17,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Type</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,7 +30,13 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>
-                            <td>{{ $item->type }}</td>
+                            <td>
+                                @if ($item->vendor->status == 1)
+                                    <span class="text-success">Active</span>
+                                @else
+                                    <span class="text-danger">Active</span> 
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('admin.user.edit',[$item->id]) }}" class="btn btn-primary">Edit Profile</a>
                                 <a href="{{ route('admin.user.delete',[$item->id]) }}" class="btn btn-danger">Delete</a>

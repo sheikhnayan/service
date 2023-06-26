@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Food;
 use App\Models\FoodMenuCategory;
+use App\Models\Review;
 use Auth;
 
 class FoodMenuController extends Controller
@@ -131,8 +132,10 @@ class FoodMenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function review()
+    public function review($id)
     {
-        return view('vendor_panel.food-menu.review');
+        $data = Review::where('type','food')->where('product_id',$id)->get();
+
+        return view('vendor_panel.product.review',compact('data'));
     }
 }

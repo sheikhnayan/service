@@ -90,26 +90,33 @@ class UserController extends Controller
             $user->password = $password;
         }
         $user->update();
-
-        $vendor = $user->vendor;
-        $vendor->company_name = $request->company_name;
-        $vendor->country_id = $request->country_id;
-        $vendor->state_id = $request->state_id;
-        $vendor->address = $request->address;
-
-        if (isset($request->image)) {
+        
+        if ($user->type == 'vendor') {
+            // dd($request->status);
             # code...
-            $imageName = time().'.'.$request->image->extension();   
+            $vendor = $user->vendor;
+            $vendor->company_name = $request->company_name;
+            $vendor->country_id = $request->country_id;
+            $vendor->state_id = $request->state_id;
+            $vendor->address = $request->address;
+            $vendor->status = $request->status;
+            $vendor->npo_category_id = $request->npo_category_id;
     
-            $image = $request->image->storeAs('public/product', $imageName);
-
-            $image = str_replace('public','',$image);
-
-            $vendor->logo = $image;
-
+            if (isset($request->image)) {
+                # code...
+                $imageName = time().'.'.$request->image->extension();   
+        
+                $image = $request->image->storeAs('public/product', $imageName);
+    
+                $image = str_replace('public','',$image);
+    
+                $vendor->logo = $image;
+    
+            }
+    
+            $vendor->update();
         }
 
-        $vendor->update();
         
         return redirect(route('admin.user.edit',[$id]));
     }

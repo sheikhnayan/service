@@ -8,8 +8,12 @@
                     <div class="buttons">
                         <h4 class="mb-4">Edit Product Category</h4>
                     </div>
-                    <form action="{{ route('admin.meta-data.product-category.update',[$data->id]) }}" method="post">
+                    <form action="{{ route('admin.meta-data.product-category.update',[$data->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <label>Image</label>
+                    <input type="file" name="image" class="form-control">
+                    <img src="{{ asset('storage/'.$data->image) }}" alt="" class="img-fluid mt-4 mb-4">
+                    <br>
                     <label>Name</label>
                     <input type="text" name="name" value="{{ $data->name }}" class="form-control">
 

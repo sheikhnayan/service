@@ -21,6 +21,11 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function create_refirect()
+    {
+        return redirect(route('user-login'));
+    }
+
     public function create_vendor()
     {
         // return view('auth.login');

@@ -198,6 +198,60 @@
                     </table>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card p-4 mt-4">
+                    <div class="buttons mb-4">
+                        <h4 class="float-left" style="padding-top: 0.5rem;">Start Up Category List</h4>
+                        <a href="{{ route('admin.meta-data.start-up-category.create') }}" class="btn btn-success float-right">Add New</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <th>#</th>
+                            <th>Start Up Category</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($start_up_category as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.meta-data.start-up-category.edit',[$item->id]) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.meta-data.start-up-category.destroy',[$item->id]) }}" class="btn btn-danger">delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 mt-4">
+                    <div class="buttons mb-4">
+                        <h4 class="float-left" style="padding-top: 0.5rem;">NPO Category List</h4>
+                        <a href="{{ route('admin.meta-data.npo-category.create') }}" class="btn btn-success float-right">Add New</a>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <th>#</th>
+                            <th>NPO Category</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($npo_category as $key => $item)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.meta-data.npo-category.edit',[$item->id]) }}" class="btn btn-primary">Edit</a>
+                                        <a href="{{ route('admin.meta-data.npo-category.destroy',[$item->id]) }}" class="btn btn-danger">delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

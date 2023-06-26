@@ -59,7 +59,7 @@
 
 
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="padding-left: 0px !important">
             <!-- Header -->
             <header class="main-header " id="header" style="padding: 0px">
                 <nav class="navbar navbar-static-top navbar-expand-lg">
@@ -80,6 +80,17 @@
 
 
             </header>
+
+            @if ($errors->any())
+            @foreach ($errors->all() as $item)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ $item }}
+                </div>
+            @endforeach
+            @endif
 
             <div class="content-wrapper">
                 <div class="content">

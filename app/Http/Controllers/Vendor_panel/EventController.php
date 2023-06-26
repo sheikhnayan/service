@@ -5,6 +5,7 @@ namespace App\Http\Controllers\vendor_panel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Review;
 use Auth;
 
 class EventController extends Controller
@@ -132,8 +133,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function review()
+    public function review($id)
     {
-        return view('vendor_panel.event.review');
+        $data = Review::where('type','event')->where('product_id',$id)->get();
+
+        return view('vendor_panel.product.review',compact('data'));
     }
 }

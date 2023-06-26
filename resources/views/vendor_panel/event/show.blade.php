@@ -10,7 +10,7 @@
 <div class="content-wrapper">
     <div class="content">
       <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card" style="border-radius: 8px; background: #f8f9ff">
             <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" alt="" width="403px" height="196px" style="margin: auto; margin-top: 2rem;
             ">
@@ -40,16 +40,21 @@
             <div class="col-md-6">
               <a href="{{ $data->link }}" class="btn btn-success" style="width: 90%; margin-left:3rem; margin-top:2rem">
                 @if ($data->type == 'virtual')
-                  Add To Calender
+                  <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
+                  Join Event
                 @else
+                  <img src="{{ asset('vendor_panel/map.png') }}" alt="">
                   Google map
                 @endif
               </a>
             </div>
 
             <div class="button" style="padding: 1rem 4rem">
-              <a href="{{ route('vendor.event.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
-              {{-- <a href="{{ route('vendor.event.review') }}" class="btn btn-transparent text-dark" style="float: right;"> <span class="mdi mdi-eye"></span> View All Reviews</a> --}}
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="{{ route('vendor.event.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
+                </div>
+              </div>
             </div> 
             
           </div>

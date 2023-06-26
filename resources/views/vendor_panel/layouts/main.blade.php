@@ -116,9 +116,12 @@
                 <footer class="footer mt-auto">
                     <div class="row justify-content-center">
                         <div class="col-md-4">
-                            <a href="/"><i class="mdi mdi-home"></i></a>
                             @if (Auth::user()->type == 'vendor')
+                            <a href="{{ route('vendor.analytics') }}"><i class="mdi mdi-home"></i></a>
                             <a href="/notification"><i class="mdi mdi-bell-outline"></i></a>
+                            @else
+                            <a href="{{ route('user.index') }}"><i class="mdi mdi-home"></i></a>
+                            <a href="{{ route('user.wish') }}"><i class="mdi mdi-heart-outline"></i></a>
                             @endif
                             <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
                         </div>

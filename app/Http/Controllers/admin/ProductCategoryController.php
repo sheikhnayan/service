@@ -37,8 +37,19 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (isset($request->image)) {
+            # code...
+            $imageName = time().'.'.$request->image->extension();   
+    
+            $image = $request->image->storeAs('public/product', $imageName);
+
+            $image = str_replace('public','',$image);
+        }
+
         $add = new ProductCategory;
         $add->name = $request->name;
+        $add->image = $image;
         $add->save();
 
         return redirect(route('admin.meta-data.index'));
@@ -77,8 +88,21 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        if (isset($request->image)) {
+            # code...
+            $imageName = time().'.'.$request->image->extension();   
+    
+            $image = $request->image->storeAs('public/product', $imageName);
+
+            $image = str_replace('public','',$image);
+        }
+
         $update = ProductCategory::find($id);
         $update->name = $request->name;
+        if (isset($request->image)) {
+            $update->image = $image;
+        }
         $update->update();
 
         return redirect(route('admin.meta-data.index'));

@@ -12,6 +12,8 @@ use App\Models\ProductSubCategory;
 use App\Models\ServiceCategory;
 use App\Models\ServiceSubCategory;
 use App\Models\FoodMenuCategory;
+use App\Models\NPOCategory;
+use App\Models\StartUpCategory;
 
 class AdminController extends Controller
 {
@@ -39,8 +41,10 @@ class AdminController extends Controller
         $service_category = ServiceCategory::all();
         $service_sub_category = ServiceSubCategory::all();
         $food_menu_category = FoodMenuCategory::all();
+        $npo_category = NPOCategory::all();
+        $start_up_category = StartUpCategory::all();
 
-        return view('admin.meta-data.index',compact('countries','states','product_category','product_sub_category','service_category','service_sub_category','food_menu_category'));
+        return view('admin.meta-data.index',compact('start_up_category','npo_category','countries','states','product_category','product_sub_category','service_category','service_sub_category','food_menu_category'));
     }
 
     /**
