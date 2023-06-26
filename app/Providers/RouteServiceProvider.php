@@ -19,6 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
     public const Vendor = '/vendor/product/index';
+    public const NPO = '/vendor/campaign/index';
     public const ADMIN = '/admin';
     public const USER = '/user/index';
     public const USERLOGIN = '/user-login';

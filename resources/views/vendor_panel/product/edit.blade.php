@@ -15,6 +15,7 @@
             @csrf
             <label for="image" style="width: 100%;">
               <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" width="100%" height="122px">
+              <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
             </label> 
             <br>
             <input type="file" name="image" id="image" style="display: none;">

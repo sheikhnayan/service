@@ -80,7 +80,7 @@
             <div class="content-wrapper">
                 <div class="content">
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="card" style="border-radius: 8px; background: #f8f9ff">
                                 {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
 

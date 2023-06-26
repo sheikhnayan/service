@@ -4,6 +4,10 @@
     color:#000;
   }
 
+.product img{
+  max-height: 200px;
+}
+
 .footer .row .col-md-4 i:hover{
     color: #EC981B !important;
 }

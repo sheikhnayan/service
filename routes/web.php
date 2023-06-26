@@ -51,7 +51,14 @@ Route::get('/', function () {
             return redirect()->intended(RouteServiceProvider::ADMIN);
         } elseif (Auth::user()->type == 'vendor') {
             # code...
-            return redirect()->intended(RouteServiceProvider::Vendor);
+            if (Auth::user()->vendor->business_type == 'business') {
+                # code...
+                return redirect()->intended(RouteServiceProvider::Vendor);
+            } else {
+                # code...
+                return redirect()->intended(RouteServiceProvider::NPO);
+            }
+            
         } else{
             return redirect()->intended(RouteServiceProvider::USER);
         }
@@ -67,7 +74,7 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
 
     Route::get('/analytics',[IndexController::class,'analytics'])->name('analytics')->middleware('standard');
 
-    Route::prefix('/product')->name('product.')->group(function () {
+    Route::prefix('/product')->middleware('npo')->name('product.')->group(function () {
         Route::get('/index', [ProductController::class,'index'])->name('index');
         Route::get('/create', [ProductController::class,'create'])->name('create')->middleware('standard','preferred');
         Route::post('/store', [ProductController::class,'store'])->name('store');
@@ -79,7 +86,7 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
 
     });
 
-    Route::prefix('/service')->name('service.')->group(function () {
+    Route::prefix('/service')->middleware('npo')->name('service.')->group(function () {
         Route::get('/index', [ServiceController::class,'index'])->name('index');
         Route::get('/create', [ServiceController::class,'create'])->name('create')->middleware('standard','preferred');
         Route::post('/store', [ServiceController::class,'store'])->name('store');
@@ -91,7 +98,7 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
 
     });
 
-    Route::prefix('/food-menu')->name('food-menu.')->group(function () {
+    Route::prefix('/food-menu')->middleware('npo')->name('food-menu.')->group(function () {
         Route::get('/index', [FoodMenuController::class,'index'])->name('index');
         Route::get('/create', [FoodMenuController::class,'create'])->name('create')->middleware('standard');
         Route::post('/store', [FoodMenuController::class,'store'])->name('store');

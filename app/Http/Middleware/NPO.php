@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class Status
+class NPO
 {
     /**
      * Handle an incoming request.
@@ -17,14 +17,12 @@ class Status
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->vendor->status == 1) {
+        if (Auth::user()->vendor->business_type == 'non-profit') {
+            # code...
+            return redirect(route('vendor.campaign.index'));
+        }else {
             # code...
             return $next($request);
-        }else{
-
-            Auth::logout();
-
-            return redirect(route('vendor-login'))->with("failure","Your Account Has Not Been Approved Yet. You will be notified once it's been approved !");
         }
     }
 }
