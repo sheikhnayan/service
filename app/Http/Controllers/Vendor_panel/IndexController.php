@@ -21,7 +21,13 @@ class IndexController extends Controller
     public function profile_update(Request $request)
     {
         $user = Auth::user();
-        $user->name = $request->founder_name;
+        if (Auth::user()->type == 'vendor') {
+            # code...
+            $user->name = $request->founder_name;
+        }else {
+            # code...
+            $user->name = $request->name;
+        }
         $user->phone = $request->phone;
         if ($request->password != null) {
             # code...
