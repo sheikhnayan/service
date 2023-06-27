@@ -105,7 +105,7 @@ class IndexController extends Controller
     public function otp_submit()
     {
         $message = 'Text'; 
-        $recipients = '01715426458';
+        $recipients = '+8801980265838';
         $account_sid = getenv("TWILIO_SID");
         $auth_token = getenv("TWILIO_AUTH_TOKEN");
         $twilio_number = getenv("TWILIO_NUMBER");
