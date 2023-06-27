@@ -246,6 +246,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/preferred-vendor', [IndexController::class,'preferred_vendor']);
     Route::get('/subscription', [IndexController::class,'subscription'])->name('subscription');
     Route::get('/otp', [IndexController::class,'otp'])->name('otp');
+    Route::get('/otp-test', [IndexController::class,'otp_submit'])->name('otp-test');
     Route::get('/final-registration', [IndexController::class,'final_registration'])->name('final-registration');
     Route::post('/final-registration', [RegisteredUserController::class,'final_registration'])->name('final-registration');
     
