@@ -45,6 +45,9 @@
                 <div class="col-md-6">
                   <a href="{{ route('vendor.food-menu.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
                 </div>
+                <div class="col-md-6">
+                  <a href="{{ route('vendor.food-menu.review',[$data->id]) }}" class="btn btn-transparent text-dark"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+                </div>
               </div>
             </div> 
             

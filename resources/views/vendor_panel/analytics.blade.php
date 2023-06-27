@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             @if (Auth::user()->type == 'vendor')
                 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -137,7 +137,7 @@
 
             @else
                 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -149,7 +149,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
@@ -191,7 +191,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">

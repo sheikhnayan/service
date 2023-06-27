@@ -23,7 +23,7 @@
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
                             Upload Logo
                             @else
-                            <img class="img-fluid" style="height: 122px !important" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
+                            <img class="img-fluid" id="imgPreview" style="height: 122px !important" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
                             @endif
                             </label> 
@@ -173,4 +173,30 @@ autoPlaceholder: 'aggressive',
 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
 })
 </script>
+
+
+<script>
+    $(document).ready(() => {
+        $("#image").change(function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $("#imgPreview")
+                    .attr("src", event.target.result);
+
+                    $("#imgPreview")
+                    .css("display", 'block');
+
+                    $('#add_button').css('display','none')
+
+                    $('#edit_button').css('display','block')
+                };
+                reader.readAsDataURL(file);
+
+
+            }
+        });
+    });
+  </script>
 @endsection

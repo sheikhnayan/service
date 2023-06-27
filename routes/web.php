@@ -105,13 +105,13 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
         Route::get('/show/{id}', [FoodMenuController::class,'show'])->name('show');
         Route::get('/edit/{id}', [FoodMenuController::class,'edit'])->name('edit');
         Route::post('/update/{id}', [FoodMenuController::class,'update'])->name('update');
-        Route::get('/review', [FoodMenuController::class,'review'])->name('review');
+        Route::get('/review/{id}', [FoodMenuController::class,'review'])->name('review');
 
     });
 
     Route::prefix('/event')->name('event.')->group(function () {
         Route::get('/index', [EventController::class,'index'])->name('index');
-        Route::get('/create', [EventController::class,'create'])->name('create');
+        Route::get('/create', [EventController::class,'create'])->name('create')->middleware('standard');
         Route::post('/store', [EventController::class,'store'])->name('store');
         Route::get('/show/{id}', [EventController::class,'show'])->name('show');
         Route::get('/edit/{id}', [EventController::class,'edit'])->name('edit');
