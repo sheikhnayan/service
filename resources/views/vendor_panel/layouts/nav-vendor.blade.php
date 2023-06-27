@@ -42,6 +42,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a class="sidenav-item-link" href="{{ route('vendor.event.index') }}">
+                                {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
+                                <span class="nav-text">Events</span> <b class="caret"></b>
+                            </a>
+                        </li>
+
                         @else
                             
                         <li>

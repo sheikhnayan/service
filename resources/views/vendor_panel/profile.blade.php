@@ -90,7 +90,10 @@
                             @endif
 
                         @endif
-                            <input type="text" name="password" class="form-control mt-4" placeholder="Change Password"
+                            <input type="password" name="old_password" class="form-control mt-4" placeholder="Old Password"
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+
+                            <input type="password" name="password" class="form-control mt-4" placeholder="Change Password"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         <button type="submit" class="btn btn-success mt-4 logout-profile"> Update</button>

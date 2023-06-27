@@ -6,6 +6,7 @@
 
 .product img{
   max-height: 200px;
+  min-height: 200px;
 }
 
 .footer .row .col-md-4 i:hover{

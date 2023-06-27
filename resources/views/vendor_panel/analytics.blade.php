@@ -52,6 +52,18 @@
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Events</p>
+                                <h4 class="mb-0">{{ $event }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
                                 @php
                                     $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
@@ -102,6 +114,21 @@
                                     $food_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','food')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $food_view }}</h4>
+                            </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
+                    <div class="card">
+                        <div class="card-header p-3 pt-2">
+                            <div class="text-end pt-1">
+                                <p class="text-sm mb-0 text-capitalize">Total Event View</p>
+                                @php
+                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','event')->count();
+                                @endphp
+                                <h4 class="mb-0">{{ $event_view }}</h4>
                             </div>
                         </div>
                         <hr class="dark horizontal my-0">

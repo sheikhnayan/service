@@ -158,6 +158,14 @@ class UserController extends Controller
         $add->sender_id = $sender_id;
         $add->save();
 
+        $visit =  new Visit;
+        $visit->user_id = $user_id;
+        $visit->visitor_id = Auth::user()->id;
+        $visit->page = $request->type;
+        $visit->type = 'review';
+        $visit->link = '/vendor/'.$request->type.'/review/'.$request->product_id;
+        $visit->save();
+
         return redirect('/user'.'/'.$request->type.'/'.$request->type.'/'.$request->product_id)->with('success','Your Review has been submited successfully !');;
         
         
@@ -278,6 +286,7 @@ class UserController extends Controller
         $visit->user_id = $data->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'campaign';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.campaign.show',compact('data'));
@@ -302,6 +311,7 @@ class UserController extends Controller
         $visit->user_id = $user->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
+        $visit->type = 'visit';
         $visit->save();
         
         $data = User::find($user->user_id);
@@ -343,6 +353,7 @@ class UserController extends Controller
         $visit->user_id = $data->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'event';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.event.show',compact('data'));
@@ -362,6 +373,7 @@ class UserController extends Controller
         $visit->user_id = $data->id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.event.profile',compact('data','campaign','event'));
@@ -400,6 +412,7 @@ class UserController extends Controller
         $visit->user_id = $data->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'product';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.product.show',compact('data'));
@@ -419,6 +432,7 @@ class UserController extends Controller
         $visit->user_id = $data->id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.product.profile',compact('data','campaign','event'));
@@ -457,6 +471,7 @@ class UserController extends Controller
         $visit->user_id = $data->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'service';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.service.show',compact('data'));
@@ -476,6 +491,7 @@ class UserController extends Controller
         $visit->user_id = $data->id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.service.profile',compact('data','campaign','event'));
@@ -514,6 +530,7 @@ class UserController extends Controller
         $visit->user_id = $data->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'food';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.food.show',compact('data'));
@@ -533,6 +550,7 @@ class UserController extends Controller
         $visit->user_id = $data->id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
+        $visit->type = 'visit';
         $visit->save();
 
         return view('user.food.profile',compact('data','campaign','event'));

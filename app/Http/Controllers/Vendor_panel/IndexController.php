@@ -31,8 +31,17 @@ class IndexController extends Controller
         $user->phone = $request->phone;
         if ($request->password != null) {
             # code...
-            $password = Hash::make($request->password);
-            $user->password = $password;
+
+            $check = Hash::check($request->old_password, $user->password);
+
+            if ($check) {
+                # code...
+                $password = Hash::make($request->password);
+                $user->password = $password;
+            }else {
+                return back()->with('failure','Invalid Old Password !');
+            }
+
         }
         $user->update();
 
@@ -142,6 +151,6 @@ class IndexController extends Controller
         $add->description = $request->description;
         $add->save();
 
-        return back();
+        return back()->with('success',' get help for startup form !');
     }
 }

@@ -7,7 +7,7 @@
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
                 <div class="app-brand" style="background: #000 !important">
-                    <div class="d-inline-block text-light p-4" style="font-weight:bold; width:100%;">
+                    <div class="d-inline-block text-light p-4" style="font-weight:bold; font-size: 18px width:100%;">
                         {{ Auth::user()->name }}
                     </div>
                 </div>
