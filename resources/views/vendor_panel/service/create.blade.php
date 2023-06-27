@@ -73,7 +73,7 @@
             </div> --}}
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Booking Link:</label>
-            <input type="text" name="link" class="form-control" placeholder="Service Booking URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+            <input type="url" name="link" class="form-control" placeholder="Service Booking URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Booking Contact Number:</label>
             <input type="text" name="contact_number" class="form-control" placeholder="Service Booking Contact Number" style="border:unset; border-bottom: 2px solid black; font-size:17px;">

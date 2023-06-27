@@ -10,7 +10,7 @@
             <h3 class="text-dark"> All Campaign Categorised Profile</h3> 
         </div>
         @foreach ($data as $item)
-            <div class="col-md-3">
+            <div class="col-md-3 mt-4">
                 <div class="card product p-4" style="background-color: #dee1f1; border-radius:12px;">
                     <img class="img-fluid" src="{{ asset('storage/'.$item->logo) }}" style="margin: auto; padding: 5px;">
                     <h4 style="padding: 5px; margin:auto; color:#000">{{ $item->company_name }}</h4>

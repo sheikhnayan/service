@@ -83,7 +83,7 @@
                         <label class="mt-4"
                             style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Product
                             Link:</label>
-                        <input name="link" type="text" class="form-control" placeholder="Product Purchase URL"
+                        <input name="link" type="url" class="form-control" placeholder="Product Purchase URL"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         <button type="submit" class="btn btn-success mt-4 logout-profile"> Add Product</button>

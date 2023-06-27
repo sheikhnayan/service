@@ -12,7 +12,7 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card" style="border-radius: 8px; background: #f8f9ff">
-            <img class="img-fluid" src="{{ asset('storage/'.$data->image) }}" alt="" width="90%" height="196px" style="margin: auto; margin-top: 2rem;
+            <img id="imgPreview" class="img-fluid" src="{{ asset('storage/'.$data->image) }}" alt="" width="90%" height="196px" style="margin: auto; margin-top: 2rem;
             ">
 
             {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
@@ -27,7 +27,7 @@
             </div>
 
             <div class="buttons">
-                <a href="tell:{{ $data->contact_number }}" class="btn btn-success float-left" style="width: 40%; margin: auto; margin-left:1rem !important; margin-top:2rem">
+                <a href="tel:{{ $data->contact_number }}" class="btn btn-success float-left" style="width: 40%; margin: auto; margin-left:1rem !important; margin-top:2rem">
                     <img src="{{ asset('vendor_panel/call.png') }}" alt="" class="img-fluid"> Call Now
                 </a>
                 <a href="{{ $data->link }}" target="_blank" class="btn btn-success float-right" style="width: 40%; margin: auto; margin-right:1rem !important; margin-top:2rem">

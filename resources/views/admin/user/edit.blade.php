@@ -29,15 +29,15 @@
                             @endif
                             </label> 
                             <br>
-                            <input type="file" name="image" id="image" style="display: none;">
+                            <input type="file" name="image" id="image" style="display: none;" required>
                         @endif
 
                         @if ($data->type == 'vendor')
-                        <input type="text" name="company_name" class="form-control mt-4" value="{{ $data->vendor->company_name }}" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                        <input type="text" name="company_name" class="form-control mt-4" value="{{ $data->vendor->company_name }}" style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @endif
 
                         <input type="text" name="name" class="form-control mt-4" value="{{ $data->name }}"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                         @if ($data->type == 'vendor')
                             <div class="row justify-content-center">
@@ -45,7 +45,7 @@
                                     @php
                                         $country = DB::table('countries')->get();
                                     @endphp
-                                    <select name="country_id" style="border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control mt-4" id="country_id">
+                                    <select name="country_id" style="border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control mt-4" id="country_id" required>
                                       @foreach ($country as $item)
                                           <option {{ $data->vendor->country_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                       @endforeach
@@ -78,13 +78,13 @@
                             <br>
 
                             <input name="address" type="text" class="form-control" value="{{ $data->vendor->address }}" placeholder="Rocket Road, California, 1288"
-                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                         @endif
 
                         <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
                           <div class="input-group input-group-sm">
-                              <input value="{{ $data->phone }}" name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                              <input value="{{ $data->phone }}" name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                               {{-- <div class="input-group-append">
                                   <span class="input-group-text rounded-0 fa fa-phone"></span>
                               </div> --}}
@@ -92,12 +92,12 @@
                       </div>
 
                         <input type="text" class="form-control mt-4" value="{{ $data->email }}" placeholder="Your Email"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                         @if ($data->type == 'vendor')
                             
                             <input type="text" class="form-control mt-4" value="{{ $data->vendor->website }}" placeholder="Your Website URL"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             
                         @endif
 

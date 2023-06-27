@@ -9,6 +9,11 @@
   min-height: 200px;
 }
 
+#imgPreview{
+  max-height: 122px;
+  min-height: 122px;
+}
+
 .footer .row .col-md-4 i:hover{
     color: #EC981B !important;
 }
@@ -78,6 +83,15 @@ body{
 .btn-success:hover{
   background: #000;
 }
+
+.btn-success:active{
+  background: #000;
+}
+
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+  .show > .btn-success.dropdown-toggle {
+    background-color: #000 !important;
+  }
 
 .success{
     color: #F98513;    

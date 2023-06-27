@@ -33,12 +33,12 @@
                         @if (Auth::user()->type == 'vendor')    
                         
                             <input type="text" name="company_name" class="form-control mt-4" value="{{ Auth::user()->vendor->company_name }}"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             <input type="text" name="founder_name" class="form-control mt-4" value="{{ Auth::user()->vendor->founder_name }}"
-                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @else
                         <input type="text" name="name" class="form-control mt-4" value="{{ Auth::user()->name }}"
-                                style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @endif
                         @if (Auth::user()->type == 'vendor')    
 
@@ -46,7 +46,7 @@
                               @php
                                   $country = DB::table('countries')->get();
                               @endphp
-                              <select name="country_id" style="width: 40%; border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control float-left" id="country_id">
+                              <select name="country_id" style="width: 40%; border-radius: 10px; background: #e0e0e0; font-weight: bold;" class="form-control float-left" id="country_id" required>
                                 @foreach ($country as $item)
                                     <option {{ Auth::user()->vendor->country_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
@@ -65,12 +65,12 @@
                         @endif
                         @if (Auth::user()->type == 'vendor')    
 
-                        <input name="address" type="text" class="form-control" value="{{ Auth::user()->vendor->address }}" placeholder="Rocket Road, California, 1288"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                        <input name="address" type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->address }}" placeholder="Rocket Road, California, 1288"
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @endif
                         <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
                           <div class="input-group input-group-sm">
-                              <input value="{{ Auth::user()->phone }}" name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                              <input value="{{ Auth::user()->phone }}" name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                               {{-- <div class="input-group-append">
                                   <span class="input-group-text rounded-0 fa fa-phone"></span>
                               </div> --}}
@@ -78,15 +78,15 @@
                       </div>
 
                         <input type="text" class="form-control mt-4" value="{{ Auth::user()->email }}" placeholder="Your Email"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @if (Auth::user()->type == 'vendor')    
 
                             <input type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                             @if (Auth::user()->vendor->business_type == 'non-profit')
                             <input type="text" name="donation_link" class="form-control mt-4" placeholder="Donation Link"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             @endif
 
                         @endif

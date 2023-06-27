@@ -31,8 +31,14 @@
             @else
 
             <div class="location">
-              <span style="padding: 2rem 4rem; color:#000; padding-right: 0rem;" class="mdi mdi-map"></span> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
-              <span style="padding: 2rem 4rem; color:#000; padding-right: 0rem;" class="mdi mdi-note-outline"></span> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->date }}</span>
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
+                </div>
+                <div class="col-md-6">
+                  <img src="{{ asset('vendor_panel/date.png') }}" alt=""> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->date }}</span>
+                </div>
+              </div>
             </div>
                 
             @endif

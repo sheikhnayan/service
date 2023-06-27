@@ -34,7 +34,7 @@
 
             <input name="contact_number" type="text" class="form-control mt-4" placeholder="Contact Number (ex: +88-0189..)" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
-            <input name="link" type="text" class="form-control mt-4" placeholder="Donation Links ex: Paypal.com/donate" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+            <input name="link" type="url" class="form-control mt-4" placeholder="Donation Links ex: Paypal.com/donate" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
           
             <button type="submit"  class="btn btn-success mt-4 logout-profile"> Add Campaign</button>
           </form>

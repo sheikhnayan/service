@@ -20,7 +20,7 @@
                 </div>
             </div> --}}
 
-            <div class="col-md-1">
+            <div class="col-md-1 mt-4">
                 <div class="card" style="width: 70px; border-radius: 12px;">
                     <img class="img-fluid p-2" src="{{ asset('storage/'.$item->image) }}" width="67px" height="67px">
                 </div>
