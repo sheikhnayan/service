@@ -7,7 +7,7 @@
                 <div class="card p-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Country List</h4>
-                        <a href="{{ route('admin.meta-data.country.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.country.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -34,7 +34,7 @@
                 <div class="card p-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">State List</h4>
-                        <a href="{{ route('admin.meta-data.state.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.state.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -63,7 +63,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Product Category List</h4>
-                        <a href="{{ route('admin.meta-data.product-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.product-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -90,7 +90,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Product SubCategory List</h4>
-                        <a href="{{ route('admin.meta-data.product-sub-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.product-sub-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -119,7 +119,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Service Category List</h4>
-                        <a href="{{ route('admin.meta-data.service-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.service-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -146,7 +146,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Service SubCategory List</h4>
-                        <a href="{{ route('admin.meta-data.service-sub-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.service-sub-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -175,7 +175,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Food Menu Category List</h4>
-                        <a href="{{ route('admin.meta-data.food-menu-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.food-menu-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -202,7 +202,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">Start Up Category List</h4>
-                        <a href="{{ route('admin.meta-data.start-up-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.start-up-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>
@@ -229,7 +229,7 @@
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">NPO Category List</h4>
-                        <a href="{{ route('admin.meta-data.npo-category.create') }}" class="btn btn-success float-right">Add New</a>
+                        <a href="{{ route('admin.meta-data.npo-category.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
                     <table class="table">
                         <thead>

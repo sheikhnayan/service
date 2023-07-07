@@ -118,7 +118,7 @@ class UserController extends Controller
         }
 
         
-        return redirect(route('admin.user.edit',[$id]));
+        return redirect(route('admin.user.edit',[$id]))->with('success','Profile Updated Successfully!');
     }
 
     /**

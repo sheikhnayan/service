@@ -13,7 +13,7 @@
                     <label>Name</label>
                     <input type="text" name="name" value="{{ $data->name }}" class="form-control">
 
-                    <button class="btn btn-success mt-4" type="submit">Update</button>
+                    <button class="btn btn-success mt-4" type="submit" style="background: #000">Update</button>
                     </form>
                 </div>
             </div>

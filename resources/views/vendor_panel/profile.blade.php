@@ -33,12 +33,12 @@
                         @if (Auth::user()->type == 'vendor')    
                         
                             <input type="text" name="company_name" class="form-control mt-4" value="{{ Auth::user()->vendor->company_name }}"
-                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+                            style="border:unset; border-bottom: 2px solid black; font-size:17px;" placeholder="Company/NPO Name..." required>
                             <input type="text" name="founder_name" class="form-control mt-4" value="{{ Auth::user()->vendor->founder_name }}"
-                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" placeholder="Founder Name..." required>
                         @else
                         <input type="text" name="name" class="form-control mt-4" value="{{ Auth::user()->name }}"
-                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+                                style="border:unset; border-bottom: 2px solid black; font-size:17px;" required placeholder="Name...">
                         @endif
                         @if (Auth::user()->type == 'vendor')    
 
@@ -81,11 +81,11 @@
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @if (Auth::user()->type == 'vendor')    
 
-                            <input type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL"
+                            <input type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL (Must inc. https://)"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                             @if (Auth::user()->vendor->business_type == 'non-profit')
-                            <input type="text" name="donation_link" class="form-control mt-4" placeholder="Donation Link"
+                            <input type="text" name="donation_link" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Donation Link (Must inc. https://)"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             @endif
 
@@ -93,7 +93,7 @@
                             <input type="password" name="old_password" class="form-control mt-4" placeholder="Old Password"
                                 style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
-                            <input type="password" name="password" class="form-control mt-4" placeholder="Change Password"
+                            <input type="password" name="password" class="form-control mt-4" placeholder="New Password"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         <button type="submit" class="btn btn-success mt-4 logout-profile"> Update</button>

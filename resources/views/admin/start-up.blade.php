@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card p-4">
-                <h4>All Support Request</h4>
+                <h4>All Start-Up Pitches</h4>
 
                 <table class="table">
                     <thead>

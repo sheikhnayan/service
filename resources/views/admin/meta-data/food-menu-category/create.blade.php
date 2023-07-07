@@ -16,7 +16,7 @@
                     <label>Name</label>
                     <input type="text" name="name" class="form-control" required>
 
-                    <button class="btn btn-success mt-4" type="submit">Submit</button>
+                    <button class="btn btn-success mt-4" type="submit" style="background: #000">Submit</button>
                     </form>
                 </div>
             </div>

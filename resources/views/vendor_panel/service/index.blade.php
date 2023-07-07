@@ -27,7 +27,7 @@
         @foreach ($data as $item)
           <div class="col-md-3" style="margin-top: 2rem;">
             <div class="card product" style="background-color: #F8F9FF; border-raduis:12px;">
-              <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" style="margin: auto; padding: 5px;">
+              <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" style="margin: auto; padding: 5px;" width="363px" height="200px">
               <p style="padding: 5px; margin:auto;">{{ $item->name }}</p>
               <div class="button">
                 <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a>

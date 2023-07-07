@@ -20,6 +20,7 @@ class IndexController extends Controller
 
     public function profile_update(Request $request)
     {
+        // dd($request->all());
         $user = Auth::user();
         if (Auth::user()->type == 'vendor') {
             # code...
@@ -47,8 +48,10 @@ class IndexController extends Controller
 
         $vendor = Auth::user()->vendor;
         $vendor->company_name = $request->company_name;
+        $vendor->founder_name = $request->founder_name;
         $vendor->country_id = $request->country_id;
         $vendor->state_id = $request->state_id;
+        $vendor->website = $request->donation_link;
         $vendor->address = $request->address;
 
         if (isset($request->image)) {
@@ -151,6 +154,6 @@ class IndexController extends Controller
         $add->description = $request->description;
         $add->save();
 
-        return back()->with('success',' get help for startup form !');
+        return back()->with('success',' Your request has been sent! We will get back to you.');
     }
 }

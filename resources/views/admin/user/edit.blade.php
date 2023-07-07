@@ -18,25 +18,27 @@
                         @csrf
                         @if ($data->type == 'vendor')      
                             <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
-                            for="image" class="text-center bg-light">
+                            for="image" class="text-center bg-light" id="label">
 
                             @if ($data->vendor->logo == null)
-                            <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
-                            Upload Logo
+                            <a class="btn btn-success text-light mb-1" style="border-radius: 50%" id="add_button">+</a>
+                            {{-- Upload Logo --}}
+                            <img id="imgPreview" class="img-fluid" style="height:122px !important; display:none" src="" width="100%">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; top: 4px; right: 26px; cursor: pointer; display:none">
                             @else
                             <img id="imgPreview" class="img-fluid" style="height:122px !important;" src="{{ asset('storage/'.$data->vendor->logo) }}" width="100%">
                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
                             @endif
                             </label> 
                             <br>
-                            <input type="file" name="image" id="image" style="display: none;" required>
+                            <input type="file" name="image" id="image" style="display: none;">
                         @endif
 
                         @if ($data->type == 'vendor')
-                        <input type="text" name="company_name" class="form-control mt-4" value="{{ $data->vendor->company_name }}" style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+                        <input type="text" name="company_name" placeholder="Company Name .." class="form-control mt-4" value="{{ $data->vendor->company_name }}" style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @endif
 
-                        <input type="text" name="name" class="form-control mt-4" value="{{ $data->name }}"
+                        <input type="text" placeholder="Founder Name.." name="name" class="form-control mt-4" value="{{ $data->name }}"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                         @if ($data->type == 'vendor')
@@ -101,7 +103,7 @@
                             
                         @endif
 
-                            <input type="text" name="password" class="form-control mt-4" placeholder="Change Password" 
+                            <input type="password" name="password" class="form-control mt-4" placeholder="Change Password" 
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         @if ($data->type == 'vendor')
@@ -113,7 +115,7 @@
                             
                         @endif
 
-                        <button type="submit" class="btn btn-success mt-4 logout-profile"> Update</button>
+                        <button type="submit" class="btn btn-success mt-4 logout-profile" style="background: #000"> Update</button>
                     </form>
                 </div>
             </div>
@@ -207,6 +209,9 @@ utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/ut
                     $('#add_button').css('display','none')
 
                     $('#edit_button').css('display','block')
+
+                    $('#label').css('padding-top','0rem')
+
                 };
                 reader.readAsDataURL(file);
 
