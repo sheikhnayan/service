@@ -105,7 +105,7 @@ class IndexController extends Controller
         return view('vendor_panel.otp');
     }
 
-    public function otp_submit()
+    public function otp_submit(Request $request)
     {
         $otp = $request->otp;
 
@@ -115,7 +115,7 @@ class IndexController extends Controller
             # code...
             $vendor->otp_status = 1;
             $vendor->update();
-            
+
             return redirect(route('final-registration'))->with('success','OTP Verified successfully!');
         }else {
             # code...
