@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTypeAndLinkInVisits extends Migration
+class AddCustomerIdInVendorDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddTypeAndLinkInVisits extends Migration
      */
     public function up()
     {
-        Schema::table('visits', function (Blueprint $table) {
-            $table->string('type')->nullable();
-            $table->string('link')->nullable();
+        Schema::table('vendor_details', function (Blueprint $table) {
+            $table->string('customer_id')->nullable();
         });
     }
 
@@ -26,7 +25,7 @@ class AddTypeAndLinkInVisits extends Migration
      */
     public function down()
     {
-        Schema::table('visits', function (Blueprint $table) {
+        Schema::table('vendor_details', function (Blueprint $table) {
             //
         });
     }

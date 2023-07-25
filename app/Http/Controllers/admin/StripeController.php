@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use \Stripe\Plan;
+use Illuminate\Support\Facades\Http;
 use App\Models\Plan;
 use App\Models\User;
 use Auth;
@@ -79,9 +79,103 @@ class StripeController extends Controller
 
     public function subscription(Request $request)
     {
-        $plan = Plan::find($request->plan);  
 
-        // $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)->trialDays(90)->create($request->token);
+        $customer_id = Auth::user()->vendor->customer_id;
+        // dd($request->all());
+
+
+        $apiURL = 'https://connect.squareupsandbox.com/v2/customers/'.$customer_id.'/cards';
+
+            $postInput = [
+    
+                'card_nonce' => $request->sourceId,
+    
+            ];
+    
+      
+    
+            $headers = [
+    
+                'Square-Version' => '2023-06-08',
+
+                'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
+    
+            ];
+    
+      
+    
+            $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
+    
+      
+    
+            $statusCode = $response->status();
+    
+            $responseBody = json_decode($response->getBody(), true);
+
+            // $customer_id = $responseBody['customer']['id'];
+
+
+            $card_id = $responseBody['card']['id'];
+
+            $card_id = str_replace('ccof:','',$card_id);
+            
+            
+            $plan = Plan::where('stripe_plan',$request->plan_id)->first();  
+            
+
+            $vendor_details = Auth::user()->vendor;
+            $vendor_details->card_id = $card_id;
+            $vendor_details->subscription_id = $plan->id;
+            $vendor_details->update();
+
+            // $apiURL = 'https://connect.squareupsandbox.com/v2/subscriptions';
+
+            // $postInput = [
+    
+            //     'customer_id' => $customer_id,
+
+            //     'plan_variation_id' => $request->plan_id,
+
+            //     'location_id' => 'L46AAJ77JKQ5D',
+
+            //     'card_id' => $responseBody['card']['id'],
+
+            //     'idempotency_key' => 'asjkdhjkh2131k2j311k2j3kj1h23asdf',
+
+            //     "phases" => [
+            //         [
+            //           "ordinal" => 0,
+            //           "order_template_id" => "x7ClfqqNapjeDMvrQOZhbgVFVKFZY"
+            //         ],
+            //         [
+            //           "ordinal" => 1,
+            //           "order_template_id" => "sTzXhfu3E2GtjXQHvpnITivAXna1z"
+            //         ]
+            //       ]
+    
+            // ];
+    
+      
+    
+            // $headers = [
+    
+            //     'Square-Version' => '2023-06-08',
+
+            //     'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
+    
+            // ];
+    
+      
+    
+            // $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
+    
+      
+    
+            // $statusCode = $response->status();
+    
+            // $responseBody = json_decode($response->getBody(), true);
+
+            // dd($responseBody);
 
         $user = Auth::user()->vendor;
 
@@ -116,6 +210,41 @@ class StripeController extends Controller
         $user->subscription_id = $plan->id;
         $user->update();
  
-        return redirect(route('vendor.analytics'));
+        // return redirect(route('vendor.analytics'));
+
+        return true;
     }
+
+
+    public static function square_json(){
+          $square = array(    
+            "idempotency_key" => uniqid(),    
+            "order" => array(      
+                "reference_id" => (string)$orderID,      
+                "line_items" => array(        
+                    // List each item in the order as an individual line item       
+                     array(         
+                         "name" => "Item Name",          
+                         "quantity" => 3,          
+                         "base_price_money" => array(            
+                            "amount" => 5,            
+                            "currency" => "CAD"          
+                        ),        
+                    ),        
+                    array(          
+                        "name" => "Item Name 2",          
+                        "quantity" => 3,          
+                        "base_price_money" => array(            
+                            "amount" => 6,            
+                            "currency" => "CAD"          
+                        ),        
+                    ),      
+                    )    
+                    )  
+                ); 
+
+                $json = json_encode($square);  
+
+                return $json;
+            }
 }

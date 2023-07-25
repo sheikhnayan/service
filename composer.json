@@ -12,6 +12,8 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "nikolag/laravel-square": "^3.0",
+        "square/connect": "^3.20200528",
         "twilio/sdk": "^7.4"
     },
     "require-dev": {

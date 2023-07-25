@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNpoCategoryIdInVendorDetailsTable extends Migration
+class AddCardIdInVendorDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddNpoCategoryIdInVendorDetailsTable extends Migration
     public function up()
     {
         Schema::table('vendor_details', function (Blueprint $table) {
-            $table->string('npo_category_id')->nullable();
-            $table->string('status')->nullable();
+            $table->string('card_id')->nullable();
         });
     }
 

@@ -107,13 +107,27 @@ class IndexController extends Controller
 
     public function otp_submit()
     {
-        $message = 'Text'; 
-        $recipients = '+8801980265838';
-        $account_sid = getenv("TWILIO_SID");
-        $auth_token = getenv("TWILIO_AUTH_TOKEN");
-        $twilio_number = getenv("TWILIO_NUMBER");
-        $client = new Client($account_sid, $auth_token);
-        $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
+        // $message = 'Text'; 
+        // $recipients = '+8801980265838';
+        // $account_sid = getenv("TWILIO_SID");
+        // $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        // $twilio_number = getenv("TWILIO_NUMBER");
+        // $client = new Client($account_sid, $auth_token);
+        // $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
+
+        $test = $sid    = "ACddfbd0e90ee11c51c3aa02171f7737d4";
+        $token  = "90d145132069e7af5fa1ae2600666959";
+        $twilio = new Client($sid, $token);
+    
+        $message = $twilio->messages
+          ->create("+8801980265838", // to
+            array(
+              "from" => "+14846737439",
+              "body" => 'jhasjkd'
+            )
+          );
+
+
     }
 
     public function final_registration()

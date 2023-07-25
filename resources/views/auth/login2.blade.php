@@ -145,7 +145,7 @@
                                 </div>
 
                                 <span class="mt-4" style="display: block;">
-                                    <a style="color:#F98513;" href="#">Forget Password</a>
+                                    <a style="color:#F98513;" href="/forgot-password">Forget Password</a>
                                 </span>
 
                                 <br>

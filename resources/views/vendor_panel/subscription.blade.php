@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Transcending Black Excellence</title>
 
@@ -38,8 +39,163 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <input type="hidden" id="plan_id" value="{{ $plan->stripe_plan }}">
     <script src="{{ asset('vendor_panel/assets/plugins/nprogress/nprogress.js') }}"></script>
+    <link href="{{ asset('vendor_panel/square.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/efec89e16a.js" crossorigin="anonymous"></script>
+    <script
+      type="text/javascript"
+      src="https://sandbox.web.squarecdn.com/v1/square.js"
+    ></script>
+    <script>
+      const appId = 'sandbox-sq0idb-vouX2uX_fhk_Dw3n_xhe7w';
+      const locationId = 'L46AAJ77JKQ5D';
+
+      async function initializeCard(payments) {
+        const card = await payments.card();
+        await card.attach('#card-container');
+
+        return card;
+      }
+
+      async function createPayment(token, verificationToken) {
+        const body = JSON.stringify({
+          locationId,
+          sourceId: token,
+          verificationToken,
+          idempotencyKey: window.crypto.randomUUID(),
+          plan_id: $('#plan_id').val()
+        });
+
+        const paymentResponse = await fetch('/subscription', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          body,
+        });
+
+        if (paymentResponse.ok) {
+          // return paymentResponse.json();
+
+          location.href = "/vendor/analytics";
+        }
+
+        const errorBody = await paymentResponse.text();
+        throw new Error(errorBody);
+      }
+
+      async function tokenize(paymentMethod) {
+        const tokenResult = await paymentMethod.tokenize();
+        if (tokenResult.status === 'OK') {
+          return tokenResult.token;
+        } else {
+          let errorMessage = `Tokenization failed with status: ${tokenResult.status}`;
+          if (tokenResult.errors) {
+            errorMessage += ` and errors: ${JSON.stringify(
+              tokenResult.errors
+            )}`;
+          }
+
+          throw new Error(errorMessage);
+        }
+      }
+
+      // Required in SCA Mandated Regions: Learn more at https://developer.squareup.com/docs/sca-overview
+      async function verifyBuyer(payments, token) {
+        const verificationDetails = {
+          amount: '1.00',
+          billingContact: {
+            addressLines: ['123 Main Street', 'Apartment 1'],
+            familyName: 'Doe',
+            givenName: 'John',
+            email: 'jondoe@gmail.com',
+            country: 'GB',
+            phone: '3214563987',
+            region: 'LND',
+            city: 'London',
+          },
+          currencyCode: 'GBP',
+          intent: 'CHARGE',
+        };
+
+        const verificationResults = await payments.verifyBuyer(
+          token,
+          verificationDetails
+        );
+        return verificationResults.token;
+      }
+
+      // status is either SUCCESS or FAILURE;
+      function displayPaymentResults(status) {
+        const statusContainer = document.getElementById(
+          'payment-status-container'
+        );
+        if (status === 'SUCCESS') {
+          statusContainer.classList.remove('is-failure');
+          statusContainer.classList.add('is-success');
+        } else {
+          statusContainer.classList.remove('is-success');
+          statusContainer.classList.add('is-failure');
+        }
+
+        statusContainer.style.visibility = 'visible';
+      }
+
+      document.addEventListener('DOMContentLoaded', async function () {
+        if (!window.Square) {
+          throw new Error('Square.js failed to load properly');
+        }
+
+        let payments;
+        try {
+          payments = window.Square.payments(appId, locationId);
+        } catch {
+          const statusContainer = document.getElementById(
+            'payment-status-container'
+          );
+          statusContainer.className = 'missing-credentials';
+          statusContainer.style.visibility = 'visible';
+          return;
+        }
+
+        let card;
+        try {
+          card = await initializeCard(payments);
+        } catch (e) {
+          console.error('Initializing Card failed', e);
+          return;
+        }
+
+        async function handlePaymentMethodSubmission(event, card) {
+          event.preventDefault();
+
+          try {
+            // disable the submit button as we await tokenization and make a payment request.
+            cardButton.disabled = true;
+            const token = await tokenize(card);
+            const verificationToken = await verifyBuyer(payments, token);
+            const paymentResults = await createPayment(
+              token,
+              verificationToken
+            );
+            displayPaymentResults('SUCCESS');
+
+            console.debug('Payment Success', paymentResults);
+          } catch (e) {
+            cardButton.disabled = false;
+            displayPaymentResults('FAILURE');
+            console.error(e.message);
+          }
+        }
+
+        const cardButton = document.getElementById('card-button');
+        cardButton.addEventListener('click', async function (event) {
+          await handlePaymentMethodSubmission(event, card);
+        });
+      });
+    </script>
 </head>
 
 
@@ -98,7 +254,7 @@
 
   
 
-                    <form id="payment-form" action="{{ route('subscription.create') }}" method="POST">
+                    {{-- <form id="payment-form" action="{{ route('subscription.create') }}" method="POST">
 
                         @csrf
 
@@ -106,53 +262,37 @@
 
                         <input type="hidden" name="platform" value="{{ $platform }}">
 
-  
-
-                        <div class="row">
-
-                            <div class="col-xl-4 col-lg-4">
-
-                                <div class="form-group">
-
-                                    <label for="">Name</label>
-
-                                    <input type="text" name="name" id="card-holder-name" class="form-control" value="" placeholder="Name on the card">
-
+                                <div class="credit-card-form">
+                                    <form>
+                                      <div class="form-group">
+                                        <label for="card-number">Card Number</label>
+                                        <input type="text" id="card-number" placeholder="Card number">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="card-holder">Card Holder</label>
+                                        <input type="text" id="card-holder" placeholder="Card holder's name">
+                                      </div>
+                                      <div class="form-row row">
+                                        <div class="form-group form-column col-md-6">
+                                          <label for="expiry-date">Expiry Date</label>
+                                          <input type="text" id="expiry-date" placeholder="MM/YY">
+                                        </div>
+                                        <div class="form-group form-column col-md-6">
+                                          <label for="cvv">CVV</label>
+                                          <input type="text" id="cvv" placeholder="CVV">
+                                        </div>
+                                      </div>
+                                      <button type="submit" class="click-button" onclick="showLoading(event, this)">Pay Now</button>
+                                    </form>
                                 </div>
 
-                            </div>
+                    </form> --}}
 
-                        </div>
-
-  
-
-                        <div class="row">
-
-                            <div class="col-xl-4 col-lg-4">
-
-                                <div class="form-group">
-
-                                    <label for="">Card details</label>
-
-                                    <div id="card-element"></div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-xl-12 col-lg-12">
-
-                            <hr>
-
-                                <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{ $intent->client_secret }}">Purchase</button>
-
-                            </div>
-
-                        </div>
-
-  
-
-                    </form>
+                    <form id="payment-form">
+                        <div id="card-container"></div>
+                        <button id="card-button" type="button">subscripe</button>
+                      </form>
+                      <div id="payment-status-container"></div>
 
   
 
@@ -166,101 +306,9 @@
 
 </div>
 
-  
-
-<script src="https://js.stripe.com/v3/"></script>
-
-<script>
-
-    const stripe = Stripe('{{ env('STRIPE_KEY') }}')
-
-  
-
-    const elements = stripe.elements()
-
-    const cardElement = elements.create('card')
-
-  
-
-    cardElement.mount('#card-element')
-
-  
-
-    const form = document.getElementById('payment-form')
-
-    const cardBtn = document.getElementById('card-button')
-
-    const cardHolderName = document.getElementById('card-holder-name')
-
-  
-
-    form.addEventListener('submit', async (e) => {
-
-        e.preventDefault()
-
-  
-
-        cardBtn.disabled = true
-
-        const { setupIntent, error } = await stripe.confirmCardSetup(
-
-            cardBtn.dataset.secret, {
-
-                payment_method: {
-
-                    card: cardElement,
-
-                    billing_details: {
-
-                        name: cardHolderName.value
-
-                    }   
-
-                }
-
-            }
-
-        )
-
-  
-
-        if(error) {
-
-            cardBtn.disable = false
-
-        } else {
-
-            let token = document.createElement('input')
-
-            token.setAttribute('type', 'hidden')
-
-            token.setAttribute('name', 'token')
-
-            token.setAttribute('value', setupIntent.payment_method)
-
-            form.appendChild(token)
-
-            form.submit();
-
-        }
-
-    })
-
-</script>
 
 
 </div>
-
-
-{{-- <footer class="footer mt-auto">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-             <a href="/"><i class="mdi mdi-home"></i></a>
-             <a href="/"><i class="mdi mdi-bell-outline"></i></a>
-             <a href="/profile"><i class="mdi mdi-account-edit"></i></a>
-        </div>
-    </div>
-</footer> --}}
 
 </div>
 </div>
@@ -289,39 +337,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"></script>
 
 <script>
-let telInput = $("#phone")
+    function showLoading(event, button) {
+  event.preventDefault(); // Prevent form submission
 
-// initialize
-telInput.intlTelInput({
-initialCountry: 'auto',
-preferredCountries: ['us', 'gb', 'br', 'ru', 'cn', 'es', 'it'],
-autoPlaceholder: 'aggressive',
-utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js",
-geoIpLookup: function(callback) {
-    fetch('https://ipinfo.io/json', {
-        cache: 'reload'
-    }).then(response => {
-        if (response.ok) {
-            return response.json()
-        }
-        throw new Error('Failed: ' + response.status)
-    }).then(ipjson => {
-        callback(ipjson.country)
-    }).catch(e => {
-        callback('us')
-    })
+  button.innerHTML = "Processing Payment...";
+
+  setTimeout(function() {
+    button.innerHTML = "Payment completed.";
+  }, 3000); // Change to the desired duration in milliseconds
 }
-})
-
-let telInput2 = $("#phone2")
-
-// initialize
-telInput2.intlTelInput({
-initialCountry: 'br',
-preferredCountries: ['us', 'gb', 'br', 'ru', 'cn', 'es', 'it'],
-autoPlaceholder: 'aggressive',
-utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
-})
 </script>
 
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\VendorDetail;
+use Illuminate\Support\Facades\Http;
 
 class RegisteredUserController extends Controller
 {
@@ -55,11 +56,54 @@ class RegisteredUserController extends Controller
         ]);
 
         if ($request->type == 'vendor') {
+            $apiURL = 'https://connect.squareupsandbox.com/v2/customers';
+
+            $postInput = [
+    
+                'company_name' => $request->name,
+    
+                'email_address' => $request->email,
+    
+                'phone_number' => '+88'.$request->phone
+    
+            ];
+    
+      
+    
+            $headers = [
+    
+                'Square-Version' => '2023-06-08',
+
+                'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
+    
+            ];
+    
+      
+    
+            $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
+    
+      
+    
+            $statusCode = $response->status();
+    
+            $responseBody = json_decode($response->getBody(), true);
+
+            $customer_id = $responseBody['customer']['id'];
+
+
+            // dd($responseBody['customer']['id']);
+
             $create = new VendorDetail;
             $create->user_id = $user->id;
             $create->business_type = $request->business_type;
             $create->company_name = $request->name;
+            $create->customer_id = $customer_id;
             $create->save();
+
+
+    
+         
+    
         }
 
         event(new Registered($user));
