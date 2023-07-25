@@ -76,7 +76,33 @@
 
 
             </header>
+            @if(Session::has('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <strong>Success !</strong> {{ session('success') }}
+            </div>
+            @endif 
 
+            @if(Session::has('failure'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ session('failure') }}
+                </div>
+            @endif 
+            @if ($errors->any())
+            @foreach ($errors->all() as $item)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> {{ $item }}
+                </div>
+            @endforeach
+            @endif
             <div class="content-wrapper">
                 <div class="content">
                     <div class="container">
