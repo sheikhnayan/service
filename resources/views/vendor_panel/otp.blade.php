@@ -100,7 +100,7 @@
 
                                     </form>
     
-                                    <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Resend OTP</a>
+                                    <a href="/resend-otp" class="ml-auto mr-auto mb-4 text-dark display-7">Resend OTP</a>
                                 </div>
                             </div>
                         </div>

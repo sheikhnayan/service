@@ -236,6 +236,34 @@ Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(funct
 
 
 Route::post('/verify-otp', [IndexController::class,'otp_submit'])->name('verify-otp');
+Route::get('resend-otp', function () {
+    
+        $otp = mt_rand(0,999999);
+
+        $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
+        $authToken = '4fe31c6d701daf7cbb25772b80e4202f';
+        $twilioNumber = '+14846737439';
+        $lineBreak = "\n\n";
+        $message = 'Your OTP is '.$otp.' .';
+        // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
+        $to = '+88'.Auth::user()->phone;
+        $client = new Client($accountSid, $authToken);
+        try {
+            $client->messages->create(
+                $to,
+                [
+                    "body" => $message,
+                    "from" => $twilioNumber
+                ]
+            );
+
+        return back()->with('success','OTP is resend to '.Auth::user()->phone.'.');
+        
+        } catch (TwilioException $e) {
+            return back()->with('failur',$e);
+        }
+
+});
 
 Route::middleware(['auth'])->group(function () {
     
