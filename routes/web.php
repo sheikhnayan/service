@@ -235,7 +235,7 @@ Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(funct
 });
 
 
-Route::get('/otp-test', [IndexController::class,'otp_submit'])->name('otp-test');
+Route::get('/verify-otp', [IndexController::class,'otp_submit'])->name('verify-otp');
 
 Route::middleware(['auth'])->group(function () {
     

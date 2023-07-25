@@ -107,28 +107,16 @@ class IndexController extends Controller
 
     public function otp_submit()
     {
-        $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = '4fe31c6d701daf7cbb25772b80e4202f';
-        $twilioNumber = '+14846737439';
-        $lineBreak = "\n\n";
-        $message = 'asd';
-        // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
-        $to = '+8801980265838';
-        $client = new Client($accountSid, $authToken);
-        try {
-            $client->messages->create(
-                $to,
-                [
-                    "body" => $message,
-                    "from" => $twilioNumber
-                ]
-            );
-            Log::info('Message sent to ' . $twilioNumber);
-        } catch (TwilioException $e) {
-            Log::error(
-                'Could not send SMS notification.' .
-                ' Twilio replied with: ' . $e
-            );
+        $otp = $request->otp;
+
+        $vendor = Auth::user()->vendor;
+        
+        if ($vendor->otp == $otp) {
+            # code...
+            return redirect(route('final-registration'))->with('success','OTP Verified successfully!');
+        }else {
+            # code...
+            return back()->with('failure','Invalid OTP. Please try again!');
         }
 
 

@@ -89,11 +89,16 @@
     
                                     <p style="text-align:center; padding: 0rem 3rem; color:#000">An OTP (One Time Password) has been  sent to your phone number {{ Auth::user()->phone }}</p>
     
+                                    <form action="{{ route('verify-otp') }}" method="POST">
+                                    @csrf
+
                                     <input type="text" name="otp" style="margin: auto; width: 75%; margin-top: 2rem; text-align: center;" class="form-control" placeholder="Type 6 digit OTP here">
     
-                                    <a class="btn btn-success" href="{{ route('final-registration') }}"
+                                    <button type="submit" class="btn btn-success" href="{{ route('final-registration') }}"
                                         style="margin: auto; width: 15rem; margin-top: 2rem; margin-bottom: 2rem; border-radius: 10px; padding: 15px 10px;">
-                                        Verify </a>
+                                        Verify </button>
+
+                                    </form>
     
                                     <a href="#" class="ml-auto mr-auto mb-4 text-dark display-7">Resend OTP</a>
                                 </div>
