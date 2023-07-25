@@ -113,6 +113,9 @@ class IndexController extends Controller
         
         if ($vendor->otp == $otp) {
             # code...
+            $vendor->otp_status = 1;
+            $vendor->update();
+            
             return redirect(route('final-registration'))->with('success','OTP Verified successfully!');
         }else {
             # code...
