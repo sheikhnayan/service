@@ -115,7 +115,7 @@ class IndexController extends Controller
         // $client = new Client($account_sid, $auth_token);
         // $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
 
-        $test = $sid    = "ACddfbd0e90ee11c51c3aa02171f7737d4";
+        $sid = "ACddfbd0e90ee11c51c3aa02171f7737d4";
         $token  = "90d145132069e7af5fa1ae2600666959";
         $twilio = new Client($sid, $token);
     
