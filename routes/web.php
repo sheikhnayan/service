@@ -30,6 +30,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 
+use Twilio\Rest\Client;
+
 
 
 /*
