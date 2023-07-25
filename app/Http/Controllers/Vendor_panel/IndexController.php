@@ -107,11 +107,13 @@ class IndexController extends Controller
 
     public function otp_submit()
     {
-        $accountSid = env('TWILIO_ACCOUNT_SID');
-        $authToken = env('TWILIO_AUTH_TOKEN');
-        $twilioNumber = env('TWILIO_PHONE_NUMBER');
+        $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
+        $authToken = '4fe31c6d701daf7cbb25772b80e4202f';
+        $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
-        $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
+        $message = 'asd';
+        // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
+        $to = '+8801980265838';
         $client = new Client($accountSid, $authToken);
         try {
             $client->messages->create(
