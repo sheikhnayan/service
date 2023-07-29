@@ -142,7 +142,7 @@ class RegisteredUserController extends Controller
                     ]
                 );
     
-            return back()->with('success','OTP is sent to '.Auth::user()->phone.'.');
+            return (RouteServiceProvider::OTP)->with('success','OTP is sent to '.Auth::user()->phone.'.');
             
             } catch (TwilioException $e) {
                 return back()->with('failur',$e);
