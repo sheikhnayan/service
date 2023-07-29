@@ -109,14 +109,22 @@ class IndexController extends Controller
     {
         $otp = $request->otp;
 
-        $vendor = Auth::user()->vendor;
+        $vendor = Auth::user();
         
         if ($vendor->otp == $otp) {
             # code...
             $vendor->otp_status = 1;
             $vendor->update();
 
-            return redirect(route('final-registration'))->with('success','OTP Verified successfully!');
+            if (Auth::user()->type == 'vendor') {
+                # code...
+                return redirect(route('final-registration'))->with('success','OTP Verified successfully!');
+            } else {
+                # code...
+                return redirect(route('user.index'))->with('success','OTP Verified successfully!');
+            }
+            
+
         }else {
             # code...
             return back()->with('failure','Invalid OTP. Please try again!');

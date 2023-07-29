@@ -41,11 +41,15 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        $otp = mt_rand(0,999999);
 
         $user = User::create([
             'name' => $request->name,
@@ -53,62 +57,62 @@ class RegisteredUserController extends Controller
             'type' => $request->type,
             'type' => $request->type,
             'email' => $request->email,
+            'otp' => $otp,
             'password' => Hash::make($request->password),
         ]);
 
         if ($request->type == 'vendor') {
-            $apiURL = 'https://connect.squareupsandbox.com/v2/customers';
+            // $apiURL = 'https://connect.squareupsandbox.com/v2/customers';
 
-            $postInput = [
+            // $postInput = [
     
-                'company_name' => $request->name,
+            //     'company_name' => $request->name,
     
-                'email_address' => $request->email,
+            //     'email_address' => $request->email,
     
-                'phone_number' => '+88'.$request->phone
+            //     'phone_number' => '+88'.$request->phone
     
-            ];
+            // ];
     
       
     
-            $headers = [
+            // $headers = [
     
-                'Square-Version' => '2023-06-08',
+            //     'Square-Version' => '2023-06-08',
 
-                'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
+            //     'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
     
-            ];
+            // ];
     
       
     
-            $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
+            // $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
     
       
     
-            $statusCode = $response->status();
+            // $statusCode = $response->status();
     
-            $responseBody = json_decode($response->getBody(), true);
+            // $responseBody = json_decode($response->getBody(), true);
 
-            $customer_id = $responseBody['customer']['id'];
+            // $customer_id = $responseBody['customer']['id'];
 
 
             // dd($responseBody['customer']['id']);
 
-            $otp = mt_rand(0,999999);
-
-            $create = new VendorDetail;
-            $create->user_id = $user->id;
-            $create->business_type = $request->business_type;
-            $create->company_name = $request->name;
-            $create->customer_id = $customer_id;
-            $create->otp = $otp;
-            $create->save();
-
-
-    
-         
-    
+            
+            
+            
+            
+            
         }
+        
+        
+
+        $create = new VendorDetail;
+        $create->user_id = $user->id;
+        $create->business_type = $request->business_type;
+        $create->company_name = $request->name;
+        $create->save();
 
         event(new Registered($user));
 
@@ -162,17 +166,43 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $otp = mt_rand(0,999999);
+
         $user = User::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'type' => $request->type,
             'email' => $request->email,
+            'otp' => $otp,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
+        $authToken = '4fe31c6d701daf7cbb25772b80e4202f';
+        $twilioNumber = '+14846737439';
+        $lineBreak = "\n\n";
+        $message = 'Your OTP is '.$otp.' .';
+        // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
+        $to = '+88'.Auth::user()->phone;
+        $client = new Client($accountSid, $authToken);
+        try {
+            $client->messages->create(
+                $to,
+                [
+                    "body" => $message,
+                    "from" => $twilioNumber
+                ]
+            );
+
+        return redirect(RouteServiceProvider::OTP)->with('success','OTP is sent to '.Auth::user()->phone.'.');
+        
+        } catch (TwilioException $e) {
+            return redirect(RouteServiceProvider::OTP)->with('failur',$e);
+        }
 
 
         return redirect(RouteServiceProvider::OTP);
