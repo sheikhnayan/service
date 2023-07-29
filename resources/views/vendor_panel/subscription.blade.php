@@ -228,6 +228,8 @@
 
             cardBtn.disable = false
 
+            console.log(error);
+
         } else {
 
             let token = document.createElement('input')
