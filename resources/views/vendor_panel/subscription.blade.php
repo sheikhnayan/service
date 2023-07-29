@@ -77,6 +77,13 @@
 
             </header>
 
+                <div class="alert alert-danger alert-dismissible" style="display: none" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Error !</strong> 
+                </div>
+
             <div class="content-wrapper">
 <div class="container">
 
@@ -228,7 +235,12 @@
 
             cardBtn.disable = false
 
-            console.log(error);
+            error_message = error.message;
+
+            $('.alert-dismissible').css('display','block');
+            $('.alert-dismissible').append(error_message);
+
+
 
         } else {
 
