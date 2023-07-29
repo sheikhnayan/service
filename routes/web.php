@@ -242,6 +242,10 @@ Route::get('resend-otp', function () {
     
         $otp = mt_rand(0,999999);
 
+        $store = Auth::user();
+        $store->otp = $otp;
+        $store->update();
+
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
         $authToken = 'eebbfafabbe35a5554ac772148af643e';
         $twilioNumber = '+14846737439';
