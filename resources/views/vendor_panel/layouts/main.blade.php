@@ -80,8 +80,21 @@
                     <button id="sidebar-toggler" class="sidebar-toggle">
                         <span class="sr-only">Toggle navigation</span>
                     </button>
-
-                    <h4 class="ml-auto"> @yield('title') </h4>
+                    @if (Auth::user()->type == 'user')
+                    <div class="search-form d-none d-lg-inline-block m-auto">
+                        <div class="input-group" style="border: 1px solid #B9B9B9; border-radius: 15px;">
+                            <input type="text" name="query" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." autofocus="" autocomplete="off">
+                            <button type="button" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="mdi mdi-magnify"></i>
+                            </button>
+                        </div>
+                        <div id="search-results-container">
+                            <div id="search-results" style="display: block"></div>
+                        </div>
+                    </div>
+                    @else
+                        <h4 class="ml-auto"> @yield('title') </h4>
+                    @endif
 
                     <div class="navbar-right ml-auto">
                         <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
@@ -152,6 +165,125 @@
     <script src="{{ asset('vendor_panel/assets/js/date-range.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/map.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/custom.js') }}"></script>
+
+    <script>
+        $('#search-input').on('keyup', function(){
+
+            $('#search-results').empty();
+
+            value = $('#search-input').val();
+            
+            $.ajax({
+                url: "/user/search-main/"+value,
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function(res) {
+                    
+                    result = `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Products <h6>
+                                </div>
+                            </div>`;
+
+                    res.product.forEach(element => {
+                        html = `<a href="/user/product/product/`+element.id+`">
+                                    <div class="row p-2">
+                                        <div class="col-3 col-md-3">
+                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                        </div>
+                                        <div class="col-9 col-md-9" style="text-align: left">
+                                            `+element.name+`
+                                        </div>
+                                    </div>
+                                </a>`;
+
+                        result += html;
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Services <h6>
+                                </div>
+                            </div>`;
+
+                    res.service.forEach(element => {
+                        html = `<a href="/user/service/service/`+element.id+`">
+                                    <div class="row p-2">
+                                        <div class="col-3 col-md-3">
+                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                        </div>
+                                        <div class="col-9 col-md-9" style="text-align: left">
+                                            `+element.name+`
+                                        </div>
+                                    </div>
+                                </a>`;
+
+                        result += html;
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Food <h6>
+                                </div>
+                            </div>`;
+
+                    res.food.forEach(element => {
+                        html = `<a href="/user/food/food/`+element.id+`">
+                                    <div class="row p-2">
+                                        <div class="col-3 col-md-3">
+                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                        </div>
+                                        <div class="col-9 col-md-9" style="text-align: left">
+                                            `+element.name+`
+                                        </div>
+                                    </div>
+                                </a>`;
+
+                        result += html;
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Event <h6>
+                                </div>
+                            </div>`;
+
+                    res.service.forEach(element => {
+                        html = `<a href="/user/event/event/`+element.id+`">
+                                    <div class="row p-2">
+                                        <div class="col-3 col-md-3">
+                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                        </div>
+                                        <div class="col-9 col-md-9" style="text-align: left">
+                                            `+element.name+`
+                                        </div>
+                                    </div>
+                                </a>`;
+
+                        result += html;
+                    });
+
+                    $('#search-results').html(result);
+                }
+            });
+        })
+    </script>
+
+    <script>
+        window.addEventListener('click', function(e){   
+            if (document.getElementById('search-results').contains(e.target)){
+                // Clicked in box
+            } else{
+                // Clicked outside the box
+                if ($('#search-results').css('display') == 'block') {     
+                    $('#search-results').hide();
+                } else {
+                    $('#search-results').show();
+                    
+                }
+            }
+        });
+    </script>
 
     @yield('js')
 

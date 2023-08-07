@@ -37,7 +37,7 @@
                     <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" style="margin: auto; padding: 5px;">
                     <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="text-align: left;">
                             <a href="{{ route('user.'.$type.'.show',[$item->id]) }}" class="btn btn-transparent" style="color:#fff;"> <span class="mdi mdi-eye"></span> View</a>
                         </div>
                         <div class="col-md-6">

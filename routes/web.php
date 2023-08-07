@@ -298,6 +298,8 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
 
     Route::get('/index',[User::class,'index'])->name('index');
 
+    Route::get('/search-main/{value}',[IndexController::class,'search_main']);
+
     Route::post('/review',[User::class,'review'])->name('review');
 
     Route::get('/start-up',[User::class,'start_up'])->name('start-up');

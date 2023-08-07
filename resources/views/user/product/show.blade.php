@@ -17,11 +17,11 @@
 
             {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
 
-            <h4 style="text-align: center; padding: 2rem 5rem; color:black">{{ $data->name }}</h4>
+            <h4 style="text-align: left; padding: 2rem 5rem; color:black">{{ $data->name }}</h4>
 
-            <p style="padding: 2rem 4rem; color:#000;">{{ $data->description }}</p>
+            <p style="text-align: left; padding: 2rem 5rem; color:#000;">{{ $data->description }}</p>
 
-            <div class="row" style="padding: 1rem 4rem;">
+            <div class="row" style="text-align: left; padding: 2rem 5rem;">
               <div class="col-md-12 text-dark mb-3">
                 <span class="font-weight-bold">Rating:</span> 
                 <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
@@ -57,14 +57,14 @@
               <div class="col-md-6 text-dark mb-3">
                 <span class="font-weight-bold">Price:</span>  <span style="color: orange"> {{ $data->price }}$ </span>
               </div>
-              <div class="col-md-6">
-                <a href="{{ route('user.product.profile',[$data->id]) }}" class="btn btn-success" style="width: 90%">Profile</a>
+              <div class="col-md-6 mt-4">
+                <a href="{{ route('user.product.profile',[$data->id]) }}" class="btn btn-success" style="width: 90%"> <img src="{{ asset('user/profile.png') }}" alt="" class="img-fluid">View Profile</a>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-4">
                 <a href="{{ $data->link }}" target="_blank" class="btn btn-success" style="width: 90%">Buy Now</a>
               </div>
               <div class="col-md-6 mt-4">
-                <a href="{{ route('user.product.review',[$data->id]) }}" class="btn btn-transparent text-dark"> <span class="mdi mdi-eye"></span> View All Reviews</a>
+                <a href="{{ route('user.product.review',[$data->id]) }}" class="btn btn-transparent text-dark p-0"> <span class="mdi mdi-eye"></span> View All Reviews</a>
               </div>
             </div>
             

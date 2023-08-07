@@ -22,7 +22,7 @@
 
             <div class="col-md-1 mt-4">
                 <div class="card" style="width: 70px; border-radius: 12px;">
-                    <img class="img-fluid p-2" src="{{ asset('storage/'.$item->image) }}" width="67px" height="67px">
+                    <img class="img-fluid p-2" src="{{ asset('storage/'.$item->image) }}" width="67px" style="height: 67px">
                 </div>
                 <p class="text-center mt-2" style="width: 70px;"> <a class="text-dark" href="{{ route('user.food-category',[$item->id]) }}"> {{ $item->name }} </a> </p>
             </div>

@@ -168,6 +168,14 @@ body{
       .iti-flag {
         background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/img/flags@2x.png");
       }
+
+      .search{
+        display: none !important;
+      }
+
+      .filter{
+        display: none !important;
+      }
   }
   
 
@@ -263,12 +271,13 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* p {
-  color: white;
-  margin-top: 6%;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  margin-bottom: 45px;
-  font-size: 70%;
-  text-shadow: 0 0 5px #cacaca; 
-} */
+#search-results{
+  max-height: 300px;
+  overflow: auto;
+}
+
+#search-results .row a:hover .col-3{
+
+  background: #777 !important;
+
+}

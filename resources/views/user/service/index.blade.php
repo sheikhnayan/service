@@ -7,7 +7,7 @@
 @section('content')
     <div class="row p-4">
         <div class="col-md-12 mb-4">
-            <h3 class="text-dark"> All Service Category</h3> 
+            <h3 class="text-dark text-left"> All Service Category</h3> 
         </div>
         @foreach ($data as $item)
             {{-- <div class="col-md-3">
@@ -22,7 +22,7 @@
 
             <div class="col-md-1 mt-4">
                 <div class="card" style="width: 70px; border-radius: 12px;">
-                    <img class="img-fluid p-2" src="{{ asset('storage/'.$item->image) }}" width="67px" height="67px">
+                    <img class="img-fluid p-2" src="{{ asset('storage/'.$item->image) }}" width="67px" style="height: 67px">
                 </div>
                 <p class="text-center mt-2" style="width: 70px;"> <a class="text-dark" href="{{ route('user.service-category',[$item->id]) }}"> {{ $item->name }} </a> </p>
             </div>

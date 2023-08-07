@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Support;
 use App\Models\State;
 use App\Models\Visit;
+use App\Models\Product;
+use App\Models\Service;
+use App\Models\Event;
+use App\Models\Campaign;
+use App\Models\Food;
 use Twilio\Rest\Client;
 use Auth;
 use Hash;
@@ -172,5 +177,31 @@ class IndexController extends Controller
         $add->save();
 
         return back()->with('success',' Your request has been sent! We will get back to you.');
+    }
+
+    public function search_main($value)
+    {
+        $results = '';
+
+        $product = Product::where('name','like','%'.$value.'%')->get();
+
+        $service = Service::where('name','like','%'.$value.'%')->get();
+
+        $food = Food::where('name','like','%'.$value.'%')->get();
+
+        $event = Event::where('name','like','%'.$value.'%')->get();
+
+        $data['product'] = $product;
+
+        $data['service'] = $service;
+
+        $data['food'] = $food;
+
+        $data['event'] = $event;
+
+
+        return $data;
+
+
     }
 }
