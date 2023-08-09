@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'status' => \App\Http\Middleware\Status::class,
         'npo' => \App\Http\Middleware\NPO::class,
+        'token' => \App\Http\Middleware\TokenCheck::class,
     ];
 }

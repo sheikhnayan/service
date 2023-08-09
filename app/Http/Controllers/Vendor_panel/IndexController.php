@@ -51,27 +51,31 @@ class IndexController extends Controller
         }
         $user->update();
 
-        $vendor = Auth::user()->vendor;
-        $vendor->company_name = $request->company_name;
-        $vendor->founder_name = $request->founder_name;
-        $vendor->country_id = $request->country_id;
-        $vendor->state_id = $request->state_id;
-        $vendor->website = $request->donation_link;
-        $vendor->address = $request->address;
 
-        if (isset($request->image)) {
-            # code...
-            $imageName = time().'.'.$request->image->extension();   
-    
-            $image = $request->image->storeAs('public/product', $imageName);
+        if (Auth::user()->type == 'vendor') {
 
-            $image = str_replace('public','',$image);
+            $vendor = Auth::user()->vendor;
+            $vendor->company_name = $request->company_name;
+            $vendor->founder_name = $request->founder_name;
+            $vendor->country_id = $request->country_id;
+            $vendor->state_id = $request->state_id;
+            $vendor->website = $request->donation_link;
+            $vendor->address = $request->address;
 
-            $vendor->logo = $image;
+            if (isset($request->image)) {
+                # code...
+                $imageName = time().'.'.$request->image->extension();   
+        
+                $image = $request->image->storeAs('public/product', $imageName);
 
+                $image = str_replace('public','',$image);
+
+                $vendor->logo = $image;
+
+            }
+
+            $vendor->update();
         }
-
-        $vendor->update();
         
         return redirect(route('profile'));
     }

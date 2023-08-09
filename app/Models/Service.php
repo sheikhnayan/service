@@ -18,4 +18,9 @@ class Service extends Model
     {
         return $this->belongsTo(ServiceSubCategory::class,'sub_category_id','id');
     }
+
+    public function vendor()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

@@ -32,11 +32,22 @@ class AuthenticationController extends Controller
 
                 return $token;
             }else{
-                return 'Wrong Password';
+                return response('Wrong Password', 401);
             }
         }else{
-            return 'Invalid Credentials';
+            return response('Invalid Credentials', 401);
         }
+    }
+
+    public function log_out(Request $request)
+    {
+        $token = PersonalAccessToken::findToken($request->header('TOKEN'));
+
+        $user = $token->tokenable;
+
+        $user->tokens()->where('id', $token->id)->delete();
+
+        return response('Successfully Logged Out!', 200);
     }
 
     /**
@@ -62,5 +73,87 @@ class AuthenticationController extends Controller
         $token =  $user->createToken('Login-Token');
 
         return $token;
+    }
+
+    public function profile(Request $request)
+    {
+
+        $token = PersonalAccessToken::findToken($request->header('TOKEN'));
+
+        $user = $token->tokenable;
+
+        return $user;
+    }
+
+    public function profile_update(Request $request)
+    {
+
+        $check_phone = User::where('phone',$request->phone)->count();
+
+        if ($check_phone > 0) {
+            # code...
+
+            return response('Phone Number Already Taken!', 401);
+        }
+
+        $check_email = User::where('email',$request->email)->count();
+
+        if ($check_email > 0) {
+            # code...
+
+            return response('Email Already Taken!', 401);
+        }
+
+        $token = PersonalAccessToken::findToken($request->header('TOKEN'));
+
+        $user = $token->tokenable;
+
+        $user->name = $request->name;
+
+        $user->email = $request->email;
+
+        $user->phone = $request->phone;
+        
+        $user->update();
+
+        $data['status'] = 'Profile Updated Successfully!';
+        $data['data'] = $user;
+
+        return $data;
+    }
+
+    public function change_password(Request $request)
+    {
+        $token = PersonalAccessToken::findToken($request->header('TOKEN'));
+
+        $user = $token->tokenable;
+
+        $check = Hash::check($request->previous_password, $user->password);
+
+        if ($check == true) {
+            # code...
+
+            if ($request->new_password == $request->confirm_new_password) {
+                # code...
+
+                $user->password = Hash::make($request->new_password);
+                $user->update();
+
+                $data['status'] = 'Password Changed Successfully!';
+
+                $data['data'] = $user;
+
+                return $data;
+
+            }else {
+                # code...
+                return response('New Password and Confirm Password don not match!', 403);
+
+            }
+        }else {
+            # code...
+            return response('Incorrect Previous Password!', 403);
+
+        }
     }
 }

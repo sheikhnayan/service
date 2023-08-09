@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthenticationController;
+use App\Http\Controllers\API\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,20 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('/login', [AuthenticationController::class,'login']);
 Route::post('/register', [AuthenticationController::class,'register']);
 
-Route::get('/profile/{token}', [AuthenticationController::class,'profile']);
+Route::middleware(['token'])->group(function () {
+
+    Route::post('/log-out', [AuthenticationController::class,'log_out']);
+    
+    Route::post('/profile', [AuthenticationController::class,'profile']);
+    Route::post('/profile-update', [AuthenticationController::class,'profile_update']);
+    Route::post('/change-password', [AuthenticationController::class,'change_password']);
+
+    Route::prefix('service')->group(function () {
+        Route::post('/all',[ServiceController::class,'all']);
+        Route::post('/category',[ServiceController::class,'by_category']);
+        Route::post('/sub-category',[ServiceController::class,'by_sub_category']);
+        Route::post('/detail',[ServiceController::class,'detail']);
+
+    });
+});
+
