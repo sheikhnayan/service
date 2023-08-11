@@ -247,7 +247,7 @@ Route::get('resend-otp', function () {
         $store->update();
 
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = 'eebbfafabbe35a5554ac772148af643e';
+        $authToken = 'a771943e870c29d411ee6145d3b71939';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
         $message = 'Your OTP is '.$otp.' .';
