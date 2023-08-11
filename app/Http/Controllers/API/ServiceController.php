@@ -11,7 +11,7 @@ class ServiceController extends Controller
 {
     public function all(Request $request)
     {
-        $data = ServiceCategory::all();
+        $data = Service::all();
 
         return $data;
     }
