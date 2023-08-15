@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthenticationController;
 use App\Http\Controllers\API\ServiceController;
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\FoodController;
+use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\API\CampaignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +39,38 @@ Route::middleware(['token'])->group(function () {
         Route::post('/all',[ServiceController::class,'all']);
         Route::post('/category',[ServiceController::class,'by_category']);
         Route::post('/sub-category',[ServiceController::class,'by_sub_category']);
+        Route::post('/vendor',[ServiceController::class,'by_vendor']);
         Route::post('/detail',[ServiceController::class,'detail']);
+        Route::post('/review',[ServiceController::class,'review']);
+    });
 
+    Route::prefix('product')->group(function () {
+        Route::post('/all',[ProductController::class,'all']);
+        Route::post('/category',[ProductController::class,'by_category']);
+        Route::post('/sub-category',[ProductController::class,'by_sub_category']);
+        Route::post('/vendor',[ProductController::class,'by_vendor']);
+        Route::post('/detail',[ProductController::class,'detail']);
+        Route::post('/review',[ProductController::class,'review']);
+    });
+
+    Route::prefix('food')->group(function () {
+        Route::post('/all',[FoodController::class,'all']);
+        Route::post('/category',[FoodController::class,'by_category']);
+        Route::post('/vendor',[FoodController::class,'by_vendor']);
+        Route::post('/detail',[FoodController::class,'detail']);
+        Route::post('/review',[FoodController::class,'review']);
+    });
+
+    Route::prefix('event')->group(function () {
+        Route::post('/all',[EventController::class,'all']);
+        Route::post('/vendor',[EventController::class,'by_vendor']);
+        Route::post('/detail',[EventController::class,'detail']);
+    });
+
+    Route::prefix('campaign')->group(function () {
+        Route::post('/all',[CampaignController::class,'all']);
+        Route::post('/vendor',[CampaignController::class,'by_vendor']);
+        Route::post('/detail',[CampaignController::class,'detail']);
     });
 });
 

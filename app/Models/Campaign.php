@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Campaign extends Model
 {
     use HasFactory;
+
+    public function vendor()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

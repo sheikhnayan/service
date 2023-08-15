@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductSubCategory::class,'sub_category_id','id');
     }
+
+    public function vendor()
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }
