@@ -40,7 +40,7 @@ class ProductController extends Controller
 
     public function detail(Request $request)
     {
-        $data['data'] = Product::where('id',$request->id)->with('vendor.vendor')->first();
+        $data['data'] = Product::where('id',$request->id)->with('vendor.vendor')->with('category')->with('sub_category')->first();
 
         return $data;
     }

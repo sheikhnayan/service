@@ -33,7 +33,7 @@ class FoodController extends Controller
 
     public function detail(Request $request)
     {
-        $data['data'] = Food::where('id',$request->id)->with('vendor.vendor')->first();
+        $data['data'] = Food::where('id',$request->id)->with('vendor.vendor')->with('category')->first();
 
         return $data;
     }

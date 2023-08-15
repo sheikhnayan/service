@@ -40,7 +40,7 @@ class ServiceController extends Controller
 
     public function detail(Request $request)
     {
-        $data['data'] = Service::where('id',$request->id)->with('vendor.vendor')->first();
+        $data['data'] = Service::where('id',$request->id)->with('vendor.vendor')->with('category')->with('sub_category')->first();
 
         return $data;
     }
