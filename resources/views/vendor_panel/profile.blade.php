@@ -16,7 +16,8 @@
                 <div class="col-md-6">
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @if (Auth::user()->type == 'vendor')    
+                        @if (Auth::user()->type == 'vendor')   
+                            <p style="text-align: left; color: #000; padding-bottom: 1rem;">Recommended Logo size 80 x 80 pixel</p> 
                             <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; 
                             @if (Auth::user()->vendor->logo == null)
                             padding-top: 2rem;
