@@ -225,7 +225,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="card p-4 mt-4">
                     <div class="buttons mb-4">
                         <h4 class="float-left" style="padding-top: 0.5rem;">NPO Category List</h4>
@@ -251,7 +251,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
