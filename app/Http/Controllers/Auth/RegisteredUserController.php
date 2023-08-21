@@ -130,8 +130,8 @@ class RegisteredUserController extends Controller
             $twilioNumber = '+14846737439';
             $lineBreak = "\n\n";
             $message = 'Your OTP for verification is: '.$otp.'. 
-                        Please enter this code to complete your verification process.
-                        - Transcending Black Excellence';
+            Please enter this code to complete your verification process.
+            - Transcending Black Excellence';
             // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
             $to = '+88'.Auth::user()->phone;
             $client = new Client($accountSid, $authToken);
