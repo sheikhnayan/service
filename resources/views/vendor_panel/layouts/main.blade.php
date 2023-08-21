@@ -105,7 +105,7 @@
 
             </header>
             @if(Session::has('success'))
-                <div class="alert alert-success alert-dismissible" style="width: 23rem; margin:auto; margin-top:1rem;" role="alert">
+                <div class="alert alert-success alert-dismissible" style="width: 23rem; margin:auto; margin-top:1rem; margin-bottom: 1rem;" role="alert">
                     <button type="button" class="close" data-dismiss="alert">
                         <i class="fa fa-times"></i>
                     </button>
@@ -114,7 +114,7 @@
             @endif 
 
             @if(Session::has('failure'))
-                <div class="alert alert-danger alert-dismissible" style="width: 23rem; margin:auto; margin-top:1rem;" role="alert">
+                <div class="alert alert-danger alert-dismissible" style="width: 23rem; margin:auto; margin-top:1rem; margin-bottom: 1rem;" role="alert">
                     <button type="button" class="close" data-dismiss="alert">
                         <i class="fa fa-times"></i>
                     </button>
