@@ -6,8 +6,8 @@
         <aside class="left-sidebar bg-sidebar" style="background: #000 !important">
             <div id="sidebar" class="sidebar sidebar-with-footer">
                 <!-- Aplication Brand -->
-                <div class="app-brand" style="background: #000 !important">
-                    <div class="d-inline-block text-light p-4 " style="font-weight:bold; font-size: 20px;  width:100%;">
+                <div class="app-brand p-3" style="background: #000 !important">
+                    <div class="text-light p-4 " style="font-weight:bold; font-size: 1.5rem;  width:100%;">
                         Admin Panel
                     </div>
                 </div>
