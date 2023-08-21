@@ -35,7 +35,7 @@
                             </label> 
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
-                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left;">Recommended Logo size 80 x 80 pixel</p> 
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p> 
                         @endif
                         @if (Auth::user()->type == 'vendor')    
                         
