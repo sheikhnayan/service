@@ -151,7 +151,7 @@
 
                             <hr>
 
-                                <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{ $intent->client_secret }}">Purchase</button>
+                                <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{ $intent->client_secret }}">Checkout Now</button>
 
                             </div>
 
