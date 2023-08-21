@@ -11,7 +11,7 @@
     <div class="container-fluid py-4">
         <div class="row justify-content-center">
             @if (Auth::user()->type == 'vendor')
-                <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4 mt-4">
+                <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4 mt-4 text-center">
                     <h2>Analytics of the current month</h2>
                 </div>
                 @if (Auth::user()->vendor->business_type == 'business')
