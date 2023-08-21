@@ -17,21 +17,22 @@
                     <form action="{{ route('admin.user.update',[$data->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if ($data->type == 'vendor')      
-                            <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
+                            <label for="image" style="width:100%; height:80px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
                             for="image" class="text-center bg-light" id="label">
 
                             @if ($data->vendor->logo == null)
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%" id="add_button">+</a>
                             {{-- Upload Logo --}}
-                            <img id="imgPreview" class="img-fluid" style="height:122px !important; display:none" src="" width="100%">
-                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; top: 4px; right: 26px; cursor: pointer; display:none">
+                            <img id="imgPreview" class="img-fluid" style="height:80px !important; display:none" src="" width="100%">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; top: 0px; right: 355px; cursor: pointer; display:none">
                             @else
-                            <img id="imgPreview" class="img-fluid" style="height:122px !important;" src="{{ asset('storage/'.$data->vendor->logo) }}" width="100%">
-                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
+                            <img id="imgPreview" class="img-fluid" style="height:80px !important;min-height:80px;" src="{{ asset('storage/'.$data->vendor->logo) }}" width="100%">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; cursor: pointer;">
                             @endif
                             </label> 
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px;">Recommended Logo size 80 x 80 pixel</p> 
                         @endif
 
                         @if ($data->type == 'vendor')

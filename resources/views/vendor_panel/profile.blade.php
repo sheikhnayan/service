@@ -17,25 +17,25 @@
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (Auth::user()->type == 'vendor')   
-                            <p style="text-align: left; color: #000; padding-bottom: 1rem;">Recommended Logo size 80 x 80 pixel</p> 
-                            <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; 
+                        <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; 
                             @if (Auth::user()->vendor->logo == null)
                             padding-top: 2rem;
                             @endif
                             "
-                            for="image" class="text-center bg-light">
+                            for="image" class="bg-light">
                             @if (Auth::user()->vendor->logo == null)
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
                              <span> Upload Logo</span>
-                            <img class="img-fluid" id="imgPreview" style="height: 122px !important; display:none" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
-                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer; display:none" id="edit_button">
-                            @else
-                            <img class="img-fluid" id="imgPreview" style="height: 122px !important" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
-                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
-                            @endif
+                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
+                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; cursor: pointer; width:25px; display:none" id="edit_button">
+                             @else
+                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
+                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; width:25px; cursor: pointer;">
+                             @endif
                             </label> 
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px;">Recommended Logo size 80 x 80 pixel</p> 
                         @endif
                         @if (Auth::user()->type == 'vendor')    
                         
