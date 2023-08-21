@@ -38,7 +38,7 @@
                                     <span class="text-danger">Active</span> 
                                 @endif
                             </td>
-                            <td> <a href="{{ asset('storage/'.$item->vendor->document) }}" target="_blank" >Click here</a></td>
+                            <td> <a href="{{ route('admin.zip',[$item->id]) }}" >Click here</a></td>
                             <td>
                                 <a href="{{ route('admin.user.edit',[$item->id]) }}" class="btn btn-primary">Edit Profile</a>
                                 <a href="{{ route('admin.user.delete',[$item->id]) }}" class="btn btn-danger">Delete</a>

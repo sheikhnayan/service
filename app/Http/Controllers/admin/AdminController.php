@@ -15,6 +15,10 @@ use App\Models\FoodMenuCategory;
 use App\Models\NPOCategory;
 use App\Models\StartUpCategory;
 use App\Models\StartUp;
+use App\Models\User;
+use File;
+use ZipArchive;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -74,9 +78,32 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function zip($id)
     {
-        //
+        $zip = new ZipArchive;
+
+        $vendor = User::find($id);
+
+        $fileName = $vendor->vendor->company_name.'.zip';
+
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+        {
+            $files = File::files(public_path('storage/vendor'));
+
+            foreach ($files as $key => $value) {
+
+                if (Str::contains($vendor->vendor->document, $value)) {
+                    # code...
+                    $relativeNameInZipFile = basename($value);
+    
+                    $zip->addFile($value, $relativeNameInZipFile);
+                }
+
+            }
+
+            $zip->close();
+        }
+        return response()->download(public_path($fileName));
     }
 
     /**

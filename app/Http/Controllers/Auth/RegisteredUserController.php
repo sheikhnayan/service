@@ -219,12 +219,16 @@ Please enter this code to complete your verification process.
 
     public function final_registration(Request $request)
     {
+        $document = '';
 
-        $imageName = time().'.'.$request->logo->extension();   
-
-        $image = $request->logo->storeAs('public/vendor', $imageName);
-
-        $document = str_replace('public','',$image);
+        foreach ($request->logo as $key => $value) {
+            # code...
+            $imageName = time().'.'.$value->extension();   
+    
+            $image = $value->storeAs('public/vendor', $imageName);
+    
+            $document .= str_replace('public','',$image).',';
+        }
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
         $add->founder_name = $request->founder_name;
