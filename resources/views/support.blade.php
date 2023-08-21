@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin-top: 3rem;">
             <form action="{{ route('support') }}" method="post">
                 @csrf
                 <select name="issue" class="form-control"
