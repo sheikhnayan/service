@@ -6,13 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Food;
 use App\Models\Review;
-use App\Models\FoodCategory;
+use App\Models\FoodMenuCategory;
 
 class FoodController extends Controller
 {
     public function all(Request $request)
     {
         $data['data'] = Food::all()->toArray();
+
+        return $data;
+    }
+
+    public function all_category(Request $request)
+    {
+        $data['data'] = FoodMenuCategory::all()->toArray();
 
         return $data;
     }

@@ -26,6 +26,8 @@ class User extends Authenticatable
         'type',
         'phone',
         'otp',
+        'country_id',
+        'state_id',
     ];
 
     /**

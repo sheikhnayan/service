@@ -48,16 +48,18 @@
               <h3 class="text-dark">Latest Event</h3>
             </div>
             @foreach ($event as $item)
-              <div class="col-md-6">
-                <div class="card product" style="background-color: #F98513; border-radius:12px;">
-                  <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
-                  <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
-                  <div class="button" style="text-align: left;">
-                  {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}
-                  <a href="{{ route('user.service.show',[$item->id]) }}" class="btn btn-transparent" style="color:#fff; text-align: left;"> <span class="mdi mdi-eye"></span> View</a>
-                  </div>
-              </div>
-              </div>
+              @if ($item->vendor->vendor->country_id == Auth::user()->country_id)
+                <div class="col-md-6">
+                  <div class="card product" style="background-color: #F98513; border-radius:12px;">
+                    <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
+                    <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
+                    <div class="button" style="text-align: left;">
+                    {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}
+                    <a href="{{ route('user.service.show',[$item->id]) }}" class="btn btn-transparent" style="color:#fff; text-align: left;"> <span class="mdi mdi-eye"></span> View</a>
+                    </div>
+                </div>
+                </div>
+              @endif
             @endforeach
             <div class="col-md-12 mt-4 p-4" style="text-align: left;">
               <a href="{{ route('user.service.all',[$data->id]) }}" class="text-dark" style="text-decoration: underline; font-weight: 500; text-align: left;">View All Service</a>
@@ -68,16 +70,18 @@
               <h3 class="text-dark">Latest Campaign</h3>
             </div>
             @foreach ($campaign as $item)
-              <div class="col-md-6">
-                <div class="card product" style="background-color: #F98513; border-radius:12px;">
-                  <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
-                  <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
-                  <div class="button" style="text-align: left;">
-                  {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}
-                  <a href="{{ route('user.product.show',[$item->user_id]) }}" class="btn btn-transparent" style="color:#fff;"> <span class="mdi mdi-eye"></span> View</a>
-                  </div>
-              </div>
-              </div>
+              @if ($item->vendor->vendor->country_id == Auth::user()->country_id)
+                <div class="col-md-6">
+                  <div class="card product" style="background-color: #F98513; border-radius:12px;">
+                    <img class="img-fluid" src="{{ asset('storage/'.$item->image) }}" width="90%" height="auto" style="margin: auto; padding: 5px;">
+                    <p style="padding: 5px; margin:auto; color:#fff">{{ $item->name }}</p>
+                    <div class="button" style="text-align: left;">
+                    {{-- <a href="{{ route('vendor.service.edit',[$item->id]) }}" style="color:#8f94a1" class="btn btn-transparent"> <span class="mdi mdi-table-edit"></span> Edit</a> --}}
+                    <a href="{{ route('user.product.show',[$item->user_id]) }}" class="btn btn-transparent" style="color:#fff;"> <span class="mdi mdi-eye"></span> View</a>
+                    </div>
+                </div>
+                </div>
+              @endif
             @endforeach
             <div class="col-md-12 mt-4 p-4" style="text-align: left;">
               <a href="{{ route('user.product.all',[$data->id]) }}" class="text-dark" style="text-decoration: underline; font-weight: 500">View All Product</a>

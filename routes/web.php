@@ -247,7 +247,7 @@ Route::get('resend-otp', function () {
         $store->update();
 
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = '43041b829d519ce76f32e9205bded82f';
+        $authToken = '637818a84298bd6ffbaf9572ee24dff5';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
         $message = 'Your OTP is '.$otp.' .';
@@ -271,11 +271,12 @@ Route::get('resend-otp', function () {
 
 });
 
+Route::get('/get-states/{country}', [IndexController::class,'get_states'])->name('get-states');
+
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/profile', [IndexController::class,'profile'])->name('profile');
     Route::post('/profile-update', [IndexController::class,'profile_update'])->name('profile-update');
-    Route::get('/get-states/{country}', [IndexController::class,'get_states'])->name('get-states');
     Route::get('/support', [IndexController::class,'support'])->name('support');
     Route::post('/support', [IndexController::class,'support_submit'])->name('support');
     Route::get('/notification', [IndexController::class,'notification']);

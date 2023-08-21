@@ -7,12 +7,27 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\ProductCategory;
+use App\Models\ProductSubCategory;
 
 class ProductController extends Controller
 {
     public function all(Request $request)
     {
         $data['data'] = Product::all()->toArray();
+
+        return $data;
+    }
+
+    public function all_category(Request $request)
+    {
+        $data['data'] = ProductCategory::all()->toArray();
+
+        return $data;
+    }
+
+    public function all_sub_category(Request $request)
+    {
+        $data['data'] = ProductSubCategory::where('category_id',$request->category_id)->latest()->get();
 
         return $data;
     }

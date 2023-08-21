@@ -166,10 +166,14 @@
     <script src="{{ asset('vendor_panel/assets/js/map.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/custom.js') }}"></script>
 
+    <input type="hidden" id="auth_country_id" value="{{ Auth::user()->country_id }}">
+
     <script>
         $('#search-input').on('keyup', function(){
 
             $('#search-results').empty();
+
+            country_id = $('#auth_country_id').val();
 
             value = $('#search-input').val();
             
@@ -186,18 +190,22 @@
                             </div>`;
 
                     res.product.forEach(element => {
-                        html = `<a href="/user/product/product/`+element.id+`">
-                                    <div class="row p-2">
-                                        <div class="col-3 col-md-3">
-                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/product/product/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
                                         </div>
-                                        <div class="col-9 col-md-9" style="text-align: left">
-                                            `+element.name+`
-                                        </div>
-                                    </div>
-                                </a>`;
-
-                        result += html;
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
                     });
 
                     result += `<div class="row justify-content-center">
@@ -207,18 +215,24 @@
                             </div>`;
 
                     res.service.forEach(element => {
-                        html = `<a href="/user/service/service/`+element.id+`">
-                                    <div class="row p-2">
-                                        <div class="col-3 col-md-3">
-                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
-                                        </div>
-                                        <div class="col-9 col-md-9" style="text-align: left">
-                                            `+element.name+`
-                                        </div>
-                                    </div>
-                                </a>`;
 
-                        result += html;
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/service/service/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
                     });
 
                     result += `<div class="row justify-content-center">
@@ -228,18 +242,25 @@
                             </div>`;
 
                     res.food.forEach(element => {
-                        html = `<a href="/user/food/food/`+element.id+`">
-                                    <div class="row p-2">
-                                        <div class="col-3 col-md-3">
-                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
-                                        </div>
-                                        <div class="col-9 col-md-9" style="text-align: left">
-                                            `+element.name+`
-                                        </div>
-                                    </div>
-                                </a>`;
 
-                        result += html;
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/food/food/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
+
                     });
 
                     result += `<div class="row justify-content-center">
@@ -249,18 +270,25 @@
                             </div>`;
 
                     res.service.forEach(element => {
-                        html = `<a href="/user/event/event/`+element.id+`">
-                                    <div class="row p-2">
-                                        <div class="col-3 col-md-3">
-                                            <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
-                                        </div>
-                                        <div class="col-9 col-md-9" style="text-align: left">
-                                            `+element.name+`
-                                        </div>
-                                    </div>
-                                </a>`;
 
-                        result += html;
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/event/event/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
+
                     });
 
                     $('#search-results').html(result);

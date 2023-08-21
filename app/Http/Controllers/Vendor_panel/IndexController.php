@@ -187,13 +187,13 @@ class IndexController extends Controller
     {
         $results = '';
 
-        $product = Product::where('name','like','%'.$value.'%')->get();
+        $product = Product::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
-        $service = Service::where('name','like','%'.$value.'%')->get();
+        $service = Service::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
-        $food = Food::where('name','like','%'.$value.'%')->get();
+        $food = Food::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
-        $event = Event::where('name','like','%'.$value.'%')->get();
+        $event = Event::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
         $data['product'] = $product;
 

@@ -113,7 +113,6 @@
                                     <input name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius: 0.25rem !important;">
                                 </div>
                             </div>
-
                             
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control mt-4" placeholder="Password"
@@ -125,6 +124,24 @@
                                 <input type="password" name="password_confirmation" class="form-control mt-4" placeholder="Confirm Password"
                                     style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password2">
                                     <img id="togglePassword2" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 355px; right: 20px; cursor:pointer">
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    @php
+                                        $country = DB::table('countries')->get();
+                                    @endphp
+                                    <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
+                                        @foreach ($country as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
+                                        <option value="null">State/Region</option>
+                                    </select>
+                                </div>
                             </div>
                             
                             <input required type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
@@ -246,6 +263,31 @@ telInput2.intlTelInput({
         password.setAttribute('type', type);
         // toggle the eye slash icon
         this.classList.toggle('fa-eye-slash');
+    });
+</script>
+
+<script>
+    $('#country_id').on('click', function(){
+        val = $('#country_id').val();
+
+        $.ajax({
+        url: "/get-states/"+val,
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            htmls = ``;
+
+            res.forEach(element => {
+                html = ` <option value="`+element.id+`">`+element.name+`</option>`;
+
+                htmls += html;
+            });
+
+            $('#state_id').empty();
+
+            $('#state_id').html(htmls);
+        }
+    });
     });
 </script>
 

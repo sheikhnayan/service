@@ -37,6 +37,8 @@ Route::middleware(['token'])->group(function () {
 
     Route::prefix('service')->group(function () {
         Route::post('/all',[ServiceController::class,'all']);
+        Route::post('/all-category',[ServiceController::class,'all_category']);
+        Route::post('/all-sub-category',[ServiceController::class,'all_sub_category']);
         Route::post('/category',[ServiceController::class,'by_category']);
         Route::post('/sub-category',[ServiceController::class,'by_sub_category']);
         Route::post('/vendor',[ServiceController::class,'by_vendor']);
@@ -46,6 +48,8 @@ Route::middleware(['token'])->group(function () {
 
     Route::prefix('product')->group(function () {
         Route::post('/all',[ProductController::class,'all']);
+        Route::post('/all-category',[ProductController::class,'all_category']);
+        Route::post('/all-sub-category',[ProductController::class,'by_sub_category']);
         Route::post('/category',[ProductController::class,'by_category']);
         Route::post('/sub-category',[ProductController::class,'by_sub_category']);
         Route::post('/vendor',[ProductController::class,'by_vendor']);
@@ -55,6 +59,7 @@ Route::middleware(['token'])->group(function () {
 
     Route::prefix('food')->group(function () {
         Route::post('/all',[FoodController::class,'all']);
+        Route::post('/all-category',[FoodController::class,'all_category']);
         Route::post('/category',[FoodController::class,'by_category']);
         Route::post('/vendor',[FoodController::class,'by_vendor']);
         Route::post('/detail',[FoodController::class,'detail']);

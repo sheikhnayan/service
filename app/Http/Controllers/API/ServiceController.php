@@ -7,12 +7,27 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Review;
 use App\Models\ServiceCategory;
+use App\Models\ServiceSubCategory;
 
 class ServiceController extends Controller
 {
     public function all(Request $request)
     {
         $data['data'] = Service::all()->toArray();
+
+        return $data;
+    }
+
+    public function all_category(Request $request)
+    {
+        $data['data'] = ServiceCategory::all()->toArray();
+
+        return $data;
+    }
+
+    public function all_sub_category(Request $request)
+    {
+        $data['data'] = ServiceSubCategory::where('service_category_id',$request->category_id)->latest()->get();
 
         return $data;
     }
