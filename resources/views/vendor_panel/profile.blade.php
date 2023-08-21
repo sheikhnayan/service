@@ -17,7 +17,7 @@
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (Auth::user()->type == 'vendor')   
-                        <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; 
+                        <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; display:block; 
                             @if (Auth::user()->vendor->logo == null)
                             padding-top: 2rem;
                             @endif
@@ -27,15 +27,15 @@
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
                              <span> Upload Logo</span>
                              <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
-                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; cursor: pointer; width:25px; display:none" id="edit_button">
+                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; cursor: pointer; width:25px; display:none" id="edit_button">
                              @else
                              <img class="img-fluid" id="imgPreview" style="height: 80px !important; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
-                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; width:25px; cursor: pointer;">
+                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; width:25px; cursor: pointer;">
                              @endif
                             </label> 
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
-                            <p style="color: #000; padding-bottom: 1rem; font-size:12px;">Recommended Logo size 80 x 80 pixel</p> 
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left;">Recommended Logo size 80 x 80 pixel</p> 
                         @endif
                         @if (Auth::user()->type == 'vendor')    
                         

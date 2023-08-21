@@ -17,7 +17,7 @@
                     <form action="{{ route('admin.user.update',[$data->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if ($data->type == 'vendor')      
-                            <label for="image" style="width:100%; height:80px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
+                            <label for="image" style="width:100%; height:80px; border-radius: 22px; font-weight: 500; padding-top: 2rem; display:block;"
                             for="image" class="text-center bg-light" id="label">
 
                             @if ($data->vendor->logo == null)
