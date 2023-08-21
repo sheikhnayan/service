@@ -26,7 +26,7 @@
                             @if (Auth::user()->vendor->logo == null)
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
                              <span> Upload Logo</span>
-                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
+                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
                              <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; cursor: pointer; width:25px; display:none" id="edit_button">
                              @else
                              <img class="img-fluid" id="imgPreview" style="height: 80px !important; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
