@@ -42,27 +42,30 @@
             </div>
                 
             @endif
-            
-            <div class="col-md-6">
-              <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
-                @if ($data->type == 'virtual')
-                  <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
-                  Join Event
-                @else
-                  <img src="{{ asset('vendor_panel/map.png') }}" alt="">
-                  Google map
-                @endif
-              </a>
-            </div>
 
-            @if ($data->type != 'virtual')
+            <div class="row">
               <div class="col-md-6">
                 <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
+                  @if ($data->type == 'virtual')
                     <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
                     Join Event
-                  </a>
+                  @else
+                    <img src="{{ asset('vendor_panel/map.png') }}" alt="">
+                    Google map
+                  @endif
+                </a>
               </div>
-            @endif
+  
+              @if ($data->type != 'virtual')
+                <div class="col-md-6">
+                  <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
+                      <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
+                      Join Event
+                    </a>
+                </div>
+              @endif
+            </div>
+            
 
             <div class="button" style="padding: 1rem 4rem">
               <div class="row">
