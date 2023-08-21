@@ -2,11 +2,11 @@
 
 @section('content')
     @php
-        $product = DB::table('products')->where('user_id',Auth::user()->id)->count();
-        $service = DB::table('services')->where('user_id',Auth::user()->id)->count();
-        $food = DB::table('food')->where('user_id',Auth::user()->id)->count();
-        $event = DB::table('events')->where('user_id',Auth::user()->id)->count();
-        $campaign = DB::table('campaigns')->where('user_id',Auth::user()->id)->count();
+        $product = DB::table('products')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
+        $service = DB::table('services')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
+        $food = DB::table('food')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
+        $event = DB::table('events')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
+        $campaign = DB::table('campaigns')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
     @endphp
     <div class="container-fluid py-4">
         <div class="row justify-content-center">
@@ -50,6 +50,20 @@
                 </div>
                 @endif
 
+                @if (Auth::user()->vendor->business_type == 'non-profit')
+                    <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
+                        <div class="card">
+                            <div class="card-header p-3 pt-2">
+                                <div class="text-end pt-1">
+                                    <p class="text-sm mb-0 text-capitalize">Total Campaigns</p>
+                                    <h4 class="mb-0">{{ $campaign }}</h4>
+                                </div>
+                            </div>
+                            <hr class="dark horizontal my-0">
+                        </div>
+                    </div>
+                @endif
+
                 <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
@@ -69,7 +83,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
                                 @php
-                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
+                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','profile')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $profile_view }}</h4>
                             </div>
@@ -86,7 +100,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Product View</p>
                                 @php
-                                    $product_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','product')->count();
+                                    $product_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','product')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $product_view }}</h4>
                             </div>
@@ -101,7 +115,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Service View</p>
                                 @php
-                                    $service_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','service')->count();
+                                    $service_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','service')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $service_view }}</h4>
                             </div>
@@ -116,7 +130,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Food View</p>
                                 @php
-                                    $food_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','food')->count();
+                                    $food_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','food')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $food_view }}</h4>
                             </div>
@@ -131,9 +145,9 @@
                     <div class="card">
                         <div class="card-header p-3 pt-2">
                             <div class="text-end pt-1">
-                                <p class="text-sm mb-0 text-capitalize">Total Campaign View</p>
+                                <p class="text-sm mb-0 text-capitalize">Total Campaigns View</p>
                                 @php
-                                    $campaign_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','campaign')->count();
+                                    $campaign_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','campaign')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $campaign_view }}</h4>
                             </div>
@@ -151,7 +165,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Event View</p>
                                 @php
-                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','event')->count();
+                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','event')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $event_view }}</h4>
                             </div>
@@ -192,7 +206,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
                                 @php
-                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
+                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','profile')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $profile_view }}</h4>
                             </div>
@@ -207,7 +221,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Campaign View</p>
                                 @php
-                                    $campaign_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','campaign')->count();
+                                    $campaign_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','campaign')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $campaign_view }}</h4>
                             </div>
@@ -222,7 +236,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Event View</p>
                                 @php
-                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','event')->count();
+                                    $event_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->where('page','event')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $event_view }}</h4>
                             </div>
