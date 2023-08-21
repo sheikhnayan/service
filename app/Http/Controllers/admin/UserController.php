@@ -5,6 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\VendorDetail;
+use App\Models\Event;
+use App\Models\Service;
+use App\Models\Campaign;
+use App\Models\Product;
+use App\Models\Food;
+use App\Models\Support;
 use Hash;
 
 class UserController extends Controller
@@ -129,8 +136,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $vendor = VendorDetail::where('user_id',$id)->delete();
+
+        $event = Event::where('user_id',$id)->delete();
+        $service = Service::where('user_id',$id)->delete();
+        $campaign = Campaign::where('user_id',$id)->delete();
+        $product = Product::where('user_id',$id)->delete();
+        $food = Food::where('user_id',$id)->delete();
+        $support = Support::where('user_id',$id)->delete();
+
         $user = User::where('id',$id)->delete();
 
-        return back();
+
+        return back()->with('success','User Deleted Successfully!');
     }
 }
