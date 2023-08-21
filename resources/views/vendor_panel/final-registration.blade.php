@@ -147,7 +147,7 @@
 
                                 <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
                                 <br>
-                                <input type="file" required width="100%" height="122px" name="logo[]" class="form-control" style="border:unset; border-bottom: 2px solid black; font-size:17px;" multiple>
+                                <input type="file" required width="100%" height="122px" name="logo[]" class="form-control mb-4" style="border:unset; border-bottom: 2px solid black; font-size:17px;" multiple>
                                 
                                 <button type="submit" class="ml-auto mr-auto mb-4 mt-4 btn btn-success" style="width: 40%;">Submit</button>
                             </form>
