@@ -24,6 +24,8 @@
                             </label> 
                         <br>
                         <input type="file" name="image" id="image" style="display: none;">
+                        <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left;">Recommended Banner Size 300x150 Pixel</p> 
+
 
 
                         <label class="mt-4"

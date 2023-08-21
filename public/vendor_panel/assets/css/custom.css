@@ -199,7 +199,7 @@ body{
 body {
   background-color: #686868;
   align-content: center;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .credit-card-form {

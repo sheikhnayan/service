@@ -21,6 +21,8 @@
                                     <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 2rem;">+</a> 
                                     {{-- <p> Upload Documents (jpeg/png/PDF) </p> --}}
                                 </label> <br>
+                        <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left;">Recommended Banner Size 300x150 Pixel</p> 
+
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Service Name:</label>
             <input type="text" name="name" class="form-control" placeholder="Add Service Name..." style="border:unset; border-bottom: 2px solid black; font-size:17px;">

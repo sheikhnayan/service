@@ -25,6 +25,8 @@
                             </label> 
             <br>
             <input type="file" name="image" id="image" style="display: none;">
+            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left;">Recommended Banner Size 300x150 Pixel</p> 
+
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Product Name:</label>
             <input type="text" name="name" class="form-control" value="{{ $data->name }}" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
