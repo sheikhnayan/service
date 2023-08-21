@@ -6,11 +6,12 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-8" style="margin-top: 8rem">
+        <div class="col-md-8">
             <form action="{{ route('support') }}" method="post">
                 @csrf
                 <select name="issue" class="form-control"
                     style="border-radius: 10px; background: #e0e0e0; font-weight: bold;">
+                    <option selected disabled>Select an Issue</option>
                     <option value="technical">Technical</option>
                     <option value="payment">Payment</option>
                     <option value="other">Other</option>
