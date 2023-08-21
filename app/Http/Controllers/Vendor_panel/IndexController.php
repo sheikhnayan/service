@@ -180,7 +180,7 @@ class IndexController extends Controller
         $add->description = $request->description;
         $add->save();
 
-        return back()->with('success',' Your request has been sent! We will get back to you.');
+        return back()->with('success','We have received your support request. very soon our support team will get back to you!');
     }
 
     public function search_main($value)
