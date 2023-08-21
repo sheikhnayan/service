@@ -63,7 +63,7 @@
                                       @endforeach
                                     </select>
                                 </div>
-                                @if ($data->vendor->business_type == 'non-profit')
+                                {{-- @if ($data->vendor->business_type == 'non-profit')
                                     <div class="col-md-4">
                                         @php
                                             $npo = DB::table('n_p_o_categories')->get();
@@ -74,7 +74,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    @endif
+                                @endif --}}
                             </div>
                             <br>
                             <br>
