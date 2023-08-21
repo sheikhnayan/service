@@ -55,7 +55,7 @@
               </a>
             </div>
 
-            @if ($data->type == 'virtual')
+            @if ($data->type != 'virtual')
               <div class="col-md-6">
                 <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
                     <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
