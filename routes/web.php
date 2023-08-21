@@ -261,10 +261,9 @@ Please enter this code to complete your verification process.
         try {
             $client->messages->create(
                 $to,
-                $from,
                 [
                     "body" => $message,
-                    "from" => $twilioNumber
+                    "from" => $from
                 ]
             );
 
