@@ -27,10 +27,10 @@
             </div>
 
             <div class="buttons">
-                <a href="tel:{{ $data->contact_number }}" class="btn btn-success float-left" style="width: 40%; margin: auto; margin-left:1rem !important; margin-top:2rem">
+                <a href="tel:{{ $data->contact_number }}" class="btn btn-success join float-left" style="width: 40%; margin: auto; margin-left:1rem !important; margin-top:2rem">
                     <img src="{{ asset('vendor_panel/call.png') }}" alt="" class="img-fluid"> Call Now
                 </a>
-                <a href="{{ $data->link }}" target="_blank" class="btn btn-success float-right" style="width: 40%; margin: auto; margin-right:1rem !important; margin-top:2rem">
+                <a href="{{ $data->link }}" target="_blank" class="btn btn-success join float-right" style="width: 40%; margin: auto; margin-right:1rem !important; margin-top:2rem">
                   <img src="{{ asset('vendor_panel/donation.png') }}" alt="" class="img-fluid"> Donate Now
                 </a>
             </div>

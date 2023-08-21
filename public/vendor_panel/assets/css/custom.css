@@ -84,6 +84,10 @@ body{
   background: #000;
 }
 
+.join:hover{
+  background: #f98513 !important;
+}
+
 .btn-success:active{
   background: #000;
 }
