@@ -2,15 +2,18 @@
 
 @section('content')
     @php
-        $product = DB::table('products')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
-        $service = DB::table('services')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
-        $food = DB::table('food')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
-        $event = DB::table('events')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
-        $campaign = DB::table('campaigns')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('M'))->count();
+        $product = DB::table('products')->where('user_id',Auth::user()->id)->count();
+        $service = DB::table('services')->where('user_id',Auth::user()->id)->count();
+        $food = DB::table('food')->where('user_id',Auth::user()->id)->count();
+        $event = DB::table('events')->where('user_id',Auth::user()->id)->count();
+        $campaign = DB::table('campaigns')->where('user_id',Auth::user()->id)->count();
     @endphp
     <div class="container-fluid py-4">
         <div class="row justify-content-center">
             @if (Auth::user()->type == 'vendor')
+                <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4 mt-4">
+                    <h2>Analytics of the current month</h2>
+                </div>
                 @if (Auth::user()->vendor->business_type == 'business')
                     
                 <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4 mt-4">
