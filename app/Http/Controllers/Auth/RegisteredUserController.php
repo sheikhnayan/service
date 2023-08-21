@@ -126,7 +126,7 @@ class RegisteredUserController extends Controller
 
 
             $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-            $authToken = '637818a84298bd6ffbaf9572ee24dff5';
+            $authToken = '6c4375d162880543dcb8d6f173bfb823';
             $twilioNumber = '+14846737439';
             $lineBreak = "\n\n";
             $message = 'Your OTP is '.$otp.' .';
@@ -184,7 +184,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = '637818a84298bd6ffbaf9572ee24dff5';
+        $authToken = '6c4375d162880543dcb8d6f173bfb823';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
         $message = 'Your OTP is '.$otp.' .';
