@@ -127,8 +127,8 @@
 
             @if (Auth::user()->type != 'admin')
                 <footer class="footer mt-auto">
-                    <div class="row justify-content-center" style="position: fixed; bottom: 0; width: 100%; background: #f8f9ff;">
-                        <div class="col-md-4">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12" style="position: fixed; bottom: 0; width: 100%; background: #f8f9ff; text-align:center">
                             @if (Auth::user()->type == 'vendor')
                             <a href="{{ route('vendor.analytics') }}"><i class="mdi mdi-home"></i></a>
                             <a href="/notification"><i class="mdi mdi-bell-outline"></i></a>
