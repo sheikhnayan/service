@@ -145,16 +145,9 @@
 
                                 <input type="text" class="form-control" name="address" placeholder="Area/Road No/House/Apartment etc" style=" margin-top: 6rem; border:unset; border-bottom: 2px solid black; font-size:17px;">
 
-                                <input type="file" required width="100%" height="122px" style="display: none" id="image" name="logo">
-                                <br>
                                 <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
-                                <label style="width:100%; height:122px; border-radius: 22px; font-weight: 500; cursor: pointer"
-                                    for="image" class="text-center bg-light" id="label">
-                                    <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" id="edit_button" style="position: absolute; right: 26px; cursor: pointer; display:none">
-                                    <img class="img-fluid" style="height:122px !important; display: none" src="" id="imgPreview" alt="" width="100%">
-                                    <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 2rem;">+</a> 
-                                    {{-- <p> Upload Documents (jpeg/png/PDF) </p> --}}
-                                </label> <br>
+                                <br>
+                                <input type="file" required width="100%" height="122px" name="logo" class="form-control" style="border:unset; border-bottom: 2px solid black; font-size:17px;">>
                                 
                                 <button type="submit" class="ml-auto mr-auto mb-4 mt-4 btn btn-success" style="width: 40%;">Submit</button>
                             </form>
