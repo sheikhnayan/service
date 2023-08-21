@@ -129,7 +129,9 @@ class RegisteredUserController extends Controller
             $authToken = '6c4375d162880543dcb8d6f173bfb823';
             $twilioNumber = '+14846737439';
             $lineBreak = "\n\n";
-            $message = 'Your OTP is '.$otp.' .';
+            $message = 'Your OTP for verification is: '.$otp.'. 
+                        Please enter this code to complete your verification process.
+                        - Transcending Black Excellence';
             // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
             $to = '+88'.Auth::user()->phone;
             $client = new Client($accountSid, $authToken);
@@ -187,7 +189,9 @@ class RegisteredUserController extends Controller
         $authToken = '6c4375d162880543dcb8d6f173bfb823';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
-        $message = 'Your OTP is '.$otp.' .';
+        $message = 'Your OTP for verification is: '.$otp.'. 
+        Please enter this code to complete your verification process.
+        - Transcending Black Excellence';
         // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
         $to = '+88'.Auth::user()->phone;
         $client = new Client($accountSid, $authToken);

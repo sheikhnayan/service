@@ -17,11 +17,17 @@
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if (Auth::user()->type == 'vendor')    
-                            <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"
+                            <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; 
+                            @if (Auth::user()->vendor->logo == null)
+                            padding-top: 2rem;
+                            @endif
+                            "
                             for="image" class="text-center bg-light">
                             @if (Auth::user()->vendor->logo == null)
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
-                            Upload Logo
+                             <span> Upload Logo</span>
+                            <img class="img-fluid" id="imgPreview" style="height: 122px !important; display:none" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
+                            <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer; display:none" id="edit_button">
                             @else
                             <img class="img-fluid" id="imgPreview" style="height: 122px !important" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 4px; right: 26px; cursor: pointer;">
@@ -187,6 +193,19 @@ utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/ut
 
                     $("#imgPreview")
                     .css("display", 'block');
+
+                    $("#imgPreview").prev()
+                    .css("display", 'none');
+
+                    $("Label")
+                    .css("padding", '0px');
+
+                    $("#imgPreview").prev()
+                    .css("display", 'none');
+                    $("#imgPreview").prev().prev()
+                    .css("display", 'none');
+                    $("#imgPreview").prev().prev().prev()
+                    .css("display", 'none');
 
                     $('#add_button').css('display','none')
 
