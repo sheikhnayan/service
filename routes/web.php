@@ -256,10 +256,12 @@ Please enter this code to complete your verification process.
 - Transcending Black Excellence';
         // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
         $to = '+88'.Auth::user()->phone;
+        $from = 'Transcending Black Excellence';
         $client = new Client($accountSid, $authToken);
         try {
             $client->messages->create(
                 $to,
+                $from,
                 [
                     "body" => $message,
                     "from" => $twilioNumber
