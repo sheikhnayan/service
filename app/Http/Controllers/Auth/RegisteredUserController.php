@@ -126,7 +126,7 @@ class RegisteredUserController extends Controller
 
 
             $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-            $authToken = '6c4375d162880543dcb8d6f173bfb823';
+            $authToken = '8375277c18f56a86a2ed4615f31cb469';
             $twilioNumber = '+14846737439';
             $lineBreak = "\n\n";
             $message = 'Your OTP for verification is: '.$otp.'. 
@@ -186,7 +186,7 @@ Please enter this code to complete your verification process.
         Auth::login($user);
 
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = '6c4375d162880543dcb8d6f173bfb823';
+        $authToken = '8375277c18f56a86a2ed4615f31cb469';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
         $message = 'Your OTP for verification is: '.$otp.'. 
