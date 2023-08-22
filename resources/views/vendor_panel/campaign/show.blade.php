@@ -19,27 +19,27 @@
 
             <h4 style="text-align: center; padding: 2rem 5rem; color:black; padding-bottom: 1rem !important;">{{ $data->name }}</h4>
 
-            <p style="padding: 2rem 4rem; color:#000;">{{ $data->description }}</p>
+            <p style="padding: 2rem 3rem; color:#000;">{{ $data->description }}</p>
 
-            <div class="location" style="padding: 2rem 4rem; color:#000;">
+            <div class="location" style="padding: 2rem 3rem; color:#000;">
               {{-- <span style="padding: 2rem 4rem; color:#000; padding-right: 0rem;" class="mdi mdi-map"></span> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span> --}}
               <img src="{{ asset('vendor_panel/location.png') }}" alt="" class="img-fluid"> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
             </div>
 
-            <div class="buttons">
-                <a href="tel:{{ $data->contact_number }}" class="btn btn-success join float-left" style="width: 40%; margin: auto; margin-left:1rem !important; margin-top:2rem">
+            <div class="buttons" style="padding-left: 3rem;">
+                <a href="tel:{{ $data->contact_number }}" class="btn btn-success join float-left" style="width: 40%; margin: auto; margin-top:2rem">
                     <img src="{{ asset('vendor_panel/call.png') }}" alt="" class="img-fluid"> Call Now
                 </a>
-                <a href="{{ $data->link }}" target="_blank" class="btn btn-success join float-right" style="width: 40%; margin: auto; margin-right:1rem !important; margin-top:2rem">
+                <a href="{{ $data->link }}" target="_blank" class="btn btn-success join float-right" style="width: 40%; margin: auto; margin-right:2.5rem !important; margin-top:2rem">
                   <img src="{{ asset('vendor_panel/donation.png') }}" alt="" class="img-fluid"> Donate Now
                 </a>
             </div>
 
 
-            <div class="button" style="padding: 1rem 4rem">
+            <div class="button" style="padding: 1rem 3rem">
               <div class="row">
                 <div class="col-md-6">
-                  <a href="{{ route('vendor.campaign.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
+                  <a href="{{ route('vendor.campaign.edit',[$data->id]) }}" style="color:#8f94a1; padding-left: 0px;" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
                 </div>
               </div>
             </div> 
