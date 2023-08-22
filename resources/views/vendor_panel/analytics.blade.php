@@ -90,7 +90,7 @@
                             <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">Total Profile View</p>
                                 @php
-                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->where('page','profile')->count();
+                                    $profile_view = DB::table('visits')->where('user_id',Auth::user()->id)->whereMonth('created_at',Carbon\Carbon::now()->format('m'))->where('page','profile')->count();
                                 @endphp
                                 <h4 class="mb-0">{{ $profile_view }}</h4>
                             </div>
