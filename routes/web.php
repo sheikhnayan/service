@@ -76,6 +76,8 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
 
     Route::get('/analytics',[IndexController::class,'analytics'])->name('analytics')->middleware('standard');
 
+    Route::get('/dashboard',[IndexController::class,'dashboard'])->name('dashboard');
+
     Route::prefix('/product')->middleware('npo')->name('product.')->group(function () {
         Route::get('/index', [ProductController::class,'index'])->name('index');
         Route::get('/create', [ProductController::class,'create'])->name('create')->middleware('standard','preferred');

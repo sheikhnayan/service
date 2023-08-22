@@ -18,6 +18,24 @@ use Hash;
 
 class IndexController extends Controller
 {
+
+    public function dashboard()
+    {
+        $product = Product::where('user_id',Auth::user()->id)->latest()->limit(4)->get();
+
+        $service = Service::where('user_id',Auth::user()->id)->latest()->limit(4)->get();
+
+        $food = Food::where('user_id',Auth::user()->id)->latest()->limit(4)->get();
+
+        $event = Event::where('user_id',Auth::user()->id)->latest()->limit(4)->get();
+
+        $campaign = Campaign::where('user_id',Auth::user()->id)->latest()->limit(4)->get();
+
+        // dd($event);
+
+        return view('vendor_panel.dashboard',compact('product','service','food','event','campaign'));
+    }
+
     public function profile()
     {
         return view('vendor_panel.profile');
