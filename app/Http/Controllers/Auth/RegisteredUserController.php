@@ -234,7 +234,7 @@ Please enter this code to complete your verification process.
     
         $log = $request->image->storeAs('public/vendor', $logo);
     
-        $logo = str_replace('public','',$log).',';
+        $logo = str_replace('public','',$log);
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
         $add->founder_name = $request->founder_name;
