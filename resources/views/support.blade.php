@@ -1,11 +1,12 @@
 @extends('vendor_panel.layouts.main')
 
 @section('title')
-    Support
+    Support & Feedback
 @endsection
 
 @section('content')
     <div class="row justify-content-center">
+        <h3 class="text-dark mt-4 text-center">Apply for your new startup company</h3>
         <div class="col-md-8" style="margin-top: 3rem;">
             <form action="{{ route('support') }}" method="post">
                 @csrf

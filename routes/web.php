@@ -139,7 +139,7 @@ Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','statu
 Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(function(){
     Route::get('/',[AdminController::class,'index'])->name('index');
     Route::get('/zip/{id}',[AdminController::class,'zip'])->name('zip');
-    Route::get('/support',[AdminController::class,'support'])->name('support');
+    Route::get('/support-feedback',[AdminController::class,'support'])->name('support');
     Route::get('/start-up',[AdminController::class,'start_up'])->name('start-up');
 
     Route::prefix('/meta-data')->name('meta-data.')->group(function () {

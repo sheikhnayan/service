@@ -1,5 +1,9 @@
 @extends('vendor_panel.layouts.main')
 
+@section('title')
+    Analytics
+@endsection
+
 @section('content')
     @php
         $product = DB::table('products')->where('user_id',Auth::user()->id)->count();
