@@ -131,7 +131,7 @@
                         <div class="col-md-12" style="position: fixed; bottom: 0; width: 100%; background: #f8f9ff; text-align:center">
                             @if (Auth::user()->type == 'vendor')
                             <a href="{{ route('vendor.dashboard') }}"><i class="mdi mdi-home"></i></a>
-                            <a href="/notification"><i class="mdi mdi-bell-outline"></i></a>
+                            <a href="/notification"><i class="mdi mdi-bell-ring"></i></a>
                             @else
                             <a href="{{ route('user.index') }}"><i class="mdi mdi-home"></i></a>
                             <a href="{{ route('user.wish') }}"><i class="mdi mdi-heart-outline"></i></a>
