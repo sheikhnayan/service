@@ -13,7 +13,7 @@
 
 <div class="content-wrapper">
     <div class="content">
-      @if (Auth::user()->vendor->business_type == 'vendor')
+      @if (Auth::user()->vendor->business_type == 'business')
           
         <div class="row">
           <div class="col-md-12">
