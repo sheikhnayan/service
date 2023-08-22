@@ -21,7 +21,7 @@
 
             <p style="padding: 1rem 3rem; color:#000;">{{ $data->description }}</p>
 
-            <div class="location" style="padding: 2rem 3rem; color:#000;">
+            <div class="location" style="padding: 1rem 3rem; color:#000;">
               {{-- <span style="padding: 2rem 4rem; color:#000; padding-right: 0rem;" class="mdi mdi-map"></span> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span> --}}
               <img src="{{ asset('vendor_panel/location.png') }}" alt="" class="img-fluid"> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
             </div>
