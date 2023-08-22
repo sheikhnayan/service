@@ -59,7 +59,7 @@
 
 
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="padding-left: unset">
             <!-- Header -->
             <header class="main-header " id="header" style="padding: 0px">
                 <nav class="navbar navbar-static-top navbar-expand-lg">
