@@ -1,7 +1,14 @@
-.footer .row .col-md-12 i {
+.footer .row .col-md-12 svg {
     margin: 3rem;
-    font-size: 34px;
+    width: 34px;
+    height: 41px;
     color:#000;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+.footer .row .col-md-12 svg:hover{
+      fill: #EC981B !important;
   }
 
 .product img{
@@ -14,9 +21,6 @@
   min-height: 122px;
 }
 
-.footer .row .col-md-12 i:hover{
-    color: #EC981B !important;
-}
 
 .footer{
     background-color: #F8F9FF;
