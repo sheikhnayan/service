@@ -19,18 +19,18 @@
 
             <h4 style="text-align: center; padding: 2rem 5rem; color:black; padding-bottom: 1rem !important;">{{ $data->name }}</h4>
 
-            <p style="padding: 2rem 4rem; color:#000;">{{ $data->description }}</p>
+            <p style="padding: 1rem 3rem; color:#000;">{{ $data->description }}</p>
 
             @if ($data->type == 'virtual')
                 
-            <div class="location" style="padding: 2rem 4rem;">
+            <div class="location" style="padding: 1rem 2.8rem;">
               <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500"> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">Virtual (zoom/meet)</span>
               <img src="{{ asset('vendor_panel/date.png') }}" alt=""> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->date }}</span>
             </div>
 
             @else
 
-            <div class="location" style="padding: 2rem 4rem;">
+            <div class="location" style="padding: 1rem 2.8rem;">
               <div class="row">
                 <div class="col-md-6">
                   <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
@@ -67,10 +67,10 @@
             </div>
             
 
-            <div class="button" style="padding: 1rem 4rem">
+            <div class="button" style="padding: 1rem 3rem">
               <div class="row">
                 <div class="col-md-6">
-                  <a href="{{ route('vendor.event.edit',[$data->id]) }}" style="color:#8f94a1" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
+                  <a href="{{ route('vendor.event.edit',[$data->id]) }}" style="color:#8f94a1; padding-left: 0px;" class="btn btn-transparent text-dark"> <span class="mdi mdi-table-edit"></span> Edit Product</a>
                 </div>
               </div>
             </div> 
