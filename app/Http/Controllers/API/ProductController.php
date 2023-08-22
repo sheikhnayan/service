@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function all_sub_category(Request $request)
     {
-        $data['data'] = ProductSubCategory::where('category_id',$request->category_id)->latest()->get();
+        $data['data'] = ProductSubCategory::where('product_category_id',$request->category_id)->latest()->get();
 
         return $data;
     }

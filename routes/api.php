@@ -49,7 +49,7 @@ Route::middleware(['token'])->group(function () {
     Route::prefix('product')->group(function () {
         Route::post('/all',[ProductController::class,'all']);
         Route::post('/all-category',[ProductController::class,'all_category']);
-        Route::post('/all-sub-category',[ProductController::class,'by_sub_category']);
+        Route::post('/all-sub-category',[ProductController::class,'all_sub_category']);
         Route::post('/category',[ProductController::class,'by_category']);
         Route::post('/sub-category',[ProductController::class,'by_sub_category']);
         Route::post('/vendor',[ProductController::class,'by_vendor']);
