@@ -59,7 +59,7 @@
 
 
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="padding-left: unset">
             <!-- Header -->
             <header class="main-header " id="header" style="padding: 0px">
                 <nav class="navbar navbar-static-top navbar-expand-lg">
@@ -115,7 +115,7 @@
     
                                     <p style="text-align:center; padding: 0rem 3rem; color:#000">An OTP (One Time Password) has been  sent to your phone number {{ Auth::user()->phone }}</p>
     
-                                    <form action="{{ route('verify-otp') }}" method="POST">
+                                    <form class="text-center" action="{{ route('verify-otp') }}" method="POST">
                                     @csrf
 
                                     <input type="text" name="otp" style="margin: auto; width: 75%; margin-top: 2rem; text-align: center;" class="form-control" placeholder="Type 6 digit OTP here">
