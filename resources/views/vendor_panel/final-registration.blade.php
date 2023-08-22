@@ -110,6 +110,18 @@
                             <form action="{{ route('final-registration') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h3 style="padding: 2rem 0rem; color:black">Final Step - we’re almost done!</h3>
+
+                                <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; display:block;padding-top: 1rem; text-align: center"for="image" class="bg-light">
+                                <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 5px;">+</a> <br>
+                                <span style="font-size: 13px; margin-top: 20px; display: block;"> Upload Logo</span>
+                                <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="" width="100%">                           
+                                <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; cursor: pointer; width:25px; display:none" id="edit_button">
+
+                                </label> 
+                                <br>
+                                <input type="file" name="image" id="image" style="display: none;" required>
+                                <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p> 
+
                                 <input type="text" class="form-control" name="founder_name" placeholder="Founder/Owner/Manager Name" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                 <input type="url" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                 <div class="row justify-content-center">
@@ -119,13 +131,14 @@
                                         @endphp
                                         <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
                                             @foreach ($country as $item)
+                                                <option selected disabled value="">Select Category</option>
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
-                                            <option value="null">State/Region</option>
+                                            <option selected disabled value="">State/Region</option>
                                         </select>
                                     </div>
                                     {{-- @if (Auth::user()->vendor->business_type == 'non-profit')
@@ -206,30 +219,36 @@
         });
     </script>
 
-    <script>
-        $(document).ready(() => {
-            $("#image").change(function () {
-                const file = this.files[0];
-                if (file) {
-                    let reader = new FileReader();
-                    reader.onload = function (event) {
-                        $("#imgPreview")
-                        .attr("src", event.target.result);
+  <script>
+    $(document).ready(() => {
+        $("#image").change(function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $("#imgPreview")
+                    .attr("src", event.target.result);
 
-                        $("#imgPreview")
-                        .css("display", 'block');
+                    $("#imgPreview")
+                    .css("display", 'block');
 
-                        $('#add_button').css('display','none')
+                    $('#add_button').css('display','none')
 
-                        $('#edit_button').css('display','block')
-                    };
-                    reader.readAsDataURL(file);
+                    $('#add_button').next().css('display','none')
+
+                    $("Label").css("padding", '0px');
+
+                    $('#add_button').next().next().css('display','none')
+
+                    $('#edit_button').css('display','block')
+                };
+                reader.readAsDataURL(file);
 
 
-                }
-            });
+            }
         });
-    </script>
+    });
+  </script>
 
 
 

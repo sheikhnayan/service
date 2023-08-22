@@ -230,6 +230,12 @@ Please enter this code to complete your verification process.
             $document .= str_replace('public','',$image).',';
         }
 
+        $logo = time().'.'.$request->image->extension();   
+    
+        $log = $request->image->storeAs('public/vendor', $logo);
+    
+        $logo = str_replace('public','',$log).',';
+
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
         $add->founder_name = $request->founder_name;
         $add->website = $request->website;
@@ -238,6 +244,7 @@ Please enter this code to complete your verification process.
         $add->npo_category_id = $request->npo_category_id;
         $add->address = $request->address;
         $add->document = $document;
+        $add->logo = $logo;
         $add->status = 0;
         $add->update();
 
