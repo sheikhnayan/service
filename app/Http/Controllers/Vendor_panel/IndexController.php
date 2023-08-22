@@ -77,7 +77,8 @@ class IndexController extends Controller
             $vendor->founder_name = $request->founder_name;
             $vendor->country_id = $request->country_id;
             $vendor->state_id = $request->state_id;
-            $vendor->website = $request->donation_link;
+            $vendor->website = $request->website;
+            $vendor->donation_link = $request->donation_link;
             $vendor->address = $request->address;
 
             if (isset($request->image)) {
