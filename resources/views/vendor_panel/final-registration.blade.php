@@ -115,7 +115,8 @@
                                 <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 5px;">+</a> <br>
                                 <span style="font-size: 13px; margin-top: 20px; display: block;"> Upload Logo</span>
                                 <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="" width="100%">                           
-                                <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; cursor: pointer; width:25px; display:none" id="edit_button">
+                                <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 95px;
+                                left: 68px; cursor: pointer; width:25px; display:none" id="edit_button">
 
                                 </label> 
                                 <br>
@@ -130,8 +131,8 @@
                                             $country = DB::table('countries')->get();
                                         @endphp
                                         <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
+                                            <option selected disabled value="">Select a Country</option>
                                             @foreach ($country as $item)
-                                                <option selected disabled value="">Select Category</option>
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
