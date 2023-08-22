@@ -12,7 +12,7 @@
                 @csrf
                 <select name="issue" class="form-control"
                     style="border-radius: 10px; background: #e0e0e0; font-weight: bold;" required>
-                    <option selected disabled value="">Select an Issue</option>
+                    <option selected disabled value="">Select an Option</option>
                     <option value="technical">Technical</option>
                     <option value="payment">Payment</option>
                     <option value="other">Other</option>
