@@ -88,11 +88,11 @@
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                         @if (Auth::user()->type == 'vendor')    
 
-                            <input type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL (Must inc. https://)"
+                            <input type="text" name="website" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL (Must inc. https://)"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                             @if (Auth::user()->vendor->business_type == 'non-profit')
-                            <input type="text" name="donation_link" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Donation Link (Must inc. https://)"
+                            <input type="text" name="donation_link" class="form-control mt-4" value="{{ Auth::user()->vendor->donation_link }}" placeholder="Donation Link (Must inc. https://)"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
                             @endif
 
