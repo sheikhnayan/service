@@ -124,8 +124,8 @@
 
                                 <input type="text" class="form-control" name="founder_name" placeholder="Founder/Owner/Manager Name" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                 <input type="url" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
                                         @php
                                             $country = DB::table('countries')->get();
                                         @endphp
@@ -136,7 +136,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
                                             <option selected disabled value="">State/Region</option>
                                         </select>
