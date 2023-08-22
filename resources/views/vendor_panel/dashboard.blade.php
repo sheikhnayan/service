@@ -15,7 +15,7 @@
     <div class="content">
       @if (Auth::user()->vendor->business_type == 'vendor')
           
-        <div class="row">
+        <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="float-left">All Products</h4>
             <a href="{{ route('vendor.product.index') }}" class="btn btn-success float-right">See All</a>
@@ -39,7 +39,7 @@
             </div>
           @endforeach
         </div>
-        <div class="row">
+        <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="float-left">All Service</h4>
             <a href="{{ route('vendor.service.index') }}" class="btn btn-success float-right">See All</a>
@@ -63,7 +63,7 @@
             </div>
           @endforeach
         </div>
-        <div class="row">
+        <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="float-left">All Food</h4>
             <a href="{{ route('vendor.food-menu.index') }}" class="btn btn-success float-right">See All</a>
@@ -89,8 +89,8 @@
         </div>
 
       @else
-      
-        <div class="row">
+
+        <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="float-left">All Campaign</h4>
             <a href="{{ route('vendor.campaign.index') }}" class="btn btn-success float-right">See All</a>
@@ -114,7 +114,7 @@
             </div>
           @endforeach
         </div>
-        <div class="row">
+        <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="float-left">All Event</h4>
             <a href="{{ route('vendor.event.index') }}" class="btn btn-success float-right">See All</a>
