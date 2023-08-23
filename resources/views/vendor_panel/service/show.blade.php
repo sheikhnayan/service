@@ -42,11 +42,21 @@
               </div>
               <div class="col-md-6 text-dark mb-3">
                 <span class="font-weight-bold">Rating:</span> 
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
+                @php
+                    $rating = DB::table('reviews')->where('type','service')->where('product_id',$data->id)->avg('rating');
+                @endphp
+
+                @for ($i = 1; $i <= $rating; $i++)
+                  <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>  
+                @endfor
+
+                @php
+                    $remain = 5 - $rating;
+                @endphp
+
+                @for ($g = 1; $g <= $remain; $g++)
+                  <span style="font-size: 17px;" class="mdi mdi-star"></span>   
+                @endfor
               </div>
               <div class="col-md-6">
                 <a href="{{ $data->link }}" target="_blank" class="btn btn-success" style="width: 90%">Learn More</a>

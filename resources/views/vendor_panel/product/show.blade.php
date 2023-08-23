@@ -54,11 +54,21 @@
               </div>
               <div class="col-md-6 text-dark mb-3">
                 <span class="font-weight-bold">Rating:</span> 
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
-                <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>
+                @php
+                    $rating = DB::table('reviews')->where('type','product')->where('product_id',$data->id)->avg('rating');
+                @endphp
+
+                @for ($i = 1; $i <= $rating; $i++)
+                  <span style="color: orange; font-size: 17px;" class="mdi mdi-star"></span>  
+                @endfor
+
+                @php
+                    $remain = 5 - $rating;
+                @endphp
+
+                @for ($g = 1; $g <= $remain; $g++)
+                  <span style="font-size: 17px;" class="mdi mdi-star"></span>   
+                @endfor
               </div>
             </div>
             <div class="button" style="padding: 1rem 4rem">

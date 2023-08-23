@@ -60,7 +60,7 @@
                         </div>
 
                         <label class="mt-4"
-                            style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Link:</label>
+                            style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Registration Link:</label>
                         <input name="link" value="{{ $data->link }}" type="url" class="form-control"
                             placeholder="Event Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
