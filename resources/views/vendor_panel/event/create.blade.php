@@ -33,9 +33,9 @@
 
             <div class="input-group mt-4">
               <label style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold; margin-top:0.5rem; margin-right: 1rem;"> Event Type: </label>
-              <input name="type" type="radio" id="virtual" value="virtual" checked>
+              <input name="type" type="radio" class="event_type" id="virtual" value="virtual" checked>
               <label style="width: 20%; font-weight:bold; margin-left: 1rem; margin-top: .5rem;" for="virtual">Virtual</label>
-              <input name="type" type="radio" id="physical" value="physical">
+              <input name="type" type="radio" class="event_type" id="physical" value="physical">
               <label style="width: 20%; font-weight:bold; margin-left: 1rem; margin-top: .5rem;" for="physical">Physical</label>
             </div>
 
@@ -48,7 +48,7 @@
             <input name="link" type="url" class="form-control" placeholder="Event Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Location:</label>
-            <input name="location" type="text" class="form-control" placeholder="Event Location" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+            <input id="location_place_holder" name="location" type="text" class="form-control" placeholder="Enter Event Registration Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
           
             <button type="submit"  class="btn btn-success mt-4 logout-profile"> Add Event</button>
           </form>
@@ -87,6 +87,26 @@
             }
         });
     });
+  </script>
+
+  <script>
+    $('.event_type').on('change', function(){
+
+      value = $(this).val();
+
+      console.log(value);
+
+      if (value == 'physical') {
+        
+        $('#location_place_holder').attr('placeholder','Enter Google Location Link');
+
+      } else {
+
+        $('#location_place_holder').attr('placeholder','Enter Event Registration Link');
+        
+      }
+
+    })
   </script>
 @endsection
 
