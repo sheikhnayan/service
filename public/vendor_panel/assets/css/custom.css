@@ -11,6 +11,10 @@
       fill: #EC981B !important;
   }
 
+.footer .row .col-md-12 .active{
+    fill: #EC981B !important;
+  }
+
 .product img{
   max-height: 200px;
   min-height: 200px;

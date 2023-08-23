@@ -284,7 +284,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile-update', [IndexController::class,'profile_update'])->name('profile-update');
     Route::get('/support', [IndexController::class,'support'])->name('support');
     Route::post('/support', [IndexController::class,'support_submit'])->name('support');
-    Route::get('/notification', [IndexController::class,'notification']);
+    Route::get('/notification', [IndexController::class,'notification'])->name('notification');
     // Route::get('/preferred-vendor', [IndexController::class,'preferred_vendor']);
     Route::get('/subscription', [IndexController::class,'subscription'])->name('subscription');
     Route::get('/otp', [IndexController::class,'otp'])->name('otp');
