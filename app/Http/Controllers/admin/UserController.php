@@ -12,6 +12,7 @@ use App\Models\Campaign;
 use App\Models\Product;
 use App\Models\Food;
 use App\Models\Support;
+use App\Models\Review;
 use Hash;
 
 class UserController extends Controller
@@ -144,6 +145,7 @@ class UserController extends Controller
         $product = Product::where('user_id',$id)->delete();
         $food = Food::where('user_id',$id)->delete();
         $support = Support::where('user_id',$id)->delete();
+        $review = Review::where('user_id',$id)->delete();
 
         $user = User::where('id',$id)->delete();
 
