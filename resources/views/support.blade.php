@@ -7,7 +7,8 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin-top: 3rem;">
-            <h3 class="text-dark mt-4 text-center mb-4 pb-4">Support & Feedback</h3>
+            <h3 class="text-dark mt-4 text-center mb-4 pb-4">If you have any query/Faq email us at support@tbe-web.com</h3>
+            <h3 class="text-dark mt-4 text-center mb-4 pb-4">Or fill up the form</h3>
             <form action="{{ route('support') }}" method="post" class="mt-4 ">
                 @csrf
                 <select name="issue" class="form-control"
