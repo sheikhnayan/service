@@ -19,7 +19,7 @@
 
             <h4 style="text-align: center; padding: 2rem 5rem; color:black; padding-bottom: 1rem !important;">{{ $data->name }}</h4>
 
-            <p style="padding: 2rem 4rem; color:#000;">{{ $data->description }}</p>
+            <p style="padding: 1rem 4rem; color:#000;">{{ $data->description }}</p>
 
             <div class="row" style="padding: 1rem 4rem;">
               <div class="col-md-6 text-dark mb-3">
