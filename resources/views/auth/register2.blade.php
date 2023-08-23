@@ -133,7 +133,7 @@
                                     @php
                                         $country = DB::table('countries')->get();
                                     @endphp
-                                    <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
+                                    <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4" required>
                                         <option selected disabled value="">Select a Country</option>
                                         @foreach ($country as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -141,7 +141,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
+                                    <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4" required>
                                         <option selected disabled value="">State/Region</option>
                                     </select>
                                 </div>
