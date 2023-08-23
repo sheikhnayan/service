@@ -24,7 +24,7 @@
             @if ($data->type == 'virtual')
                 
             <div class="location" style="padding: 1rem 2.8rem;">
-              <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500"> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">Virtual (zoom/meet)</span>
+              <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500"> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">Virtual ({{ $data->location }})</span>
               <img src="{{ asset('vendor_panel/date.png') }}" alt=""> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->date }}</span>
             </div>
 
