@@ -217,9 +217,21 @@ class StripeController extends Controller
 
     public function subscription(Request $request)
     {
-        $plan = Plan::find($request->plan);  
+        $plan = Plan::find($request->plan);
+        
+        if (Auth::user()->vendor->subscription_id == null) {
+            # code...
+            $days = 90;
+        } else {
+            # code...
+            $days = \Carbon\Carbon::parse(Auth::user()->vendor->created_at)->addDays(90);
+            $days = $days->diff(\Carbon\Carbon::now());
+            $days = $days->d;
+        }
 
-        $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)->trialDays(90)->create($request->token);
+        
+
+        $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)->trialDays($days)->create($request->token);
 
         $user = Auth::user()->vendor;
 

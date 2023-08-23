@@ -69,8 +69,10 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
-                            srcset="">
+                        <a href="/">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                                srcset="">
+                        </a>
                     </div>
 
                     {{-- <div class="navbar-right ml-auto">
@@ -127,19 +129,20 @@
                             </div>
 
                             <div class="row justify-content-center">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     @php
                                         $country = DB::table('countries')->get();
                                     @endphp
                                     <select style="background: #d9d9d9; border-radius: 15px;" name="country_id" id="country_id" class="form-control mt-4">
+                                        <option selected disabled value="">Select a Country</option>
                                         @foreach ($country as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
-                                        <option value="null">State/Region</option>
+                                        <option selected disabled value="">State/Region</option>
                                     </select>
                                 </div>
                             </div>

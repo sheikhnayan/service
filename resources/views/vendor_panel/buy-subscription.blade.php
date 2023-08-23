@@ -69,8 +69,10 @@
                     </button> --}}
 
                     <div class="navbar-left ml-4">
-                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
-                            srcset="">
+                        <a href="/">
+                            <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                                srcset="">
+                        </a>
                     </div>
                 </nav>
 
