@@ -59,7 +59,7 @@
 
 
 
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="padding-left: unset">
             <!-- Header -->
             <header class="main-header " id="header" style="padding: 0px">
                 <nav class="navbar navbar-static-top navbar-expand-lg">
@@ -106,7 +106,7 @@
             <div class="content-wrapper">
                 <div class="content">
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <form action="{{ route('final-registration') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h3 style="padding: 2rem 0rem; color:black">Final Step - we’re almost done!</h3>
