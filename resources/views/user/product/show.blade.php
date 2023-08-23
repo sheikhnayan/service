@@ -17,7 +17,7 @@
 
             {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
 
-            <h4 style="text-align: left; padding: 2rem 5rem; color:black">{{ $data->name }}</h4>
+            <h4 style="text-align: left; padding: 2rem 3rem; color:black">{{ $data->name }}</h4>
 
             <p style="text-align: left; padding: 2rem 5rem; color:#000;">{{ $data->description }}</p>
 
