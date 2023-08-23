@@ -32,9 +32,9 @@
 
             <div class="location" style="padding: 1rem 2.8rem;">
               <div class="row">
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                   <img src="{{ asset('vendor_panel/location.png') }}" alt=""><span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->location }}</span>
-                </div>
+                </div> --}}
                 <div class="col-md-6">
                   <img src="{{ asset('vendor_panel/date.png') }}" alt=""> <span style="padding: 2rem 4rem; color:#000; padding-left: 0rem; font-weight: 500">{{ $data->date }}</span>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-6">
                   <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-top:2rem">
                       <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
-                      Join Event
+                      Event Registration
                     </a>
                 </div>
               @endif
