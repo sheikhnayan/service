@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Transcending Black Excellence</title>
+    <title>Upgrade Subscription - TBE</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
@@ -81,8 +81,12 @@
                 <div class="content">
                     <div class="container">
                         <div class="row justify-content-center">
-                            @if (Auth::user()->vendor->subscription_id == null)
-                                
+                            
+                            <div class="col-md-12">
+                                <h3 class="text-dark mt-4 text-center mb-4 pb-4">You need to upgrade your subscription to get more features.</h3>
+                            </div>
+
+                            @if (Auth::user()->vendor->subscription_id == null)                                
                                 <div class="col-md-4">
                                     <div class="card" style="border-radius: 8px; background: #f8f9ff">
                                         {{-- <p style="text-align: center; padding: 3rem; color:black">Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. </p> --}}
