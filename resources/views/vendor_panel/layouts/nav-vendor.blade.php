@@ -98,7 +98,7 @@
                         </li> --}}
 
 
-                        <li style="position: fixed; bottom: 0; width: 100%; border: unset;">
+                        <li style="position: fixed; bottom: 0; width: 100%; border: unset; margin-top: 4rem;">
                             <form action="{{ route('logout') }}" method="post" id="logout">
                             @csrf
                             <a class="sidenav-item-link" href="#" onclick="document.getElementById('logout').submit();" style="margin: auto; margin-left: 2rem; font-size: 17px; margin-bottom: 1rem;">
