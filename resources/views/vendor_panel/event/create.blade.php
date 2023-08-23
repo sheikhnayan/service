@@ -44,11 +44,11 @@
               <input name="date" type="date" class="form-control">
             </div>
 
-            <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Link:</label>
+            <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Registration Link:</label>
             <input name="link" type="url" class="form-control" placeholder="Event Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
             <label class="mt-4" style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event Location:</label>
-            <input id="location_place_holder" name="location" type="text" class="form-control" placeholder="Enter Event Registration Link" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
+            <input id="location_place_holder" name="location" type="text" class="form-control" placeholder="Ex: Zoom/Meet/Broadcast etc" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
           
             <button type="submit"  class="btn btn-success mt-4 logout-profile"> Add Event</button>
           </form>
@@ -102,7 +102,7 @@
 
       } else {
 
-        $('#location_place_holder').attr('placeholder','Enter Event Registration Link');
+        $('#location_place_holder').attr('placeholder','Ex: Zoom/Meet/Broadcast etc');
         
       }
 

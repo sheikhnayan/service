@@ -42,11 +42,11 @@
                             <label
                                 style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold; margin-top:0.5rem; margin-right: 1rem;">
                                 Event Type: </label>
-                            <input name="type" value="virtual" type="radio" id="virtual"
+                            <input class="event_type" name="type" value="virtual" type="radio" id="virtual"
                                 {{ $data->type == 'virtual' ? 'checked' : '' }}>
                             <label style="width: 20%; font-weight:bold; margin-left: 1rem; margin-top: .5rem;"
                                 for="virtual">Virtual</label>
-                            <input name="type" value="physical" type="radio" id="physical"
+                            <input class="event_type" name="type" value="physical" type="radio" id="physical"
                                 {{ $data->type == 'physical' ? 'checked' : '' }}>
                             <label style="width: 20%; font-weight:bold; margin-left: 1rem; margin-top: .5rem;"
                                 for="physical">Physical</label>
@@ -67,8 +67,8 @@
                         <label class="mt-4"
                             style="font-size: 15px;font-family:Montserrat; color:#000; font-weight:bold">Event
                             Location:</label>
-                        <input name="location" value="{{ $data->location }}" type="text" class="form-control"
-                            placeholder="Event Location"
+                        <input name="location" id="location_place_holder" value="{{ $data->location }}" type="text" class="form-control"
+                            placeholder="Ex: Zoom/Meet/Broadcast etc"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         <button href="/" class="btn btn-success mt-4 logout-profile"> Save</button>
@@ -109,4 +109,24 @@
       });
   });
 </script>
+
+<script>
+    $('.event_type').on('change', function(){
+
+      value = $(this).val();
+
+      console.log(value);
+
+      if (value == 'physical') {
+        
+        $('#location_place_holder').attr('placeholder','Enter Google Location Link');
+
+      } else {
+
+        $('#location_place_holder').attr('placeholder','Ex: Zoom/Meet/Broadcast etc');
+        
+      }
+
+    })
+  </script>
 @endsection
