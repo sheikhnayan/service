@@ -45,10 +45,16 @@
 
             <div class="row">
               <div class="col-md-6">
-                <a href="{{ $data->location }}" class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
+                <a 
+                @if ($data->type == 'virtual')
+                  href="{{ $data->link }}" 
+                  @else
+                    href="{{ $data->location }}" 
+                  @endif
+                class="btn btn-success join" style="width: 90%; margin-left:3rem; margin-top:2rem">
                   @if ($data->type == 'virtual')
                     <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
-                    Join Event
+                    Event Registration 
                   @else
                     <img src="{{ asset('vendor_panel/map.png') }}" alt="">
                     Google map
