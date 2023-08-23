@@ -45,7 +45,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                <a 
+                <a target="_blank" 
                 @if ($data->type == 'virtual')
                   href="{{ $data->link }}" 
                   @else
@@ -64,7 +64,7 @@
   
               @if ($data->type != 'virtual')
                 <div class="col-md-6">
-                  <a href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-top:2rem">
+                  <a target="_blank" href="{{ $data->link }}" class="btn btn-success join" style="width: 90%; margin-top:2rem">
                       <img src="{{ asset('vendor_panel/calender.png') }}" alt="">
                       Event Registration
                     </a>
