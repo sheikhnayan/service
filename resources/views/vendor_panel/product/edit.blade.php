@@ -10,7 +10,7 @@
 <div class="content-wrapper">
     <div class="content">
       <div class="row justify-content-center">
-        <div class="col-md-3">
+        <div class="col-md-6">
           <form action="{{ route('vendor.product.update',[$data->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="image" style="width:100%; height:122px; border-radius: 22px; font-weight: 500; padding-top: 2rem;"

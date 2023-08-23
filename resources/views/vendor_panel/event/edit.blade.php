@@ -8,7 +8,7 @@
     <div class="content-wrapper">
         <div class="content">
             <div class="row justify-content-center">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <form action="{{ route('vendor.event.update', [$data->id]) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
