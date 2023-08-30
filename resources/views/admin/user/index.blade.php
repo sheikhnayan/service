@@ -29,6 +29,8 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->country->name }}</td>
+                                <td>{{ $item->state->name }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->type }}</td>
                                 <td>
