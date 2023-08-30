@@ -14,6 +14,7 @@
                 <div class="card product" style="background-color: #F98513; border-radius:12px;">
                     <img class="img-fluid" src="{{ asset('storage/'.$item->logo) }}" style="margin: auto; padding: 5px; width: 100px; min-height: 100px;">
                     <p style="padding: 5px; margin:auto; color:#fff">{{ $item->company_name }}</p>
+                    <p style="padding: 5px; margin:auto; color:#fff">{{ $item->address }}</p>
                     <div class="button">
                     <a href="{{ route('user.campaign.profile',[$item->id]) }}" class="btn btn-transparent" style="color:#fff;"> <span class="mdi mdi-eye"></span> View</a>
                     </div>
