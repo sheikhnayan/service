@@ -273,7 +273,9 @@ class UserController extends Controller
     {
         // $data = Campaign::all();
 
-        $data = NPOCategory::all();
+        // $data = NPOCategory::all();
+
+        $data = VendorDetail::where('business_type','non-profit')->where('country_id',Auth::user()->country_id)->get();
 
         return view('user.campaign.index',compact('data'));
     }
