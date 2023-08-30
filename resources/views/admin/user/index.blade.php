@@ -16,6 +16,8 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Country</th>
+                            <th>State</th>
                             <th>Phone</th>
                             <th>Type</th>
                             <th>Action</th>
