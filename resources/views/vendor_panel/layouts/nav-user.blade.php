@@ -64,16 +64,9 @@
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="{{ route('user.help') }}">
+                            <a class="sidenav-item-link" href="{{ route('support') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
-                                <span class="nav-text">Help & FAQs</span> <b class="caret"></b>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="sidenav-item-link" href="{{ route('user.terms') }}">
-                                {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
-                                <span class="nav-text">Terms & privacy Policy</span> <b class="caret"></b>
+                                <span class="nav-text">Support & Feedback</span> <b class="caret"></b>
                             </a>
                         </li>
 
@@ -83,14 +76,14 @@
                                 <span class="nav-text">About us</span> <b class="caret"></b>
                             </a>
                         </li>
-                        <li>
-                            <a class="sidenav-item-link" href="{{ route('support') }}">
+                        <li style="margin-bottom: 4rem;">
+                            <a class="sidenav-item-link" href="{{ route('user.terms') }}">
                                 {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
-                                <span class="nav-text">Support & Feedback</span> <b class="caret"></b>
+                                <span class="nav-text">Terms & privacy Policy</span> <b class="caret"></b>
                             </a>
                         </li>
 
-                        <li style="position: fixed; bottom: 0; width: 100%; border: unset;">
+                        <li style="position: fixed; bottom: 0; width: 100%; border: unset; background: #ec981b">
                             <form action="{{ route('logout') }}" method="post" id="logout">
                             @csrf
                             <a class="sidenav-item-link" href="#" onclick="document.getElementById('logout').submit();" style="margin: auto; margin-left: 2rem; font-size: 17px; margin-bottom: 1rem;">
