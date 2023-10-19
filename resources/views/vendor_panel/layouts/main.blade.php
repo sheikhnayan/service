@@ -130,6 +130,32 @@
 
                     @endif
 
+                    @if (Auth::user()->type == 'vendor' | Auth::user()->type == 'user')
+
+                    <div class="navbar-right ml-auto">
+                        <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
+                            srcset="">
+                        <span class=" text-dark " style="font-weight:bold; font-size: 1rem">
+                            {{ Auth::user()->vendor->company_name }}
+                        </span>
+                        <span class="mdi mdi-arrow-down-drop-circle drop-down"></span>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                            @if (Auth::user()->type == 'vendor')
+                            <a class="dropdown-item" href="{{ route('notification') }}">Notification</a>
+                            @else
+                            <a class="dropdown-item" href="{{ route('user.wish') }}">WishList</a>
+                            @endif
+                            <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item" href="#">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+
+                    @endif
+
                 </nav>
 
 
