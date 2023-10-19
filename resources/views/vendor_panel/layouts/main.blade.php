@@ -386,7 +386,150 @@
 
     <input type="hidden" id="auth_country_id" value="{{ Auth::user()->country_id }}">
 
+    <script>
+        $('#search-input').on('keyup', function(){
+
+            $('#search-results').empty();
+
+            country_id = $('#auth_country_id').val();
+
+            value = $('#search-input').val();
+            
+            $.ajax({
+                url: "/user/search-main/"+value,
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function(res) {
+                    
+                    result = `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Products <h6>
+                                </div>
+                            </div>`;
+
+                    res.product.forEach(element => {
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/product/product/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
     
+                            result += html;
+                            
+                        }
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Services <h6>
+                                </div>
+                            </div>`;
+
+                    res.service.forEach(element => {
+
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/service/service/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Food <h6>
+                                </div>
+                            </div>`;
+
+                    res.food.forEach(element => {
+
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/food/food/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
+
+                    });
+
+                    result += `<div class="row justify-content-center">
+                                <div class="col-12 col-md-12">
+                                    <h6 class="p-2" style="text-weight: bold; background: #eee;"> Event <h6>
+                                </div>
+                            </div>`;
+
+                    res.service.forEach(element => {
+
+                        if (element.vendor.vendor.country_id == country_id) {
+                            
+                            html = `<a href="/user/event/event/`+element.id+`">
+                                        <div class="row p-2">
+                                            <div class="col-3 col-md-3">
+                                                <img class="img-fluid" src="http://127.0.0.1:8000/storage`+element.image+`" width="50px">
+                                            </div>
+                                            <div class="col-9 col-md-9" style="text-align: left">
+                                                `+element.name+`
+                                            </div>
+                                        </div>
+                                    </a>`;
+    
+                            result += html;
+                            
+                        }
+
+
+                    });
+
+                    $('#search-results').html(result);
+                }
+            });
+        })
+    </script>
+
+    <script>
+        window.addEventListener('click', function(e){   
+            if (document.getElementById('search-results').contains(e.target)){
+                // Clicked in box
+            } else{
+                // Clicked outside the box
+                if ($('#search-results').css('display') == 'block') {     
+                    $('#search-results').hide();
+                } else {
+                    $('#search-results').show();
+                    
+                }
+            }
+        });
+    </script>
     @if (Auth::user()->type == 'user')
 
     @if(session()->has('lng'))
