@@ -134,7 +134,7 @@ class RegisteredUserController extends Controller
 Please enter this code to complete your verification process.
 - Transcending Black Excellence';
             // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
-            $to = '+88'.Auth::user()->phone;
+            $to = '+'.Auth::user()->phone;
             $client = new Client($accountSid, $authToken);
             try {
                 $client->messages->create(
@@ -195,7 +195,7 @@ Please enter this code to complete your verification process.
 Please enter this code to complete your verification process.
 - Transcending Black Excellence';
         // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
-        $to = '+88'.Auth::user()->phone;
+        $to = '+'.Auth::user()->phone;
         $client = new Client($accountSid, $authToken);
         try {
             $client->messages->create(
@@ -245,6 +245,8 @@ Please enter this code to complete your verification process.
         $add->state_id = $request->state_id;
         $add->npo_category_id = $request->npo_category_id;
         $add->address = $request->address;
+        $add->address_latitude = $request->address_latitude;
+        $add->address_longitude = $request->address_longitude;
         $add->document = $document;
         $add->logo = $logo;
         $add->status = 0;

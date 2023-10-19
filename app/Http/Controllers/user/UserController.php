@@ -20,7 +20,10 @@ use App\Models\WishList;
 use App\Models\StartUpCategory;
 use App\Models\NPOCategory;
 use App\Models\VendorDetail;
+use \KMLaravel\GeographicalCalculator\Facade\GeoFacade;
 use Auth;
+use Session;
+use DB;
 
 class UserController extends Controller
 {
@@ -41,9 +44,53 @@ class UserController extends Controller
     public function product_category($id)
     {
         if ($id == 0) {
-            $data = Product::all();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+
+            $dat = Product::all();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
         }else{
-            $data = Product::where('category_id',$id)->get();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+
+            $dat = Product::where('category_id',$id)->get();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
         }
 
         $type = 'product';
@@ -53,23 +100,30 @@ class UserController extends Controller
 
     public function campaign_category($id)
     {
-        // $data = [];
+        $lat = Session::get('lat');
+            
+        $lon = Session::get('lng');
 
-        $data = VendorDetail::where('npo_category_id',$id)->get();
+        $dat = VendorDetail::where('npo_category_id',$id)->get();
 
         
-        // foreach ($vendors as $value) {
-        //     # code...
-        //     $campaigns = Campaign::where('user_id',$value->user_id)->get();
+        $data = [];
+    
+        foreach ($dat as $key => $value) {
+            # code...
+            $distance = GeoFacade::setPoint([$lat, $lon])
+                ->setOptions(['units' => ['km']])
+                // you can set unlimited lat/long points.
+                ->setPoint([$value->address_latitude, $value->address_longitude])
+                // get the calculated distance between each point
+                ->getDistance();
+                
+            if ($distance['1-2']['km'] <= 10) {
+                # code...
+                array_push($data,$value);
+            }
 
-        //     foreach ($campaigns as $campaign) {
-        //         # code...
-
-        //         array_push($data,$campaign);
-
-        //     }
-
-        // }
+        }
 
 
         $type = 'campaign';
@@ -80,9 +134,53 @@ class UserController extends Controller
     public function service_category($id)
     {
         if ($id == 0) {
-            $data = Service::all();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+
+            $dat = Service::all();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
         }else{
-            $data = Service::where('category_id',$id)->get();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+
+            $dat = Service::where('category_id',$id)->get();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
         }
 
         $type = 'service';
@@ -93,9 +191,55 @@ class UserController extends Controller
     public function food_category($id)
     {
         if ($id == 0) {
-            $data = Food::all();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+
+            $dat = Food::all();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
+            
         }else{
-            $data = Food::where('category_id',$id)->get();
+            $lat = Session::get('lat');
+            
+            $lon = Session::get('lng');
+            
+            $dat = Food::where('category_id',$id)->get();
+
+            $data = [];
+    
+            foreach ($dat as $key => $value) {
+                # code...
+                $distance = GeoFacade::setPoint([$lat, $lon])
+                    ->setOptions(['units' => ['km']])
+                    // you can set unlimited lat/long points.
+                    ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
+                    // get the calculated distance between each point
+                    ->getDistance();
+                    
+                if ($distance['1-2']['km'] <= 10) {
+                    # code...
+                    array_push($data,$value);
+                }
+
+            }
+
         }
 
         $type = 'food';

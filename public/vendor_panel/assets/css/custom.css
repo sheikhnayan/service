@@ -7,6 +7,17 @@
     margin-bottom: 1rem;
   }
 
+  .dropdown-menu{
+    width: 150px !important;
+    top: 65% !important;
+    left: unset !important;
+    right: 0 !important;
+  }
+
+  .drop-down{
+    cursor: pointer;
+  }
+
 .footer .row .col-md-12 svg:hover{
       fill: #EC981B !important;
   }

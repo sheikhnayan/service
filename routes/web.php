@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Vendor_panel\IndexController;
 use App\Http\Controllers\Vendor_panel\ProductController;
 use App\Http\Controllers\Vendor_panel\ServiceController;
@@ -70,6 +71,14 @@ Route::get('/', function () {
         # code...
         return redirect()->intended(RouteServiceProvider::Vendor);
     }
+});
+
+Route::post('current-location', function (Request $request) {
+    Session::put('lng', $request->lng);
+    Session::put('lat', $request->lat);
+    Session::put('address', $request->address);
+
+    return true;
 });
 
 Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','status')->name('vendor.')->group(function () {

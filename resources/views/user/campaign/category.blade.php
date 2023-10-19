@@ -10,7 +10,6 @@
             <h3 class="text-dark"> All Campaign Categorised Profile</h3> 
         </div>
         @foreach ($data as $item)
-            @if ($item->vendor->vendor->country_id == Auth::user()->country_id)
                 <div class="col-md-3 mt-4">
                     <div class="card product p-4" style="background-color: #dee1f1; border-radius:12px;">
                         <img class="img-fluid" src="{{ asset('storage/'.$item->logo) }}" style="margin: auto; padding: 5px;">
@@ -22,7 +21,6 @@
                         </div>
                     </div>
                 </div>
-            @endif
         @endforeach
     </div>
 @endsection

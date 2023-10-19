@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="_token" content="{{ csrf_token() }}">
 
     <title>@yield('title') - TBE</title>
 
@@ -81,25 +82,54 @@
                         <span class="sr-only">Toggle navigation</span>
                     </button>
                     @if (Auth::user()->type == 'user')
+                    
                     <div class="search-form d-none d-lg-inline-block m-auto">
                         <div class="input-group" style="border: 1px solid #B9B9B9; border-radius: 15px;">
                             <input type="text" name="query" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." autofocus="" autocomplete="off">
                             <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                            <i class="mdi mdi-magnify"></i>
+                                <i class="mdi mdi-magnify"></i>
                             </button>
                         </div>
                         <div id="search-results-container">
                             <div id="search-results" style="display: block"></div>
                         </div>
                     </div>
+                    
+                    <div class="d-block">
+                        <input style="float: left" type="text" name="address" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." value="{{ session()->get('address') }}" autocomplete="off" readonly>
+
+                        <a style="float: right" href="#" onclick="change_address()">Change Address</a>
+                    </div>
+
                     @else
                         <h4 class="ml-auto"> @yield('title') </h4>
                     @endif
+                    @if (Auth::user()->type == 'vendor')
 
                     <div class="navbar-right ml-auto">
-                        <img class="img-fluid" src="{{ asset('vendor_panel/logo.png') }}" alt="" width="92px" height="48px"
+                        <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
                             srcset="">
+                        <span class=" text-dark " style="font-weight:bold; font-size: 1rem">
+                            {{ Auth::user()->vendor->company_name }}
+                        </span>
+                        <span class="mdi mdi-arrow-down-drop-circle drop-down"></span>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                            @if (Auth::user()->type == 'vendor')
+                            <a class="dropdown-item" href="{{ route('notification') }}">Notification</a>
+                            @else
+                            <a class="dropdown-item" href="{{ route('user.wish') }}">WishList</a>
+                            @endif
+                            <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item" href="#">Logout</button>
+                            </form>
+                        </div>
                     </div>
+                    
+
+                    @endif
+
                 </nav>
 
 
@@ -126,7 +156,7 @@
 
 
             @if (Auth::user()->type != 'admin')
-                <footer class="footer mt-auto">
+                {{-- <footer class="footer mt-auto">
                     <div class="row justify-content-center">
                         <div class="col-md-12" style="position: fixed; bottom: 0; width: 100%; background: #f8f9ff; text-align:center">
                             @if (Auth::user()->type == 'vendor')
@@ -263,13 +293,42 @@
                                 </svg></a>
                         </div>
                     </div>
-                </footer>
+                </footer> --}}
             @endif
         </div>
     </div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
+    <div class="modal" id="address" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Change Address</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <label>Address</label>
+                <input type="text" class="form-control map-input" id="address-input" value="{{ session()->get('address') }}" name="address" placeholder="Area/Road No/House/Apartment etc" style="font-size:17px;">
+
+                <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+
+                <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
+                    <div style="width: 100%; height: 100%" id="address-map"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script>
     <script src="{{ asset('vendor_panel/assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/toaster/toastr.min.js') }}"></script>
@@ -287,8 +346,8 @@
     <script src="{{ asset('vendor_panel/assets/js/sleek.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/chart.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/date-range.js') }}"></script>
-    <script src="{{ asset('vendor_panel/assets/js/map.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('js/mapInputChange.js') }}"></script>
 
     <input type="hidden" id="auth_country_id" value="{{ Auth::user()->country_id }}">
 
@@ -436,8 +495,39 @@
             }
         });
     </script>
+    @if (Auth::user()->type == 'user')
+
+    @if(session()->has('lng'))
+    <input type="hidden" id="lng" value="{{ session()->get('lng') }}">
+    <input type="hidden" id="lat" value="{{ session()->get('lat') }}">
+
+        <script>
+            lng = $('#lng').val();
+            lat = $('#lat').val();
+            console.log(lng);
+            console.log(lat);
+        </script>
+
+    @else 
+        <script src="{{ asset('js/mapInput.js') }}"></script>
+    @endif
+
+    <script>
+        function change_address(){
+            $('#address').modal('show');
+        }
+    </script>
+    @endif
+
+    <script>
+        $('.drop-down').on('click', function(){
+            $('.dropdown-menu').toggle();
+        })
+    </script>
 
     @yield('js')
+
+    
 
 
 

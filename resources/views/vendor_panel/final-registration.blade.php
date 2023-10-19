@@ -159,7 +159,14 @@
                                 </div>
 
 
-                                <input type="text" class="form-control" name="address" placeholder="Area/Road No/House/Apartment etc" style=" margin-top: 6rem; border:unset; border-bottom: 2px solid black; font-size:17px;">
+                                <input type="text" class="form-control map-input" id="address-input" name="address" placeholder="Area/Road No/House/Apartment etc" style=" margin-top: 6rem; border:unset; border-bottom: 2px solid black; font-size:17px;">
+
+                                <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                                <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+
+                                <div id="address-map-container" style="width:100%;height:400px; ">
+                                    <div style="width: 100%; height: 100%" id="address-map"></div>
+                                </div>
 
                                 <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
                                 <br>
@@ -175,7 +182,7 @@
     </div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script> --}}
     <script src="{{ asset('vendor_panel/assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/toaster/toastr.min.js') }}"></script>
@@ -193,7 +200,7 @@
     <script src="{{ asset('vendor_panel/assets/js/sleek.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/chart.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/date-range.js') }}"></script>
-    <script src="{{ asset('vendor_panel/assets/js/map.js') }}"></script>
+    {{-- <script src="{{ asset('vendor_panel/assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('vendor_panel/assets/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"></script>
 
@@ -253,7 +260,8 @@
     });
   </script>
 
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script>
+    <script src="{{ asset('js/mapInput.js') }}"></script>
 
 
 </body>

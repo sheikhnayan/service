@@ -87,15 +87,14 @@
 
 
 
-                        <li style="position: fixed; bottom: 0; width: 100%; border: unset;">
+                        {{-- <li style="position: fixed; bottom: 0; width: 100%; border: unset;">
                             <form action="{{ route('logout') }}" method="post" id="logout">
                             @csrf
                             <a class="sidenav-item-link" href="#" onclick="document.getElementById('logout').submit();" style="margin: auto; margin-left: 2rem; font-size: 17px; margin-bottom: 1rem;">
-                                {{-- <i class="mdi mdi-view-dashboard-outline"></i> --}}
                                 <span class="nav-text">Logout <span class="mdi mdi-arrow-right"></span> </span> </b>
                             </a>
                             </form>
-                        </li>
+                        </li> --}}
 
 
 
