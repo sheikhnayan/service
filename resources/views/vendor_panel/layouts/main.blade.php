@@ -109,10 +109,10 @@
                     <div class="navbar-right ml-auto">
                         <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
                             srcset="">
-                        <span class=" text-dark " style="font-weight:bold; font-size: 1rem">
+                        <span class=" text-dark " style="font-weight:bold; font-size: 1.2rem">
                             {{ Auth::user()->vendor->company_name }}
                         </span>
-                        <span class="mdi mdi-arrow-down-drop-circle drop-down"></span>
+                        <span class="mdi mdi-arrow-down-drop-circle drop-down" style="font-size: 1.2rem;"></span>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             @if (Auth::user()->type == 'vendor')
@@ -135,10 +135,10 @@
                     <div class="navbar-right ml-auto">
                         {{-- <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
                             srcset=""> --}}
-                        <span class=" text-dark " style="font-weight:bold; font-size: 1rem">
+                        <span class=" text-dark " style="font-weight:bold; font-size: 1.2rem">
                             {{ Auth::user()->name }}
                         </span>
-                        <span class="mdi mdi-arrow-down-drop-circle drop-down"></span>
+                        <span class="mdi mdi-arrow-down-drop-circle drop-down" style="font-size: 1.2rem;"></span>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             @if (Auth::user()->type == 'vendor')
@@ -161,10 +161,10 @@
                     <div class="navbar-right ml-auto">
                         {{-- <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
                             srcset=""> --}}
-                        <span class=" text-dark " style="font-weight:bold; font-size: 1rem">
+                        <span class=" text-dark " style="font-weight:bold; font-size: 1.2rem">
                             {{ Auth::user()->name }}
                         </span>
-                        <span class="mdi mdi-arrow-down-drop-circle drop-down"></span>
+                        <span class="mdi mdi-arrow-down-drop-circle drop-down" style="font-size: 1.2rem;"></span>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             <form action="{{ route('logout') }}" method="post">
