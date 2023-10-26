@@ -85,7 +85,7 @@
                 </button>
                 <strong> {{ session('success') }} </strong>
             </div>
-        @endif 
+        @endif
 
         @if(Session::has('failure'))
             <div class="alert alert-danger alert-dismissible" style="width: 23rem; text-align:center; margin:auto; margin-top:1rem; margin-bottom: 1rem;" role="alert">
@@ -94,7 +94,7 @@
                 </button>
                 <strong> {{ session('failure') }} </strong>
             </div>
-        @endif 
+        @endif
         @if ($errors->any())
         @foreach ($errors->all() as $item)
             <div class="alert alert-danger alert-dismissible" style="width: 23rem; text-align:center; margin:auto; margin-top:1rem; margin-bottom: 1rem;" role="alert">
@@ -116,19 +116,19 @@
                                 <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; display:block;padding-top: 1rem; text-align: center"for="image" class="bg-light">
                                 <a class="btn btn-success text-light mb-1" id="add_button" style="border-radius: 50%; margin-top: 5px;">+</a> <br>
                                 <span style="font-size: 13px; margin-top: 20px; display: block;"> Upload Logo</span>
-                                <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="" width="100%">                           
+                                <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="" width="100%">
                                 <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 95px;
                                 left: 68px; cursor: pointer; width:25px; display:none" id="edit_button">
 
-                                </label> 
+                                </label>
                                 <br>
                                 <input type="file" name="image" id="image" style="display: none;" required>
-                                <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p> 
+                                <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p>
 
                                 <input type="text" class="form-control" name="founder_name" placeholder="Founder/Owner/Manager Name" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                 <input type="url" class="form-control mt-4" name="website" placeholder="Your Website URL" style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         @php
                                             $country = DB::table('countries')->get();
                                         @endphp
@@ -143,7 +143,7 @@
                                         <select style="background: #d9d9d9; border-radius: 15px;" name="state_id" id="state_id" class="form-control mt-4">
                                             <option selected disabled value="">State/Region</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     {{-- @if (Auth::user()->vendor->business_type == 'non-profit')
                                     <div class="col-md-4">
                                         @php
@@ -171,7 +171,7 @@
                                 <p style="padding: 2rem 0rem; color:black">Upload Your NPO/Business Incorporation/Registration document </p>
                                 <br>
                                 <input type="file" required width="100%" height="122px" name="logo[]" class="form-control mb-4" style="border:unset; border-bottom: 2px solid black; font-size:17px; padding-bottom:2.7rem;" multiple>
-                                
+
                                 <button type="submit" class="ml-auto mr-auto mb-4 mt-4 btn btn-success" style="width: 40%;">Submit</button>
                             </form>
                         </div>
@@ -207,22 +207,22 @@
     <script>
         $('#country_id').on('click', function(){
             val = $('#country_id').val();
-    
+
             $.ajax({
             url: "/get-states/"+val,
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {
                 htmls = ``;
-    
+
                 res.forEach(element => {
                     html = ` <option value="`+element.id+`">`+element.name+`</option>`;
-    
+
                     htmls += html;
                 });
-    
+
                 $('#state_id').empty();
-    
+
                 $('#state_id').html(htmls);
             }
         });

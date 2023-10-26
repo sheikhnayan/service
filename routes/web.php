@@ -61,12 +61,12 @@ Route::get('/', function () {
                 # code...
                 return redirect()->intended(RouteServiceProvider::NPO);
             }
-            
+
         } else{
             return redirect()->intended(RouteServiceProvider::USER);
         }
-        
-        
+
+
     } else {
         # code...
         return redirect()->intended(RouteServiceProvider::Vendor);
@@ -79,6 +79,18 @@ Route::post('current-location', function (Request $request) {
     Session::put('address', $request->address);
 
     return true;
+});
+
+Route::post('current-location-change', function (Request $request) {
+    Session::forget('lng');
+    Session::forget('lat');
+    Session::forget('address');
+
+    Session::put('lng', $request->address_longitude);
+    Session::put('lat', $request->address_latitude);
+    Session::put('address', $request->address);
+
+    return back();
 });
 
 Route::prefix('/vendor')->middleware('auth','vendor','check_subscription','status')->name('vendor.')->group(function () {
@@ -245,13 +257,13 @@ Route::prefix('/admin')->middleware('auth','admin')->name('admin.')->group(funct
     Route::prefix('npo')->name('npo.')->group(function () {
         Route::get('/', [NPOController::class,'index'])->name('index');
     });
-    
+
 });
 
 
 Route::post('/verify-otp', [IndexController::class,'otp_submit'])->name('verify-otp');
 Route::get('resend-otp', function () {
-    
+
         $otp = mt_rand(0,999999);
 
         $store = Auth::user();
@@ -262,7 +274,7 @@ Route::get('resend-otp', function () {
         $authToken = '36c432a0d4643a93c403fb73b63d4282';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
-        $message = 'Your OTP for verification is: '.$otp.'. 
+        $message = 'Your OTP for verification is: '.$otp.'.
 Please enter this code to complete your verification process.
 - Transcending Black Excellence';
         // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
@@ -278,7 +290,7 @@ Please enter this code to complete your verification process.
             );
 
         return back()->with('success','OTP is resend to '.Auth::user()->phone.'.');
-        
+
         } catch (TwilioException $e) {
             return back()->with('failur',$e);
         }
@@ -288,7 +300,7 @@ Please enter this code to complete your verification process.
 Route::get('/get-states/{country}', [IndexController::class,'get_states'])->name('get-states');
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/profile', [IndexController::class,'profile'])->name('profile');
     Route::post('/profile-update', [IndexController::class,'profile_update'])->name('profile-update');
     Route::get('/support', [IndexController::class,'support'])->name('support');
@@ -299,11 +311,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/otp', [IndexController::class,'otp'])->name('otp');
     Route::get('/final-registration', [IndexController::class,'final_registration'])->name('final-registration');
     Route::post('/final-registration', [RegisteredUserController::class,'final_registration'])->name('final-registration');
-    
+
     Route::get('/review', [IndexController::class,'review']);
-    
+
     Route::get('/plan', [StripeController::class,'create_plan'])->name('plan');
-    
+
     Route::get('plans', [StripeController::class, 'index']);
     Route::get('plan/{plan}/{platform}', [StripeController::class, 'show'])->name("plans.show");
     Route::post('subscription', [StripeController::class, 'subscription'])->name("subscription.create");
@@ -333,63 +345,63 @@ Route::prefix('/user')->name('user.')->middleware('auth')->group(function () {
     Route::get('service-category/{id}',[User::class,'service_category'])->name('service-category');
     Route::get('product-category/{id}',[User::class,'product_category'])->name('product-category');
     Route::get('campaign-category/{id}',[User::class,'campaign_category'])->name('campaign-category');
-    
+
 
     Route::prefix('/campaign')->name('campaign.')->group(function () {
-        
+
         Route::get('/',[User::class,'campaign'])->name('index');
         Route::get('/campaign/{id}',[User::class,'campaign_show'])->name('show');
         Route::get('/campaign/profile/{id}',[User::class,'campaign_profile'])->name('profile');
         Route::get('/campaign/all/{id}',[User::class,'campaign_all'])->name('all');
         Route::get('/campaign/review/{id}',[User::class,'campaign_review'])->name('review');
         Route::get('/campaign/wish/{id}',[User::class,'campaign_wish'])->name('wish');
-        
+
     });
 
     Route::prefix('/event')->name('event.')->group(function () {
-        
+
         Route::get('/',[User::class,'event'])->name('index');
         Route::get('/event/{id}',[User::class,'event_show'])->name('show');
         Route::get('/event/profile/{id}',[User::class,'event_profile'])->name('profile');
         Route::get('/event/all/{id}',[User::class,'event_all'])->name('all');
         Route::get('/event/review/{id}',[User::class,'event_review'])->name('review');
         Route::get('/event/wish/{id}',[User::class,'event_wish'])->name('wish');
-        
+
     });
 
     Route::prefix('/product')->name('product.')->group(function () {
-        
+
         Route::get('/',[User::class,'product'])->name('index');
         Route::get('/product/{id}',[User::class,'product_show'])->name('show');
         Route::get('/product/profile/{id}',[User::class,'product_profile'])->name('profile');
         Route::get('/product/all/{id}',[User::class,'product_all'])->name('all');
         Route::get('/product/review/{id}',[User::class,'product_review'])->name('review');
         Route::get('/product/wish/{id}',[User::class,'product_wish'])->name('wish');
-        
+
     });
 
     Route::prefix('/service')->name('service.')->group(function () {
-        
+
         Route::get('/',[User::class,'service'])->name('index');
         Route::get('/service/{id}',[User::class,'service_show'])->name('show');
         Route::get('/service/profile/{id}',[User::class,'service_profile'])->name('profile');
         Route::get('/service/all/{id}',[User::class,'service_all'])->name('all');
         Route::get('/service/review/{id}',[User::class,'service_review'])->name('review');
         Route::get('/service/wish/{id}',[User::class,'service_wish'])->name('wish');
-        
+
     });
 
     Route::prefix('/food')->name('food.')->group(function () {
-        
+
         Route::get('/',[User::class,'food'])->name('index');
         Route::get('/food/{id}',[User::class,'food_show'])->name('show');
         Route::get('/food/profile/{id}',[User::class,'food_profile'])->name('profile');
         Route::get('/food/all/{id}',[User::class,'food_all'])->name('all');
         Route::get('/food/review/{id}',[User::class,'food_review'])->name('review');
         Route::get('/food/wish/{id}',[User::class,'food_wish'])->name('wish');
-        
+
     });
-    
+
 });
 
 

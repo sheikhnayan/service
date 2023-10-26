@@ -14,6 +14,18 @@
     right: 0 !important;
   }
 
+  .address{
+    padding: 0.5rem;
+  }
+
+  .pac-container { z-index: 100000 !important; }
+
+  .address:hover{
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background: rgb(251, 233, 208);
+  }
+
   .drop-down{
     cursor: pointer;
   }
@@ -118,7 +130,7 @@ body{
   }
 
 .success{
-    color: #F98513;    
+    color: #F98513;
 }
 
 .input-group > .intl-tel-input.allow-dropdown {
@@ -127,11 +139,11 @@ body{
     flex: 1 1 auto;
     width: 1%;
   }
-  
+
   .input-group > .intl-tel-input.allow-dropdown > .flag-container {
       z-index: 4;
   }
-  
+
   .iti-flag {
     background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/img/flags.png");
   }
@@ -152,7 +164,7 @@ body{
     text-align:center;
     width:5em;
   }
-  
+
   .star-rating input {
     display:none;
   }
@@ -160,23 +172,23 @@ body{
   .orange {
     color: orange;
   }
-  
+
   .star-rating label {
     color:#ccc;
     cursor:pointer;
   }
-  
+
   .star-rating :checked ~ label {
     color:#f98513;
   }
-  
+
   .star-rating label:hover,
   .star-rating label:hover ~ label {
     color:#f98513;
   }
-  
+
   /* explanation */
-  
+
   article {
     background-color:#ffe;
     box-shadow:0 0 1em 1px rgba(0,0,0,.25);
@@ -187,7 +199,7 @@ body{
     max-width:30em;
     padding:2em;
   }
-  
+
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
       .iti-flag {
         background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/img/flags@2x.png");
@@ -201,7 +213,7 @@ body{
         display: none !important;
       }
   }
-  
+
 
 
 

@@ -105,30 +105,30 @@
                             {{-- <img class="img-fluid" src="{{ asset('vendor_panel/user.png') }}" width="122px" height="122px"> --}}
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold">Hey,</h4>
                             <h4 class="ml-2 text-dark" style="font-family:Montserrat; font-weight:bold;line-height:2.3;">Register as a User</h4>
-            
+
                             <input type="text" name="name" class="form-control mt-4" placeholder="Name"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                             <input name="email" type="email" class="form-control mt-4" placeholder="Email Address"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
-                        
+
                             <div class="form-group mt-4">
                                 <div class="input-group input-group-sm">
                                     <input name="phone" id="phone" type="tel" placeholder="Phone NUmber" class="form-control form-control-sm rounded-0 w-100" style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius: 0.25rem !important;">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control mt-4" placeholder="Password"
                                     style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password">
                                     <img id="togglePassword" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 290px; right: 20px; cursor:pointer">
                             </div>
-                        
+
                             <div class="form-group">
                                 <input type="password" name="password_confirmation" class="form-control mt-4" placeholder="Confirm Password"
                                     style="border:unset; border-bottom: 2px solid black; font-size:17px; border-radius:0px;" id="id_password2">
                                     <img id="togglePassword2" class="img-fluid" src="{{ asset('vendor_panel/eye.png') }}" style="position: absolute; top: 355px; right: 20px; cursor:pointer">
                             </div>
 
-                            <div class="row justify-content-center">
+                            {{-- <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     @php
                                         $country = DB::table('countries')->get();
@@ -145,8 +145,8 @@
                                         <option selected disabled value="">State/Region</option>
                                     </select>
                                 </div>
-                            </div>
-                            
+                            </div> --}}
+
                             <input required type="checkbox" id="checkbox" class="mt-4" placeholder="Confirm Password"  style="border:unset; border-bottom: 2px solid black; font-size:17px;">
                             <label for="checkbox">I agree with <a href="#">terms and condition</a> & <a href="#">privacy policy</a></label>
 
@@ -163,14 +163,14 @@
                       </div>
                   </div>
                 </div>
-            
-            
-            
-            
+
+
+
+
             </div>
 
 
-            
+
             {{-- <footer class="footer mt-auto">
                 <div class="row justify-content-center">
                     <div class="col-md-4">
@@ -233,15 +233,15 @@ telInput.intlTelInput({
 })
 
 $('.country').on('click', function(){
-            
+
             setTimeout(function(){
                 title = $('.selected-flag').attr('title');
-    
+
                 title = title.replace(/\D/g, "");
                 $('#phone').val(title);
             }, 500);
 
-            
+
         })
     </script>
 

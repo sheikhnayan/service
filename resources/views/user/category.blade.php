@@ -2,7 +2,7 @@
 
 @section('title')
     @if ($type == 'product')
-    Product 
+    Product
     @elseif($type == 'service')
     Service
     @elseif($type == 'food')
@@ -29,13 +29,13 @@
             </div>
         </div>
     </div>
-    
+
 </div>
     <div class="row p-4">
         <div class="col-md-12 mb-4">
-            <h3 class="text-dark"> All 
+            <h3 class="text-dark"> All
                 @if ($type == 'product')
-                    Product 
+                    Product
                 @elseif($type == 'service')
                     Service
                 @elseif($type == 'food')
@@ -45,7 +45,7 @@
                 @elseif($type == 'campaign')
                     Campaign
                 @endif
-            </h3> 
+            </h3>
         </div>
         @foreach ($data as $item)
                 <div class="col-md-3 mt-4">

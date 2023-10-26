@@ -58,17 +58,17 @@
     <div class="wrapper">
 
         @if (Auth::user()->type == 'admin')
-        
+
         @include('vendor_panel.layouts.nav-admin')
 
         @elseif (Auth::user()->type == 'user')
-            
+
         @include('vendor_panel.layouts.nav-user')
 
         @else
-        
+
         @include('vendor_panel.layouts.nav-vendor')
-            
+
         @endif
 
 
@@ -82,11 +82,11 @@
                         <span class="sr-only">Toggle navigation</span>
                     </button>
                     @if (Auth::user()->type == 'user')
-                    
-                    <div class="d-block">
-                        <input style="float: left" type="text" name="address" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." value="{{ session()->get('address') }}" autocomplete="off" readonly>
 
-                        <a style="float: right" href="#" onclick="change_address()">Change Address</a>
+                    <div class="d-block m-auto address">
+                        <input style="float: left" type="hidden" name="address" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." value="{{ session()->get('address') }}" autocomplete="off" readonly>
+
+                        <a style="float: right; font-size: 1.2rem; color: #ec981b;" href="#" onclick="change_address()"> <span style="color: #000;">Address:</span> {{ session()->get('address') }}</a>
                     </div>
 
                     @else
@@ -114,7 +114,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
 
                     @endif
 
@@ -140,7 +140,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
 
                     @endif
 
@@ -161,7 +161,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
 
                     @endif
 
@@ -176,7 +176,7 @@
                     </button>
                     <strong> {{ session('success') }} </strong>
                 </div>
-            @endif 
+            @endif
 
             @if(Session::has('failure'))
                 <div class="alert alert-danger alert-dismissible" style="width: 23rem; margin:auto; margin-top:1rem; margin-bottom: 1rem;" role="alert">
@@ -185,7 +185,7 @@
                     </button>
                     <strong> {{ session('failure') }} </strong>
                 </div>
-            @endif 
+            @endif
 
             @yield('content')
 
@@ -335,35 +335,39 @@
 
 
     <div class="modal" id="address" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Change Address</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <label>Address</label>
-                <input type="text" class="form-control map-input" id="address-input" value="{{ session()->get('address') }}" name="address" placeholder="Area/Road No/House/Apartment etc" style="font-size:17px;">
+        <form action="/current-location-change" method="post">
+        @csrf
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Change Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <label>Address</label>
+                    <input type="text" class="form-control map-input" id="address-input" value="{{ session()->get('address') }}" name="address" placeholder="Area/Road No/House/Apartment etc" style="font-size:17px;">
 
-                <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
-                <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+                    <input type="hidden" name="address_latitude" id="address-latitude" value="{{ session()->get('lat') }}" />
+                    <input type="hidden" name="address_longitude" id="address-longitude" value="{{ session()->get('lng') }}" />
 
-                <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
-                    <div style="width: 100%; height: 100%" id="address-map"></div>
+                    <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
+                        <div style="width: 100%; height: 100%" id="address-map"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
-          </div>
-        </div>
+        </form>
+
       </div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script> --}}
     <script src="{{ asset('vendor_panel/assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/plugins/toaster/toastr.min.js') }}"></script>
@@ -382,6 +386,7 @@
     <script src="{{ asset('vendor_panel/assets/js/chart.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/date-range.js') }}"></script>
     <script src="{{ asset('vendor_panel/assets/js/custom.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script>
     <script src="{{ asset('js/mapInputChange.js') }}"></script>
 
     <input type="hidden" id="auth_country_id" value="{{ Auth::user()->country_id }}">
@@ -394,13 +399,13 @@
             country_id = $('#auth_country_id').val();
 
             value = $('#search-input').val();
-            
+
             $.ajax({
                 url: "/user/search-main/"+value,
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {
-                    
+
                     result = `<div class="row justify-content-center">
                                 <div class="col-12 col-md-12">
                                     <h6 class="p-2" style="text-weight: bold; background: #eee;"> Products <h6>
@@ -408,8 +413,8 @@
                             </div>`;
 
                     res.product.forEach(element => {
-                        if (element.vendor.vendor.country_id == country_id) {
-                            
+                        // if (element.vendor.vendor.country_id == country_id) {
+
                             html = `<a href="/user/product/product/`+element.id+`">
                                         <div class="row p-2">
                                             <div class="col-3 col-md-3">
@@ -420,10 +425,10 @@
                                             </div>
                                         </div>
                                     </a>`;
-    
+
                             result += html;
-                            
-                        }
+
+                        // }
                     });
 
                     result += `<div class="row justify-content-center">
@@ -434,8 +439,8 @@
 
                     res.service.forEach(element => {
 
-                        if (element.vendor.vendor.country_id == country_id) {
-                            
+                        // if (element.vendor.vendor.country_id == country_id) {
+
                             html = `<a href="/user/service/service/`+element.id+`">
                                         <div class="row p-2">
                                             <div class="col-3 col-md-3">
@@ -446,10 +451,10 @@
                                             </div>
                                         </div>
                                     </a>`;
-    
+
                             result += html;
-                            
-                        }
+
+                        // }
 
                     });
 
@@ -461,8 +466,8 @@
 
                     res.food.forEach(element => {
 
-                        if (element.vendor.vendor.country_id == country_id) {
-                            
+                        // if (element.vendor.vendor.country_id == country_id) {
+
                             html = `<a href="/user/food/food/`+element.id+`">
                                         <div class="row p-2">
                                             <div class="col-3 col-md-3">
@@ -473,10 +478,10 @@
                                             </div>
                                         </div>
                                     </a>`;
-    
+
                             result += html;
-                            
-                        }
+
+                        // }
 
 
                     });
@@ -489,8 +494,8 @@
 
                     res.service.forEach(element => {
 
-                        if (element.vendor.vendor.country_id == country_id) {
-                            
+                        // if (element.vendor.vendor.country_id == country_id) {
+
                             html = `<a href="/user/event/event/`+element.id+`">
                                         <div class="row p-2">
                                             <div class="col-3 col-md-3">
@@ -501,10 +506,10 @@
                                             </div>
                                         </div>
                                     </a>`;
-    
+
                             result += html;
-                            
-                        }
+
+                        // }
 
 
                     });
@@ -516,16 +521,16 @@
     </script>
 
     <script>
-        window.addEventListener('click', function(e){   
+        window.addEventListener('click', function(e){
             if (document.getElementById('search-results').contains(e.target)){
                 // Clicked in box
             } else{
                 // Clicked outside the box
-                if ($('#search-results').css('display') == 'block') {     
+                if ($('#search-results').css('display') == 'block') {
                     $('#search-results').hide();
                 } else {
                     $('#search-results').show();
-                    
+
                 }
             }
         });
@@ -543,7 +548,7 @@
             console.log(lat);
         </script>
 
-    @else 
+    @else
         <script src="{{ asset('js/mapInput.js') }}"></script>
     @endif
 
@@ -562,7 +567,7 @@
 
     @yield('js')
 
-    
+
 
 
 
