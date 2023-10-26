@@ -2,7 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css">
-    
+
 @endsection
 
 @section('title')
@@ -16,8 +16,8 @@
                 <div class="col-md-6">
                     <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @if (Auth::user()->type == 'vendor')   
-                        <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; display:block; 
+                        @if (Auth::user()->type == 'vendor')
+                        <label for="image" style="width:80px; height:80px; border-radius: 22px; font-weight: 500; display:block;
                             @if (Auth::user()->vendor->logo == null)
                             padding-top: 2rem;
                             @endif
@@ -26,19 +26,19 @@
                             @if (Auth::user()->vendor->logo == null)
                             <a class="btn btn-success text-light mb-1" style="border-radius: 50%">+</a> <br>
                              <span> Upload Logo</span>
-                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">                           
+                             <img class="img-fluid" id="imgPreview" style="height: 80px !important; display:none; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
                              <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; cursor: pointer; width:25px; display:none" id="edit_button">
                              @else
                              <img class="img-fluid" id="imgPreview" style="height: 80px !important; min-height:80px;" src="{{ asset('storage/'.Auth::user()->vendor->logo) }}" width="100%">
                              <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; left: 65px; width:25px; cursor: pointer;">
                              @endif
-                            </label> 
+                            </label>
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
-                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p> 
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; text-align:left; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p>
                         @endif
-                        @if (Auth::user()->type == 'vendor')    
-                        
+                        @if (Auth::user()->type == 'vendor')
+
                             <input type="text" name="company_name" class="form-control mt-4" value="{{ Auth::user()->vendor->company_name }}"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" placeholder="Company/NPO Name..." required>
                             <input type="text" name="founder_name" class="form-control mt-4" value="{{ Auth::user()->vendor->founder_name }}"
@@ -47,9 +47,9 @@
                         <input type="text" name="name" class="form-control mt-4" value="{{ Auth::user()->name }}"
                                 style="border:unset; border-bottom: 2px solid black; font-size:17px;" required placeholder="Name...">
                         @endif
-                        @if (Auth::user()->type == 'vendor')    
+                        @if (Auth::user()->type == 'vendor')
 
-                            <div class="drops mt-4">
+                            {{-- <div class="drops mt-4">
                               @php
                                   $country = DB::table('countries')->get();
                               @endphp
@@ -66,14 +66,23 @@
                                     <option {{ Auth::user()->vendor->state_id == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                               </select>
-                            </div>
+                            </div> --}}
+
+
                             <br>
                             <br>
                         @endif
-                        @if (Auth::user()->type == 'vendor')    
+                        @if (Auth::user()->type == 'vendor')
 
-                        <input name="address" type="text" class="form-control mt-4" value="{{ Auth::user()->vendor->address }}" placeholder="Rocket Road, California, 1288"
+                        <input name="address" type="text" class="form-control mt-4 map-input" id="address-input" value="{{ Auth::user()->vendor->address }}" placeholder="Rocket Road, California, 1288"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
+
+                            <input type="hidden" name="address_latitude" id="address-latitude" value="{{ Auth::user()->vendor->address_latitude }}" />
+                            <input type="hidden" name="address_longitude" id="address-longitude" value="{{ Auth::user()->vendor->address_longitude }}" />
+
+                            <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
+                                <div style="width: 100%; height: 100%" id="address-map"></div>
+                            </div>
                         @endif
                         <div class="form-group col-12 col-sm-12 col-md-12 mt-4">
                           <div class="input-group input-group-sm">
@@ -86,7 +95,7 @@
 
                         <input type="text" class="form-control mt-4" value="{{ Auth::user()->email }}" placeholder="Your Email"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
-                        @if (Auth::user()->type == 'vendor')    
+                        @if (Auth::user()->type == 'vendor')
 
                             <input type="text" name="website" class="form-control mt-4" value="{{ Auth::user()->vendor->website }}" placeholder="Your Website URL (Must inc. https://)"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>

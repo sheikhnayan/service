@@ -86,7 +86,7 @@
                     <div class="d-block m-auto address">
                         <input style="float: left" type="hidden" name="address" id="search-input" class="form-control" placeholder="Search Store,Product, service, event, location..." value="{{ session()->get('address') }}" autocomplete="off" readonly>
 
-                        <a style="float: right; font-size: 1.2rem; color: #ec981b;" href="#" onclick="change_address()"> <span style="color: #000;">Address:</span> {{ session()->get('address') }}</a>
+                        <a style="float: right; font-size: 1.2rem; color: #ec981b;" href="#" onclick="change_address()"> <span style="color: #000;"> <span class="mdi mdi-map-marker-outline"></span> Your Current Location:</span> {{ session()->get('address') }}</a>
                     </div>
 
                     @else
@@ -120,7 +120,7 @@
 
                     @if (Auth::user()->type == 'user')
 
-                    <div class="navbar-right ml-auto">
+                    <div class="navbar-right">
                         {{-- <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
                             srcset=""> --}}
                         <span class=" text-dark " style="font-weight:bold; font-size: 1.2rem">
@@ -333,38 +333,42 @@
         </div>
     </div>
 
+    @if (Auth::user()->type == 'user')
 
-    <div class="modal" id="address" tabindex="-1" role="dialog">
-        <form action="/current-location-change" method="post">
-        @csrf
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title">Change Address</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <label>Address</label>
-                    <input type="text" class="form-control map-input" id="address-input" value="{{ session()->get('address') }}" name="address" placeholder="Area/Road No/House/Apartment etc" style="font-size:17px;">
+        <div class="modal" id="address" tabindex="-1" role="dialog">
+            <form action="/current-location-change" method="post">
+            @csrf
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Change Address</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Address</label>
+                        <input type="text" class="form-control map-input" id="address-input" value="{{ session()->get('address') }}" name="address" placeholder="Area/Road No/House/Apartment etc" style="font-size:17px;">
 
-                    <input type="hidden" name="address_latitude" id="address-latitude" value="{{ session()->get('lat') }}" />
-                    <input type="hidden" name="address_longitude" id="address-longitude" value="{{ session()->get('lng') }}" />
+                        <input type="hidden" name="address_latitude" id="address-latitude" value="{{ session()->get('lat') }}" />
+                        <input type="hidden" name="address_longitude" id="address-longitude" value="{{ session()->get('lng') }}" />
 
-                    <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
-                        <div style="width: 100%; height: 100%" id="address-map"></div>
+                        <div id="address-map-container" style="width:100%;height:400px; margin-top:4rem">
+                            <div style="width: 100%; height: 100%" id="address-map"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
-            </div>
-            </div>
-        </form>
+            </form>
 
-      </div>
+        </div>
+    @endif
+
+
 
 
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-epa4CpMbOcleXhSvoTgED2Np1twZJQ&libraries=places&callback=initialize" async defer></script> --}}

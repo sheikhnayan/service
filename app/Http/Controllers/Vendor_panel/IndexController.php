@@ -83,11 +83,13 @@ class IndexController extends Controller
             $vendor->website = $request->website;
             $vendor->donation_link = $request->donation_link;
             $vendor->address = $request->address;
+            $vendor->address_latitude = $request->address_latitude;
+            $vendor->address_longitude = $request->address_longitude;
 
             if (isset($request->image)) {
                 # code...
-                $imageName = time().'.'.$request->image->extension();   
-        
+                $imageName = time().'.'.$request->image->extension();
+
                 $image = $request->image->storeAs('public/product', $imageName);
 
                 $image = str_replace('public','',$image);
@@ -98,7 +100,7 @@ class IndexController extends Controller
 
             $vendor->update();
         }
-        
+
         return redirect(route('profile'));
     }
 
@@ -141,7 +143,7 @@ class IndexController extends Controller
         $otp = $request->otp;
 
         $vendor = Auth::user();
-        
+
         if ($vendor->otp == $otp) {
             # code...
             $vendor->otp_status = 1;
@@ -154,7 +156,7 @@ class IndexController extends Controller
                 # code...
                 return redirect(route('user.index'))->with('success','OTP Verified successfully!');
             }
-            
+
 
         }else {
             # code...
@@ -166,15 +168,15 @@ class IndexController extends Controller
 
     public function final_registration()
     {
-        
+
         if (Auth::user()->type == 'user') {
             # code...
             return redirect(route('user.index'));
         } else {
             # code...
-            return view('vendor_panel.final-registration');   
+            return view('vendor_panel.final-registration');
         }
-        
+
 
     }
 
@@ -210,13 +212,13 @@ class IndexController extends Controller
         $results = '';
 
         $lat = Session::get('lat');
-            
+
         $lon = Session::get('lng');
 
         $product = Product::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
         $products = [];
-    
+
             foreach ($product as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -225,7 +227,7 @@ class IndexController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($products,$value);
@@ -236,7 +238,7 @@ class IndexController extends Controller
         $service = Service::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
         $services = [];
-    
+
             foreach ($service as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -245,7 +247,7 @@ class IndexController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($services,$value);
@@ -256,7 +258,7 @@ class IndexController extends Controller
         $food = Food::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
         $foods = [];
-    
+
             foreach ($food as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -265,7 +267,7 @@ class IndexController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($foods,$value);
@@ -276,7 +278,7 @@ class IndexController extends Controller
         $event = Event::where('name','like','%'.$value.'%')->with('vendor')->with('vendor.vendor')->get();
 
         $events = [];
-    
+
             foreach ($event as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -285,7 +287,7 @@ class IndexController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($events,$value);
