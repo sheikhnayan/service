@@ -66,33 +66,33 @@ class RegisteredUserController extends Controller
             // $apiURL = 'https://connect.squareupsandbox.com/v2/customers';
 
             // $postInput = [
-    
+
             //     'company_name' => $request->name,
-    
+
             //     'email_address' => $request->email,
-    
+
             //     'phone_number' => '+88'.$request->phone
-    
+
             // ];
-    
-      
-    
+
+
+
             // $headers = [
-    
+
             //     'Square-Version' => '2023-06-08',
 
             //     'Authorization' => 'Bearer EAAAECLQEKR3dVZ6PgGI6VoZa1LzXaqgtqjgKg_Re-NyPafaFVoBhcsmdxLCBcQU'
-    
+
             // ];
-    
-      
-    
+
+
+
             // $response = Http::withHeaders($headers)->withOptions(["verify"=>false])->post($apiURL, $postInput);
-    
-      
-    
+
+
+
             // $statusCode = $response->status();
-    
+
             // $responseBody = json_decode($response->getBody(), true);
 
             // $customer_id = $responseBody['customer']['id'];
@@ -100,14 +100,14 @@ class RegisteredUserController extends Controller
 
             // dd($responseBody['customer']['id']);
 
-            
-            
-            
-            
-            
+
+
+
+
+
         }
-        
-        
+
+
 
         $create = new VendorDetail;
         $create->user_id = $user->id;
@@ -122,15 +122,15 @@ class RegisteredUserController extends Controller
         if ($request->type == 'vendor') {
             # code...
 
-        
+
 
 
 
             $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-            $authToken = '36c432a0d4643a93c403fb73b63d4282';
+            $authToken = '5e70c7e6bb0f667a13c8ff7466c771a8';
             $twilioNumber = '+14846737439';
             $lineBreak = "\n\n";
-            $message = 'Your OTP for verification is: '.$otp.'. 
+            $message = 'Your OTP for verification is: '.$otp.'.
 Please enter this code to complete your verification process.
 - Transcending Black Excellence';
             // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
@@ -144,9 +144,9 @@ Please enter this code to complete your verification process.
                         "from" => $twilioNumber
                     ]
                 );
-    
+
             return redirect(RouteServiceProvider::OTP)->with('success','OTP is sent to '.Auth::user()->phone.'.');
-            
+
             } catch (TwilioException $e) {
                 return back()->with('failur',$e);
             }
@@ -157,7 +157,7 @@ Please enter this code to complete your verification process.
             # code...
             return redirect(RouteServiceProvider::Home);
         }
-        
+
 
     }
 
@@ -188,10 +188,10 @@ Please enter this code to complete your verification process.
         Auth::login($user);
 
         $accountSid = 'ACddfbd0e90ee11c51c3aa02171f7737d4';
-        $authToken = '36c432a0d4643a93c403fb73b63d4282';
+        $authToken = '5e70c7e6bb0f667a13c8ff7466c771a8';
         $twilioNumber = '+14846737439';
         $lineBreak = "\n\n";
-        $message = 'Your OTP for verification is: '.$otp.'. 
+        $message = 'Your OTP for verification is: '.$otp.'.
 Please enter this code to complete your verification process.
 - Transcending Black Excellence';
         // $to = $user->mobile_number->country_code.decrypt($user->mobile_number->number);
@@ -207,7 +207,7 @@ Please enter this code to complete your verification process.
             );
 
         return redirect(RouteServiceProvider::OTP)->with('success','OTP is sent to '.Auth::user()->phone.'.');
-        
+
         } catch (TwilioException $e) {
             return redirect(RouteServiceProvider::OTP)->with('failur',$e);
         }
@@ -215,7 +215,7 @@ Please enter this code to complete your verification process.
 
         // return redirect(RouteServiceProvider::OTP);
 
-        
+
 
     }
 
@@ -225,17 +225,17 @@ Please enter this code to complete your verification process.
 
         foreach ($request->logo as $key => $value) {
             # code...
-            $imageName = time().'.'.$value->extension();   
-    
+            $imageName = time().'.'.$value->extension();
+
             $image = $value->storeAs('public/vendor', $imageName);
-    
+
             $document .= str_replace('public','',$image).',';
         }
 
-        $logo = time().'.'.$request->image->extension();   
-    
+        $logo = time().'.'.$request->image->extension();
+
         $log = $request->image->storeAs('public/vendor', $logo);
-    
+
         $logo = str_replace('public','',$log);
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
