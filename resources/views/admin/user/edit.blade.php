@@ -2,7 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css">
-    
+
 @endsection
 
 @section('title')
@@ -16,7 +16,7 @@
                 <div class="col-md-6">
                     <form action="{{ route('admin.user.update',[$data->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @if ($data->type == 'vendor')      
+                        @if ($data->type == 'vendor')
                             <label for="image" style="width:100%; height:80px; border-radius: 22px; font-weight: 500; padding-top: 2rem; display:block;"
                             for="image" class="text-center bg-light" id="label">
 
@@ -29,10 +29,10 @@
                             <img id="imgPreview" class="img-fluid" style="height:80px !important;min-height:80px;" src="{{ asset('storage/'.$data->vendor->logo) }}" width="100%">
                             <img class="img-fluid" src="{{ asset('vendor_panel/edit_image.png') }}" style="position: absolute; top: 0px; right: 355px; cursor: pointer;">
                             @endif
-                            </label> 
+                            </label>
                             <br>
                             <input type="file" name="image" id="image" style="display: none;">
-                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p> 
+                            <p style="color: #000; padding-bottom: 1rem; font-size:12px; padding-top: 0.5rem;">Recommended Logo size 80 x 80 pixel</p>
                         @endif
 
                         @if ($data->type == 'vendor')
@@ -94,26 +94,26 @@
                           </div>
                       </div>
 
-                        <input type="text" class="form-control mt-4" value="{{ $data->email }}" placeholder="Your Email"
+                        <input name="email" type="text" class="form-control mt-4" value="{{ $data->email }}" placeholder="Your Email"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
 
                         @if ($data->type == 'vendor')
-                            
+
                             <input type="text" class="form-control mt-4" value="{{ $data->vendor->website }}" placeholder="Your Website URL"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;" required>
-                            
+
                         @endif
 
-                            <input type="password" name="password" class="form-control mt-4" placeholder="Change Password" 
+                            <input type="password" name="password" class="form-control mt-4" placeholder="Change Password"
                             style="border:unset; border-bottom: 2px solid black; font-size:17px;">
 
                         @if ($data->type == 'vendor')
-                            
+
                             <select name="status" class="form-control mt-4" style="background: #d9d9d9; border-radius: 15px;  font-weight: bold;">
                                 <option {{ $data->vendor->status == 0 ? 'selected': '' }} value="0">Inactive</option>
                                 <option {{ $data->vendor->status == 1 ? 'selected': '' }} value="1">Active</option>
                             </select>
-                            
+
                         @endif
 
                         <button type="submit" class="btn btn-success mt-4 logout-profile" style="background: #000"> Update</button>

@@ -308,4 +308,20 @@ class IndexController extends Controller
 
 
     }
+
+    public function card()
+    {
+        $card = Auth::user()->defaultPaymentMethod();
+
+        $intent = Auth::user()->createSetupIntent();
+
+        return view('vendor_panel.card',compact('card','intent'));
+    }
+
+    public function card_update(Request $request)
+    {
+        $update = Auth::user()->updateDefaultPaymentMethod($request->token);
+
+        return redirect(route('card'))->with('success','Card Information Updated Successfully!');
+    }
 }

@@ -302,6 +302,8 @@ Route::get('/get-states/{country}', [IndexController::class,'get_states'])->name
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [IndexController::class,'profile'])->name('profile');
+    Route::get('/card', [IndexController::class,'card'])->name('card');
+    Route::post('/card-update', [IndexController::class,'card_update'])->name('card.update');
     Route::post('/profile-update', [IndexController::class,'profile_update'])->name('profile-update');
     Route::get('/support', [IndexController::class,'support'])->name('support');
     Route::post('/support', [IndexController::class,'support_submit'])->name('support');

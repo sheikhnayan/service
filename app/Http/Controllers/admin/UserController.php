@@ -13,6 +13,9 @@ use App\Models\Product;
 use App\Models\Food;
 use App\Models\Support;
 use App\Models\Review;
+use Carbon\Carbon;
+use App\Mail\Approve;
+use Mail;
 use Hash;
 
 class UserController extends Controller
@@ -91,6 +94,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->phone = $request->phone;
         if ($request->password != null) {
             # code...
@@ -98,7 +102,7 @@ class UserController extends Controller
             $user->password = $password;
         }
         $user->update();
-        
+
         if ($user->type == 'vendor') {
             // dd($request->status);
             # code...
@@ -109,23 +113,51 @@ class UserController extends Controller
             $vendor->address = $request->address;
             $vendor->status = $request->status;
             $vendor->npo_category_id = $request->npo_category_id;
-    
+
             if (isset($request->image)) {
                 # code...
-                $imageName = time().'.'.$request->image->extension();   
-        
+                $imageName = time().'.'.$request->image->extension();
+
                 $image = $request->image->storeAs('public/product', $imageName);
-    
+
                 $image = str_replace('public','',$image);
-    
+
                 $vendor->logo = $image;
-    
+
             }
-    
+
             $vendor->update();
+
+
+            $content = [
+                'subject' => 'Your Account is Approved! - Welcome to Transcending Black Excellence.',
+                'body' => "Dear ".$request->name.", <br> <br>
+
+                We're thrilled to inform you that your account with Transcending Black Excellence has been approved! Welcome to our platform. <br> <br>
+
+                **Account Details:** <br>
+                - Username: ".$request->name." <br>
+                - Email: ".$request->email." <br>
+                - Date of Registration: ".Carbon::now()." <br> <br>
+
+                You can now <a href='https://app.tbe-web.com/vendor-login'>log in to your account</a> using your phone number & password! <br><br>
+
+
+                Feel free to explore the features and services we offer. If you have any questions or need assistance, don't hesitate to contact our dedicated support team at <a href='mailto:Support@tbe-web.com'>Support@tbe-web.com</a>. We're here to assist you every step of the way. <br> <br>
+
+                Thank you for choosing Transcending Black Excellence. We're excited to embark on this journey with you! <br> <br>
+
+                Warm regards, <br> <br>
+                Team Transcending Black Excellence
+
+                "
+            ];
+
+            $test = Mail::to($request->email)->send(new Approve($content));
+
+            dd($request->email);
         }
 
-        
         return redirect(route('admin.user.edit',[$id]))->with('success','Profile Updated Successfully!');
     }
 

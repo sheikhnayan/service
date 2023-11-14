@@ -13,6 +13,10 @@ use Illuminate\Validation\Rules;
 use App\Models\VendorDetail;
 use Illuminate\Support\Facades\Http;
 use Twilio\Rest\Client;
+use Carbon\Carbon;
+use App\Mail\Register;
+use App\Mail\Notification;
+use Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -61,6 +65,52 @@ class RegisteredUserController extends Controller
             'otp' => $otp,
             'password' => Hash::make($request->password),
         ]);
+
+
+        $content = [
+            'subject' => 'Your account has been created - Transcending Black Excellence.',
+            'body' => "Dear ".$request->name.", <br> <br>
+
+            Thank you for registering with Transcending Black Excellence. We're excited to have you as a part of our community. Your journey with us begins now! <br> <br>
+
+            **Confirmation Details:** <br>
+            - Username: ".$request->name." <br>
+            - Email: ".$request->email." <br>
+            - Date of Registration: ".Carbon::now()." <br> <br>
+
+            Please be patient till we review & approve your account. You’ll get another welcome email once your account is approved. <br>
+
+            We're here to help. If you encounter any issues or have questions, feel free to contact our support team at Support@tbe-web.com or visit our Help Center for more information. <br>
+
+            Thank you for choosing Transcending Black Excellence. We look forward to serving you! <br> <br>
+
+            Best Regards, <br>
+            Team Transcending Black Excellence
+            "
+        ];
+
+        $test = Mail::to($request->email)->send(new Register($content));
+
+        $content2 = [
+            'subject' => 'New Account Request - Review Required!',
+            'body' => "Hello Timothy, <br> <br>
+
+            A new account request has been submitted on TBE’'s platform.  <br> <br>
+
+            **Request Details:** <br>
+            - Username: ".$request->name." <br>
+            - Email: ".$request->email." <br>
+            - Date of Registration: ".Carbon::now()." <br> <br>
+
+            To review and approve this request, please log in to the admin panel using the following link:
+            https://app.tbe-web.com/admin-login
+            <br> <br>
+
+            By TBE Admin Panel.
+            "
+        ];
+
+        $test2 = Mail::to('Timothy@tbe-web.com')->send(new Notification($content));
 
         if ($request->type == 'vendor') {
             // $apiURL = 'https://connect.squareupsandbox.com/v2/customers';
@@ -182,6 +232,32 @@ Please enter this code to complete your verification process.
             'otp' => $otp,
             'password' => Hash::make($request->password),
         ]);
+
+        $content = [
+            'subject' => 'Your account has been created - Transcending Black Excellence.',
+            'body' => "Dear ".$request->name.", <br> <br>
+
+            Thank you for registering with Transcending Black Excellence. We're excited to have you as a part of our community. Your journey with us begins now! <br> <br>
+
+            **Confirmation Details:** <br>
+            - Username: ".$request->name." <br>
+            - Email: ".$request->email." <br>
+            - Date of Registration: ".Carbon::now()." <br> <br>
+
+            Please be patient till we review & approve your account. You’ll get another welcome email once your account is approved. <br>
+
+            We're here to help. If you encounter any issues or have questions, feel free to contact our support team at Support@tbe-web.com or visit our Help Center for more information. <br>
+
+            Thank you for choosing Transcending Black Excellence. We look forward to serving you! <br> <br>
+
+            Best Regards, <br>
+            Team Transcending Black Excellence
+            "
+        ];
+
+        $test = Mail::to($request->email)->send(new Register($content));
+
+        // dd($test);
 
         event(new Registered($user));
 

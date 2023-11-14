@@ -105,6 +105,7 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             @if (Auth::user()->type == 'vendor')
                             <a class="dropdown-item" href="{{ route('notification') }}">Notification</a>
+                            <a class="dropdown-item" href="{{ route('card') }}">Card Detail</a>
                             @else
                             <a class="dropdown-item" href="{{ route('user.wish') }}">WishList</a>
                             @endif
@@ -131,6 +132,7 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             @if (Auth::user()->type == 'vendor')
                             <a class="dropdown-item" href="{{ route('notification') }}">Notification</a>
+                            <a class="dropdown-item" href="{{ route('card') }}">Card Detail</a>
                             @else
                             <a class="dropdown-item" href="{{ route('user.wish') }}">WishList</a>
                             @endif
