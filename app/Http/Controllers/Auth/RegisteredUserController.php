@@ -317,7 +317,7 @@ Please enter this code to complete your verification process.
         $logo = str_replace('public','',$log);
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
-        dd($add);
+        // dd($add);
         $add->founder_name = $request->founder_name;
         $add->website = $request->website;
         $add->country_id = $request->country_id;
