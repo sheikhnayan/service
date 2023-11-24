@@ -95,7 +95,7 @@
                     @if (Auth::user()->type == 'vendor')
 
                     <div class="navbar-right ml-auto">
-                        <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 50px; height: 50px"
+                        <img class="img-fluid" src="{{ asset('storage'.Auth::user()->vendor->logo) }}" style="border-radius: 50%; width: 35px; height: 35px"
                             srcset="">
                         <span class=" text-dark " style="font-weight:bold; font-size: 1.2rem">
                             {{ Auth::user()->vendor->company_name }}
@@ -105,7 +105,7 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                             @if (Auth::user()->type == 'vendor')
                             <a class="dropdown-item" href="{{ route('notification') }}">Notification</a>
-                            <a class="dropdown-item" href="{{ route('card') }}">Card Detail</a>
+                            <a class="dropdown-item" href="{{ route('card') }}">Billing Detail</a>
                             @else
                             <a class="dropdown-item" href="{{ route('user.wish') }}">WishList</a>
                             @endif

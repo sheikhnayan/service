@@ -1,5 +1,9 @@
 @extends('vendor_panel.layouts.main')
 
+@section('head')
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+@endsection
+
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">
@@ -9,7 +13,7 @@
                         <h4 class="float-left" style="padding-top: 0.5rem;">Country List</h4>
                         <a href="{{ route('admin.meta-data.country.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
-                    <table class="table">
+                    <table class="table country">
                         <thead>
                             <th>#</th>
                             <th>Country</th>
@@ -36,7 +40,7 @@
                         <h4 class="float-left" style="padding-top: 0.5rem;">State List</h4>
                         <a href="{{ route('admin.meta-data.state.create') }}" class="btn btn-success float-right"style="background: #000" >Add New</a>
                     </div>
-                    <table class="table">
+                    <table class="table country">
                         <thead>
                             <th>#</th>
                             <th>Country</th>
@@ -254,4 +258,14 @@
             </div> --}}
         </div>
     </div>
+@endsection
+
+@section('js')
+
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    let table = new DataTable('.country');
+  </script>
+
 @endsection

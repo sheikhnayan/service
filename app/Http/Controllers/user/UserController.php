@@ -45,13 +45,13 @@ class UserController extends Controller
     {
         if ($id == 0) {
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
 
             $dat = Product::all();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -60,7 +60,7 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
@@ -69,13 +69,13 @@ class UserController extends Controller
             }
         }else{
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
 
             $dat = Product::where('category_id',$id)->get();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -84,7 +84,7 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
@@ -101,14 +101,14 @@ class UserController extends Controller
     public function campaign_category($id)
     {
         $lat = Session::get('lat');
-            
+
         $lon = Session::get('lng');
 
         $dat = VendorDetail::where('npo_category_id',$id)->get();
 
-        
+
         $data = [];
-    
+
         foreach ($dat as $key => $value) {
             # code...
             $distance = GeoFacade::setPoint([$lat, $lon])
@@ -117,7 +117,7 @@ class UserController extends Controller
                 ->setPoint([$value->address_latitude, $value->address_longitude])
                 // get the calculated distance between each point
                 ->getDistance();
-                
+
             if ($distance['1-2']['km'] <= 10) {
                 # code...
                 array_push($data,$value);
@@ -135,13 +135,13 @@ class UserController extends Controller
     {
         if ($id == 0) {
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
 
             $dat = Service::all();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -150,7 +150,7 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
@@ -159,13 +159,13 @@ class UserController extends Controller
             }
         }else{
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
 
             $dat = Service::where('category_id',$id)->get();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -174,7 +174,7 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
@@ -192,13 +192,13 @@ class UserController extends Controller
     {
         if ($id == 0) {
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
 
             $dat = Food::all();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -207,23 +207,23 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
                 }
 
             }
-            
+
         }else{
             $lat = Session::get('lat');
-            
+
             $lon = Session::get('lng');
-            
+
             $dat = Food::where('category_id',$id)->get();
 
             $data = [];
-    
+
             foreach ($dat as $key => $value) {
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
@@ -232,7 +232,7 @@ class UserController extends Controller
                     ->setPoint([$value->vendor->vendor->address_latitude, $value->vendor->vendor->address_longitude])
                     // get the calculated distance between each point
                     ->getDistance();
-                    
+
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
@@ -270,25 +270,25 @@ class UserController extends Controller
             $product = Service::find($request->product_id);
 
             $user_id = $product->user_id;
-            
+
         } elseif($request->type == 'food') {
             # code...
             $product = Food::find($request->product_id);
 
             $user_id = $product->user_id;
-            
+
         } elseif($request->type == 'event') {
             # code...
             $product = Event::find($request->product_id);
 
             $user_id = $product->user_id;
-            
+
         } elseif($request->type == 'campaign') {
             # code...
             $product = Campaign::find($request->product_id);
 
             $user_id = $product->user_id;
-            
+
         }
 
         $sender_id = Auth::user()->id;
@@ -311,8 +311,8 @@ class UserController extends Controller
         $visit->save();
 
         return redirect('/user'.'/'.$request->type.'/'.$request->type.'/'.$request->product_id)->with('success','Your Review has been submited successfully !');;
-        
-        
+
+
     }
 
     public function start_up()
@@ -440,26 +440,26 @@ class UserController extends Controller
 
     public function campaign_profile($id)
     {
-        
+
         $user = VendorDetail::find($id);
-        
-        
-        
+
+
+
         $campaign = Campaign::where('user_id',$user->user_id)->limit(2)->get();
-        
+
         // $data = User::where('id',$data->user_id)->first();
-        
+
         // $campaign = Campaign::where('user_id',$data->id)->limit(2)->get();
-        
+
         $event = Event::where('user_id',$user->user_id)->limit(2)->get();
-        
+
         $visit =  new Visit;
         $visit->user_id = $user->user_id;
         $visit->visitor_id = Auth::user()->id;
         $visit->page = 'profile';
         $visit->type = 'visit';
         $visit->save();
-        
+
         $data = User::find($user->user_id);
 
         return view('user.campaign.profile',compact('data','campaign','event'));

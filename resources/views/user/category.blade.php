@@ -47,6 +47,7 @@
                 @endif
             </h3>
         </div>
+        @if (count($data) > 0)
         @foreach ($data as $item)
                 <div class="col-md-3 mt-4">
                     <div class="card product" style="background-color: #F98513; border-radius:12px;">
@@ -63,5 +64,22 @@
                     </div>
                 </div>
         @endforeach
+        @else
+        <div style="text-align: center; width: 100%;">
+            <h2 class="text-center">You Don't Have Any @if ($type == 'product')
+                Product
+            @elseif($type == 'service')
+                Service
+            @elseif($type == 'food')
+                Food
+            @elseif($type == 'event')
+                Event
+            @elseif($type == 'campaign')
+                Campaign
+            @endif
+            Near You!
+            </h2>
+        </div>
+        @endif
     </div>
 @endsection
