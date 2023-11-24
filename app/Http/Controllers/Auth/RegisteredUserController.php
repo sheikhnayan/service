@@ -66,6 +66,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $create = new VendorDetail;
+        $create->user_id = $user->id;
+        $create->business_type = $request->business_type;
+        $create->company_name = $request->name;
+        $create->save();
+
 
         $content = [
             'subject' => 'Your account has been created - Transcending Black Excellence.',
@@ -159,11 +165,7 @@ class RegisteredUserController extends Controller
 
 
 
-        $create = new VendorDetail;
-        $create->user_id = $user->id;
-        $create->business_type = $request->business_type;
-        $create->company_name = $request->name;
-        $create->save();
+
 
         event(new Registered($user));
 
