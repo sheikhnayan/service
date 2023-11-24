@@ -162,7 +162,7 @@ class UserController extends Controller
 
             $lon = Session::get('lng');
 
-            dd($lon);
+            dd($value->vendor->vendor->address_longitude);
 
             $dat = Service::where('category_id',$id)->get();
 
