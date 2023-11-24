@@ -42,6 +42,139 @@
     <script src="https://kit.fontawesome.com/efec89e16a.js" crossorigin="anonymous"></script>
 </head>
 
+@section('head')
+<style>
+/* Variables */
+
+#payment-form {
+width: 100%;
+min-width: 500px;
+align-self: center;
+box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+border-radius: 7px;
+padding: 40px;
+}
+
+.hidden {
+display: none;
+}
+
+#payment-message {
+color: rgb(105, 115, 134);
+font-size: 16px;
+line-height: 20px;
+padding-top: 12px;
+text-align: center;
+}
+
+#payment-element {
+margin-bottom: 24px;
+}
+
+/* Buttons and links */
+.button {
+background: #5469d4;
+font-family: Arial, sans-serif;
+color: #ffffff;
+border-radius: 4px;
+border: 0;
+padding: 12px 16px;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+display: block;
+transition: all 0.2s ease;
+box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+width: 100%;
+}
+button:hover {
+filter: contrast(115%);
+}
+button:disabled {
+opacity: 0.5;
+cursor: default;
+}
+
+/* spinner/processing state, errors */
+.spinner,
+.spinner:before,
+.spinner:after {
+border-radius: 50%;
+}
+.spinner {
+color: #ffffff;
+font-size: 22px;
+text-indent: -99999px;
+margin: 0px auto;
+position: relative;
+width: 20px;
+height: 20px;
+box-shadow: inset 0 0 0 2px;
+-webkit-transform: translateZ(0);
+-ms-transform: translateZ(0);
+transform: translateZ(0);
+}
+.spinner:before,
+.spinner:after {
+position: absolute;
+content: "";
+}
+.spinner:before {
+width: 10.4px;
+height: 20.4px;
+background: #5469d4;
+border-radius: 20.4px 0 0 20.4px;
+top: -0.2px;
+left: -0.2px;
+-webkit-transform-origin: 10.4px 10.2px;
+transform-origin: 10.4px 10.2px;
+-webkit-animation: loading 2s infinite ease 1.5s;
+animation: loading 2s infinite ease 1.5s;
+}
+.spinner:after {
+width: 10.4px;
+height: 10.2px;
+background: #5469d4;
+border-radius: 0 10.2px 10.2px 0;
+top: -0.1px;
+left: 10.2px;
+-webkit-transform-origin: 0px 10.2px;
+transform-origin: 0px 10.2px;
+-webkit-animation: loading 2s infinite ease;
+animation: loading 2s infinite ease;
+}
+
+@-webkit-keyframes loading {
+0% {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+100% {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+@keyframes loading {
+0% {
+-webkit-transform: rotate(0deg);
+transform: rotate(0deg);
+}
+100% {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+
+@media only screen and (max-width: 600px) {
+#payment-form  {
+width: 80vw;
+min-width: initial;
+}
+}
+</style>
+@endsection
+
 
 <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
     <script>
@@ -83,7 +216,7 @@
                     <button type="button" class="close" data-dismiss="alert">
                         <i class="fa fa-times"></i>
                     </button>
-                    <strong></strong> 
+                    <strong></strong>
                 </div>
 
             <div class="content-wrapper">
@@ -101,11 +234,11 @@
 
                 </div>
 
-  
+
 
                 <div class="card-body">
 
-  
+
 
                     <form id="payment-form" action="{{ route('subscription.create') }}" method="POST">
 
@@ -115,7 +248,7 @@
 
                         <input type="hidden" name="platform" value="{{ $platform }}">
 
-  
+
 
                         <div class="row">
 
@@ -133,7 +266,7 @@
 
                         </div>
 
-  
+
 
                         <div class="row">
 
@@ -159,11 +292,11 @@
 
                         </div>
 
-  
+
 
                     </form>
 
-  
+
 
                 </div>
 
@@ -175,7 +308,7 @@
 
 </div>
 
-  
+
 
 <script src="https://js.stripe.com/v3/"></script>
 
@@ -183,17 +316,17 @@
 
     const stripe = Stripe('pk_test_51KFMekKLHmQr7DxLXJcXRxQrjLfnsaX7rrxu2D6nsFgKIndvC8Numb9BypVB4q4OrvVGhb59kYAsipP1smNsoLHz00mVDoIqWz')
 
-  
+
 
     const elements = stripe.elements()
 
     const cardElement = elements.create('card')
 
-  
+
 
     cardElement.mount('#card-element')
 
-  
+
 
     const form = document.getElementById('payment-form')
 
@@ -201,13 +334,13 @@
 
     const cardHolderName = document.getElementById('card-holder-name')
 
-  
+
 
     form.addEventListener('submit', async (e) => {
 
         e.preventDefault()
 
-  
+
 
         cardBtn.disabled = true
 
@@ -223,7 +356,7 @@
 
                         name: cardHolderName.value
 
-                    }   
+                    }
 
                 }
 
@@ -231,7 +364,7 @@
 
         )
 
-  
+
 
         if(error) {
 
