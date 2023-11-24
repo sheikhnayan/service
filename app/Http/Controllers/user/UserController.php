@@ -162,6 +162,8 @@ class UserController extends Controller
 
             $lon = Session::get('lng');
 
+            dd($lon);
+
             $dat = Service::where('category_id',$id)->get();
 
             $data = [];
@@ -175,7 +177,6 @@ class UserController extends Controller
                     // get the calculated distance between each point
                     ->getDistance();
 
-                    dd($distance['1-2']['km']);
 
 
                 if ($distance['1-2']['km'] <= 10) {
