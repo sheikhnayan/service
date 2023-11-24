@@ -297,7 +297,6 @@ Please enter this code to complete your verification process.
 
     public function final_registration(Request $request)
     {
-        dd($request->all());
         $document = '';
 
         foreach ($request->logo as $key => $value) {
@@ -316,6 +315,7 @@ Please enter this code to complete your verification process.
         $logo = str_replace('public','',$log);
 
         $add = VendorDetail::where('user_id',Auth::user()->id)->first();
+        dd($add);
         $add->founder_name = $request->founder_name;
         $add->website = $request->website;
         $add->country_id = $request->country_id;
