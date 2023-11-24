@@ -175,7 +175,7 @@ class UserController extends Controller
                     // get the calculated distance between each point
                     ->getDistance();
 
-                    dd($distance);
+                    dd($distance['1-2']['km']);
 
 
                 if ($distance['1-2']['km'] <= 10) {
