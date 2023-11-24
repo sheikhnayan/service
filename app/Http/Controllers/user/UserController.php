@@ -168,7 +168,7 @@ class UserController extends Controller
             $data = [];
 
             foreach ($dat as $key => $value) {
-                dd($value->vendor);
+                dd($value->vendor->vendor);
                 # code...
                 $distance = GeoFacade::setPoint([$lat, $lon])
                     ->setOptions(['units' => ['km']])
