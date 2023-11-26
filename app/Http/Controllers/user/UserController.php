@@ -153,7 +153,7 @@ class UserController extends Controller
 
                     // if ($value->vendor->id == 113) {
                         # code...
-                        dd($distance);
+                        dd($lat,$lon,$value->vendor->vendor->address_latitude,$value->vendor->vendor->address_longitude);
                     // }
 
                 if ($distance['1-2']['km'] <= 10) {
