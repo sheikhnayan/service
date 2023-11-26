@@ -144,9 +144,9 @@ class UserController extends Controller
             $data = [];
 
             foreach ($dat as $key => $value) {
-                $lat2 = '"'.$value->vendor->vendor->address_latitude.'"';
+                $lat2 = $value->vendor->vendor->address_latitude;
 
-                $lon2 = '"'.$value->vendor->vendor->address_longitude.'"';
+                $lon2 = $value->vendor->vendor->address_longitude;
                 # code...
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
