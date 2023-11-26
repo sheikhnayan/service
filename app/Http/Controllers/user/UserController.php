@@ -140,12 +140,11 @@ class UserController extends Controller
 
             $dat = Service::all();
 
-            dd($dat);
-
             $data = [];
 
             foreach ($dat as $key => $value) {
                 # code...
+                dd($value->vendor->vendor->address_latitude);
                 $distance = GeoFacade::setPoint([$lat, $lon])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
