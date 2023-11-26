@@ -151,7 +151,7 @@ class UserController extends Controller
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
-                    ->setPoint([$lat2,$lon2])
+                    ->setPoint(["$lat2","$lon2"])
                     // get the calculated distance between each point
                     ->getDistance();
 
