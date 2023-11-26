@@ -147,13 +147,13 @@ class UserController extends Controller
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
-                    ->setPoint([(float)$value->vendor->vendor->address_latitude,(float)$value->vendor->vendor->address_longitude])
+                    ->setPoint(['"'.$value->vendor->vendor->address_latitude,'"','"'.$value->vendor->vendor->address_longitude.'"'])
                     // get the calculated distance between each point
                     ->getDistance();
 
                     if ($value->vendor->id == 113) {
                         # code...
-                        dd($distance);
+                        dd($distance['1-2']['km'] );
                     }
 
                 if ($distance['1-2']['km'] <= 10) {
