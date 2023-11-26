@@ -160,7 +160,7 @@ class UserController extends Controller
                         dd($distance[$key]['1-2']['km'] );
                     }
 
-                if ($distance['1-2']['km'] <= 10) {
+                if ($distance[$key]['1-2']['km'] <= 10) {
                     # code...
                     array_push($data,$value);
                 }
