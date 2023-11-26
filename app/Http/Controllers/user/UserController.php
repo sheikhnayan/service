@@ -151,10 +151,10 @@ class UserController extends Controller
                     // get the calculated distance between each point
                     ->getDistance();
 
-                    // if ($value->vendor->id == 113) {
+                    if ($value->vendor->id == 113) {
                         # code...
                         dd($lat,$lon,$value->vendor->vendor->address_latitude,$value->vendor->vendor->address_longitude);
-                    // }
+                    }
 
                 if ($distance['1-2']['km'] <= 10) {
                     # code...
