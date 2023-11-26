@@ -134,9 +134,9 @@ class UserController extends Controller
     public function service_category($id)
     {
         if ($id == 0) {
-            $lat = 23.8233;
+            $lat = Session::get('lat');
 
-            $lon = 90.365;
+            $lon = Session::get('lng');
 
             $dat = Service::all();
 
@@ -147,13 +147,13 @@ class UserController extends Controller
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
-                    ->setPoint([$value->vendor->vendor->address_latitude,$value->vendor->vendor->address_longitude])
+                    ->setPoint([23.805240931443,90.378403014819])
                     // get the calculated distance between each point
                     ->getDistance();
 
                     if ($value->vendor->id == 113) {
                         # code...
-                        dd($distance['1-2']['km']);
+                        dd($distance);
                     }
 
                 if ($distance['1-2']['km'] <= 10) {
