@@ -138,15 +138,15 @@ class UserController extends Controller
 
             $lon = Session::get('lng');
 
-            $lat2 = '"'.$value->vendor->vendor->address_latitude.'"';
-
-            $lon2 = '"'.$value->vendor->vendor->address_longitude.'"';
 
             $dat = Service::all();
 
             $data = [];
 
             foreach ($dat as $key => $value) {
+                $lat2 = '"'.$value->vendor->vendor->address_latitude.'"';
+
+                $lon2 = '"'.$value->vendor->vendor->address_longitude.'"';
                 # code...
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
