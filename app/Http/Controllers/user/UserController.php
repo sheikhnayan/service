@@ -140,6 +140,8 @@ class UserController extends Controller
 
             $dat = Service::all();
 
+            dd($dat);
+
             $data = [];
 
             foreach ($dat as $key => $value) {
