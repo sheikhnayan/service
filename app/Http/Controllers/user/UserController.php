@@ -144,7 +144,7 @@ class UserController extends Controller
 
             foreach ($dat as $key => $value) {
                 # code...
-                $distance = GeoFacade::setPoint([23.8233, 90.365])
+                $distance = GeoFacade::setPoint(["23.8233", "90.365"])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
                     ->setPoint([23.807096278643, 90.36861733373])
