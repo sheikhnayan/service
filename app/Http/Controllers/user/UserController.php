@@ -134,9 +134,9 @@ class UserController extends Controller
     public function service_category($id)
     {
         if ($id == 0) {
-            $lat = Session::get('lat');
+            $lat = "23.8233";
 
-            $lon = Session::get('lng');
+            $lon = "90.365";
 
             $dat = Service::all();
 
