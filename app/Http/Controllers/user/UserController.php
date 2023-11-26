@@ -136,6 +136,8 @@ class UserController extends Controller
         if ($id == 0) {
             $lat = Session::get('lat');
 
+            $lat = (float) $lat;
+
             $lon = Session::get('lng');
 
             $dat = Service::all();
@@ -153,7 +155,7 @@ class UserController extends Controller
 
                     if ($value->vendor->id == 113) {
                         # code...
-                        dd((float)$lat);
+                        dd($lat);
                     }
 
                 if ($distance['1-2']['km'] <= 10) {
