@@ -138,6 +138,10 @@ class UserController extends Controller
 
             $lon = Session::get('lng');
 
+            $lat2 = '"'.$value->vendor->vendor->address_latitude.'"';
+
+            $lon2 = '"'.$value->vendor->vendor->address_longitude.'"';
+
             $dat = Service::all();
 
             $data = [];
@@ -147,7 +151,7 @@ class UserController extends Controller
                 $distance = GeoFacade::setPoint([$lat,$lon])
                     ->setOptions(['units' => ['km']])
                     // you can set unlimited lat/long points.
-                    ->setPoint(['"'.$value->vendor->vendor->address_latitude,'"','"'.$value->vendor->vendor->address_longitude.'"'])
+                    ->setPoint([$lat2,$lon2])
                     // get the calculated distance between each point
                     ->getDistance();
 
